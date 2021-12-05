@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+import ListOfAppointments from "../listofappointment/ListOfAppointments";
+import AppointmentDetail from "../listofappointment/AppointmentDetail";
 
 import Home from "../Home";
 import CareTakerSignin from "../signin/CareTakerSignin";
@@ -10,7 +12,11 @@ const Navigation = () => {
 
   return (
     <Navigator
+
       initialRouteName="CareTakerSignin"
+
+      
+
       screenOptions={{
         headerStyle: { backgroundColor: "#ECE450" },
         headerTintColor: "white",
@@ -24,6 +30,7 @@ const Navigation = () => {
           headerStyle: { backgroundColor: "#ECE450" },
         }}
       />
+
 
       <Screen
         name="CareTakerSignin"
@@ -40,6 +47,10 @@ const Navigation = () => {
           
         }}
       />
+
+      <Screen name="AppointmentList" component={ListOfAppointments} />
+      <Screen name="AppointmentDetail" component={AppointmentDetail} />
+
     </Navigator>
   );
 };
