@@ -5,13 +5,18 @@ import ListOfAppointments from "../listofappointment/ListOfAppointments";
 import AppointmentDetail from "../listofappointment/AppointmentDetail";
 
 import Home from "../Home";
-
+import CareTakerSignin from "../signin/CareTakerSignin";
+import GuardianSignup from "../signup/GuardianSignup";
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator
-      initialRouteName="AppointmentList"
+
+      initialRouteName="CareTakerSignin"
+
+      
+
       screenOptions={{
         headerStyle: { backgroundColor: "#ECE450" },
         headerTintColor: "white",
@@ -25,8 +30,27 @@ const Navigation = () => {
           headerStyle: { backgroundColor: "#ECE450" },
         }}
       />
+
+
+      <Screen
+        name="CareTakerSignin"
+        component={CareTakerSignin}
+        options={{
+          headerStyle: { backgroundColor: "#ECE450" },
+        }}
+      />
+      <Screen
+        name="GuardianSignup"
+        component={GuardianSignup}
+        options={{
+          headerStyle: { backgroundColor: "#ECE450" },
+          
+        }}
+      />
+
       <Screen name="AppointmentList" component={ListOfAppointments} />
       <Screen name="AppointmentDetail" component={AppointmentDetail} />
+
     </Navigator>
   );
 };

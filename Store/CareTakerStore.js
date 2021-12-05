@@ -10,7 +10,7 @@ class CareTakerStore {
   }
   signup = async (userData, navigation, toast) => {
     try {
-      const res = await instance.post("/signup", userData);
+      const res = await instance.post("/caretaker/Signup", userData);
       runInAction(() => {
         this.setUser(res.data.token);
       });
@@ -24,15 +24,15 @@ class CareTakerStore {
         description: "You are not a CareTaker",
       });
     }
-
+  }
     signin = async (user, navigation) => {
       try {
-        const res = await instance.post("/signin", user);
+        const res = await instance.post("/caretaker/Signin", user);
         runInAction(() => {
           this.setUser(res.data.token);
         });
 
-        //   navigation.goBack();
+          navigation.navigate("Home");
       } catch (error) {
         console.log(error);
       }
@@ -62,20 +62,17 @@ class CareTakerStore {
       try {
         const token = await AsyncStorage.getItem("myToken");
         if (token) {
-          const caretaker = decode(token);
-          const expiration = caretaker.expiration * 1000;
-          if (expiration >= Date.now()) {
+          const currentTime = Date.now();
+          let tempUser = decode(token);
+          if (tempUser.exp >= currentTime) {
             this.setUser(token);
           } else {
             this.logout();
           }
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
   };
-}
 
 const careTakerStore = new CareTakerStore();
 careTakerStore.checkForToken();
