@@ -5,17 +5,20 @@ import ListOfAppointments from "../listofappointment/ListOfAppointments";
 import AppointmentDetail from "../listofappointment/AppointmentDetail";
 
 import Home from "../Home";
+
+import GuardianSignin from "../signin/GuardianSignin";
+
+
 import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
+
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator
 
-      initialRouteName="CareTakerSignin"
-
-      
+      initialRouteName="GuardianSignin"
 
       screenOptions={{
         headerStyle: { backgroundColor: "#ECE450" },
@@ -26,6 +29,15 @@ const Navigation = () => {
       <Screen
         name="Home"
         component={Home}
+        options={{
+          headerStyle: { backgroundColor: "#ECE450" },
+        }}
+      />
+
+
+      <Screen
+        name="GuardianSignin"
+        component={GuardianSignin}
         options={{
           headerStyle: { backgroundColor: "#ECE450" },
         }}
@@ -50,6 +62,7 @@ const Navigation = () => {
 
       <Screen name="AppointmentList" component={ListOfAppointments} />
       <Screen name="AppointmentDetail" component={AppointmentDetail} />
+
 
     </Navigator>
   );
