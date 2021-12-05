@@ -3,13 +3,14 @@ import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Home from "../Home";
+import GuardianSignin from "../signin/GuardianSignin";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator
-      initialRouteName="Home"
+      initialRouteName="GuardianSignin"
       screenOptions={{
         headerStyle: { backgroundColor: "#ECE450" },
         headerTintColor: "white",
@@ -19,6 +20,14 @@ const Navigation = () => {
       <Screen
         name="Home"
         component={Home}
+        options={{
+          headerStyle: { backgroundColor: "#ECE450" },
+        }}
+      />
+
+      <Screen
+        name="GuardianSignin"
+        component={GuardianSignin}
         options={{
           headerStyle: { backgroundColor: "#ECE450" },
         }}
