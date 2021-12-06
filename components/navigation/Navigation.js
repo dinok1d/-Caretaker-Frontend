@@ -6,9 +6,6 @@ import AppointmentDetail from "../listofappointment/AppointmentDetail";
 
 import Home from "../Home";
 
-import GuardianSignin from "../signin/GuardianSignin";
-
-
 import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
 
@@ -17,11 +14,9 @@ const Navigation = () => {
 
   return (
     <Navigator
-
-      initialRouteName="GuardianSignin"
-
+      initialRouteName="GuardianSignup"
       screenOptions={{
-        headerStyle: { backgroundColor: "#ECE450" },
+        headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
         headerTitleStyle: { fontStyle: "italic", fontWeight: "bold" },
       }}
@@ -30,44 +25,43 @@ const Navigation = () => {
         name="Home"
         component={Home}
         options={{
-          headerStyle: { backgroundColor: "#ECE450" },
+          headerStyle: { backgroundColor: "#fadd97" },
         }}
       />
-
-
-      <Screen
-        name="GuardianSignin"
-        component={GuardianSignin}
-        options={{
-          headerStyle: { backgroundColor: "#ECE450" },
-        }}
-      />
-
 
       <Screen
         name="CareTakerSignin"
         component={CareTakerSignin}
         options={{
-          headerStyle: { backgroundColor: "#ECE450" },
+          headerStyle: { backgroundColor: "#fadd97" },
         }}
       />
       <Screen
         name="GuardianSignup"
         component={GuardianSignup}
         options={{
-          headerStyle: { backgroundColor: "#ECE450" },
-          
+          headerStyle: { backgroundColor: "#fadd97" },
         }}
       />
 
-      <Screen name="AppointmentList" component={ListOfAppointments} />
-      <Screen name="AppointmentDetail" component={AppointmentDetail} />
-
-
+      <Screen
+        name="AppointmentList"
+        component={ListOfAppointments}
+        options={{
+          headerStyle: { backgroundColor: "#fadd97" },
+        }}
+      />
+      <Screen
+        name="AppointmentDetail"
+        component={AppointmentDetail}
+        options={{
+          headerStyle: { backgroundColor: "#fadd97" },
+        }}
+      />
     </Navigator>
   );
 };
-
+// "#5ac3dc"
 export default Navigation;
 
 const styles = StyleSheet.create({});
