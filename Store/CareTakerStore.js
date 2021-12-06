@@ -28,11 +28,11 @@ class CareTakerStore {
   signin = async (user, navigation) => {
     try {
       const res = await instance.post("/caretaker/Signin", user);
-      runInAction(() => {
-        this.setUser(res.data.token);
+      runInAction(async () => {
+        await this.setUser(res.data.token);
       });
-
-      navigation.navigate("Home");
+      console.log(this.caretaker);
+      navigation.navigate("AppointmentList");
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +41,7 @@ class CareTakerStore {
     try {
       await AsyncStorage.setItem("myToken", token);
       runInAction(() => {
-        this.user = decode(token);
+        this.caretaker = decode(token);
       });
 
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -52,7 +52,7 @@ class CareTakerStore {
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("myToken");
       runInAction(() => {
-        this.user = null;
+        this.caretaker = null;
       });
     } catch (error) {
       console.log(error);

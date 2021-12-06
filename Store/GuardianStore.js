@@ -32,7 +32,7 @@ class GuardianStore {
         this.setUser(res.data.token);
       });
 
-      navigation.navigate("Home");
+      navigation.navigate("CaretakerList");
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +41,7 @@ class GuardianStore {
     try {
       await AsyncStorage.setItem("myToken", token);
       runInAction(() => {
-        this.user = decode(token);
+        this.guardian = decode(token);
       });
 
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -52,7 +52,7 @@ class GuardianStore {
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("myToken");
       runInAction(() => {
-        this.user = null;
+        this.guardian = null;
       });
     } catch (error) {
       console.log(error);
