@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 import { NativeBaseProvider } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
 import Navigation from "./components/navigation/Navigation";
+// import OnBoardingUi from "./components/landingpage/OnBoardingUi";
 
 export default function App() {
   return (

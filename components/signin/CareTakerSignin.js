@@ -1,4 +1,4 @@
-
+import React from "react";
 
 import { StyleSheet } from "react-native";
 import {
@@ -41,11 +41,9 @@ const Signin = ({ navigation }) => {
   const handleSubmit = async () => {
     if (selectedradiobtn.label === "Guardian") {
       await guardianStore.signin(user, navigation, toast);
-
     } else if (selectedradiobtn.label === "CareTaker") {
       await careTakerStore.signin(user, navigation, toast);
     }
-
   };
 
   return (
@@ -132,6 +130,5 @@ export default Signin;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-
   },
 });
