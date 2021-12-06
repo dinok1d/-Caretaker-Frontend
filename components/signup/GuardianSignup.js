@@ -16,6 +16,8 @@ import {
 } from "native-base";
 import { useState } from "react";
 import RadioButtonRN from "radio-buttons-react-native";
+import guardianStore from "../../Store/GuardianStore";
+import careTakerStore from "../../Store/CareTakerStore";
 
 const Signup = ({ navigation }) => {
   const toast = useToast();
@@ -35,10 +37,15 @@ const Signup = ({ navigation }) => {
       label: "CareTaker",
     },
   ];
+
   const handleSubmit = async () => {
-    //     await userAuthStore.signup(user, navigation, toast);
-    //     console.log(user);
+    if (selectedradiobtn.label === "Guardian") {
+      await guardianStore.signup(user, navigation, toast);
+    } else if (selectedradiobtn.label === "CareTaker") {
+      await careTakerStore.signup(user, navigation, toast);
+    }
   };
+
   return (
     <Center flex={1} px="3">
       <Box safeArea p="2" py="8" w="90%" maxW="290">
@@ -105,13 +112,19 @@ const Signup = ({ navigation }) => {
             >
               already have an account
             </Text>
+            <Button
+              onPress={() => navigation.navigate("CaretakerList")}
+              marginTop="20"
+            >
+              Continue As a Guest
+            </Button>
             <Link
               _text={{
                 color: "indigo.500",
                 fontWeight: "medium",
                 fontSize: "sm",
               }}
-              onPress={() => navigation.navigate("Signin")}
+              onPress={() => navigation.navigate("CareTakerSignin")}
             >
               Sign in
             </Link>
