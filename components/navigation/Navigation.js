@@ -3,8 +3,11 @@ import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import ListOfAppointments from "../listofappointment/ListOfAppointments";
 import AppointmentDetail from "../listofappointment/AppointmentDetail";
-
+import ListOfCareTakers from "../listofcaretaker/ListOfCareTakers";
 import Home from "../Home";
+
+import GuardianSignin from "../signin/GuardianSignin";
+
 
 import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
@@ -14,7 +17,9 @@ const Navigation = () => {
 
   return (
     <Navigator
-      initialRouteName="GuardianSignup"
+
+      initialRouteName="CaretakerList"
+
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
@@ -29,6 +34,16 @@ const Navigation = () => {
         }}
       />
 
+
+      <Screen
+        name="GuardianSignin"
+        component={GuardianSignin}
+        options={{
+          headerStyle: { backgroundColor: "#ECE450" },
+        }}
+      />
+
+
       <Screen
         name="CareTakerSignin"
         component={CareTakerSignin}
@@ -40,6 +55,13 @@ const Navigation = () => {
         name="GuardianSignup"
         component={GuardianSignup}
         options={{
+
+          headerStyle: { backgroundColor: "#ECE450" },
+        }}
+      />
+
+      <Screen name="CaretakerList" component={ListOfCareTakers} />
+
           headerStyle: { backgroundColor: "#fadd97" },
         }}
       />
