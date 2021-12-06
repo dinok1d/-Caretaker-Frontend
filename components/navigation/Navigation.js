@@ -11,6 +11,7 @@ import GuardianSignin from "../signin/GuardianSignin";
 
 import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
+import CareTakerDetail from "../listofcaretaker/CareTakerDetail";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -60,8 +61,10 @@ const Navigation = () => {
         }}
       />
 
-      <Screen name="CaretakerList" component={ListOfCareTakers} />
-
+      <Screen name="CaretakerList" component={ListOfCareTakers} options={{
+          headerStyle: { backgroundColor: "#fadd97" },
+        }} />
+      <Screen name="CaretakerDetail" component={CareTakerDetail} options={{
           headerStyle: { backgroundColor: "#fadd97" },
         }}
       />

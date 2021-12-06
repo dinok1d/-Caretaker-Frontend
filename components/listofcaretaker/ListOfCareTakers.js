@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { observer } from "mobx-react";
 import careStore from "../../Store/CareStore";
 import CareTakerItem from "./CareTakerItem";
@@ -13,7 +13,7 @@ const ListOfCareTakers = ({ navigation }) => {
     />
   ));
 
-  return <View>{caretakerList}</View>;
+  return <ScrollView>{caretakerList}</ScrollView>;
 };
 
 export default observer(ListOfCareTakers);
