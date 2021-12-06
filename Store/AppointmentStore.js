@@ -23,3 +23,5 @@ class AppointStore {
 const appointStore = new AppointStore();
 appointStore.fetchAppointment();
 export default appointStore;
+
+

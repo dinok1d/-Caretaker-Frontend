@@ -6,9 +6,6 @@ import AppointmentDetail from "../listofappointment/AppointmentDetail";
 import ListOfCareTakers from "../listofcaretaker/ListOfCareTakers";
 import Home from "../Home";
 
-import GuardianSignin from "../signin/GuardianSignin";
-
-
 import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
 
@@ -17,9 +14,7 @@ const Navigation = () => {
 
   return (
     <Navigator
-
-      initialRouteName="CaretakerList"
-
+      initialRouteName="CareTakerSignin"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
@@ -34,16 +29,6 @@ const Navigation = () => {
         }}
       />
 
-
-      <Screen
-        name="GuardianSignin"
-        component={GuardianSignin}
-        options={{
-          headerStyle: { backgroundColor: "#ECE450" },
-        }}
-      />
-
-
       <Screen
         name="CareTakerSignin"
         component={CareTakerSignin}
@@ -55,13 +40,14 @@ const Navigation = () => {
         name="GuardianSignup"
         component={GuardianSignup}
         options={{
-
           headerStyle: { backgroundColor: "#ECE450" },
         }}
       />
 
-      <Screen name="CaretakerList" component={ListOfCareTakers} />
-
+      <Screen
+        name="CaretakerList"
+        component={ListOfCareTakers}
+        options={{
           headerStyle: { backgroundColor: "#fadd97" },
         }}
       />
