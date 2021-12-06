@@ -10,6 +10,7 @@ import GuardianSignin from "../signin/GuardianSignin";
 
 import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
+import CareTakerDetail from "../listofcaretaker/CareTakerDetail";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -57,6 +58,7 @@ const Navigation = () => {
       <Screen name="AppointmentList" component={ListOfAppointments} />
       <Screen name="AppointmentDetail" component={AppointmentDetail} />
       <Screen name="CaretakerList" component={ListOfCareTakers} />
+      <Screen name="CaretakerDetail" component={CareTakerDetail} />
     </Navigator>
   );
 };

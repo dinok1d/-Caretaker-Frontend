@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import appointStore from "../../Store/AppointmentStore";
 import AppointmentItem from "./AppointmentItem";
 
@@ -13,7 +13,7 @@ const ListOfAppointments = ({ navigation }) => {
     />
   ));
 
-  return <View>{appointList}</View>;
+  return <ScrollView>{appointList}</ScrollView>;
 };
 export default observer(ListOfAppointments);
 const styles = StyleSheet.create({});
