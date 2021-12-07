@@ -38,6 +38,7 @@ const Navigation = () => {
         component={CareTakerSignin}
         options={{
           headerStyle: { backgroundColor: "#fadd97" },
+          headerShown: false,
         }}
       />
       <Screen
@@ -45,6 +46,7 @@ const Navigation = () => {
         component={GuardianSignup}
         options={{
           headerStyle: { backgroundColor: "#fadd97" },
+          headerShown: false,
         }}
       />
 
