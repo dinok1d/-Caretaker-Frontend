@@ -6,15 +6,6 @@ import AppointmentItem from "./AppointmentItem";
 import careTakerStore from "../../Store/CareTakerStore";
 
 const ListOfAppointments = ({ navigation }) => {
-  // const appointList = appointStore.appointment.map((appointment) => (
-  //   <AppointmentItem
-  //     appointment={appointment}
-  //     navigation={navigation}
-  //     key={appointment._id}
-  //   />
-  // ));
-
-
   const filteredList = appointStore.appointment
     .filter(
       (appointment) =>
@@ -30,7 +21,6 @@ const ListOfAppointments = ({ navigation }) => {
 
   console.log(filteredList);
   return <View>{filteredList}</View>;
-
 };
 export default observer(ListOfAppointments);
 const styles = StyleSheet.create({});

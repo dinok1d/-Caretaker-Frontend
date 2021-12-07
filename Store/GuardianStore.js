@@ -15,7 +15,7 @@ class GuardianStore {
         this.setUser(res.data.token);
       });
 
-      navigation.navigate("ListOfCareTaker");
+      navigation.navigate("CaretakerList");
     } catch (error) {
       console.log(error);
       toast.show({
