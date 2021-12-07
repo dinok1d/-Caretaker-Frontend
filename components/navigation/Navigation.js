@@ -96,14 +96,14 @@ const Navigation = () => {
         name="BookingCalender"
         component={BookingCalender}
         options={{
-          headerStyle: { backgroundColor: "#fadd97" },
+          headerStyle: { backgroundColor: "#8285E0" },
         }}
       />
       <Screen
         name="BookingTime"
         component={BookingTime}
         options={{
-          headerStyle: { backgroundColor: "#fadd97" },
+          headerStyle: { backgroundColor: "#8285E0" },
         }}
       />
     </Navigator>
