@@ -72,6 +72,26 @@ class CareTakerStore {
       }
     } catch (error) {}
   };
+
+  // editProfile = async (updatedProfile, navigation) => {
+  //   try {
+  //     const foundProfile = this.caretaker.profile
+
+  //     const formData = new FormData();
+  //     for (const key in updatedProfile) {
+  //       formData.append(key, updatedProfile[key]);
+  //     }
+
+  //     const res = await instance.put(`/profile/`, formData);
+  //     for (const key in foundProfile)
+  //     foundProfile[key] = res.data[key];
+  //     this.userProfile = res.data;
+  //     navigation.navigate("Profile", { profile: this.userProfile });
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  // }
 }
 
 const careTakerStore = new CareTakerStore();
