@@ -13,6 +13,7 @@ import {
   HStack,
   Center,
   useToast,
+  View,
 } from "native-base";
 import { useState } from "react";
 import RadioButtonRN from "radio-buttons-react-native";
@@ -48,88 +49,119 @@ const Signup = ({ navigation }) => {
 
   return (
     <Center flex={1} px="3">
-      <Box safeArea p="2" py="8" w="90%" maxW="290">
-        <Heading
-          size="lg"
-          fontWeight="600"
-          color="coolGray.800"
-          _dark={{
-            color: "warmGray.50",
-          }}
-        >
-          We make world travel easy!
-        </Heading>
-        <Heading
-          mt="1"
-          _dark={{
-            color: "warmGray.200",
-          }}
-          color="coolGray.600"
-          fontWeight="medium"
-          size="xs"
-        >
-          You should have an account to view our Gallery
-        </Heading>
+      <View style={{}}>
+        {/* <Image
+        width="150"
+        height="150"
+        source={require("../designs/images/Icon.png")}
+      /> */}
+      </View>
+      <Heading size="lg" fontWeight="600" color="#FA2F60" alignContent="center">
+        Haven
+      </Heading>
 
-        <VStack space={3} mt="5">
-          <FormControl>
+      <Heading mt="1" color="#8285E0" fontWeight="medium" size="xs">
+        Join us now as a Guardian or a Caretaker!
+      </Heading>
+
+      <HStack>
+        <RadioButtonRN
+          initial={1}
+          box={false}
+          circleSize={7}
+          animationTypes={["pulse"]}
+          data={data}
+          selectedBtn={(e) => setSelectedradiobtn(e)}
+          style={{
+            width: 100,
+            height: 50,
+          }}
+        />
+      </HStack>
+      <Box safeArea p="2" py="8" w="90%" maxW="290">
+        <HStack space={3} mt="5">
+          <FormControl
+            style={{
+              width: 135,
+            }}
+          >
             <FormControl.Label>User Name</FormControl.Label>
             <Input
+              style={{
+                borderColor: "#8285E0",
+                height: 32,
+              }}
               onChangeText={(username) => setUser({ ...user, username })}
+              placeholder={"Username"}
             />
           </FormControl>
-          <FormControl>
+          <FormControl
+            style={{
+              width: 130,
+            }}
+          >
             <FormControl.Label>Password</FormControl.Label>
             <Input
+              style={{
+                borderColor: "#8285E0",
+                height: 33,
+              }}
               type="password"
               onChangeText={(password) => setUser({ ...user, password })}
-            />
-
-            <FormControl.Label>Email ID</FormControl.Label>
-            <Input
-              onChangeText={(email) => setUser({ ...user, email })}
-              placeholder={"Email"}
+              placeholder={"Password"}
             />
           </FormControl>
-          <RadioButtonRN
-            initial={1}
-            box={false}
-            circleSize={6}
-            animationTypes={["pulse"]}
-            data={data}
-            selectedBtn={(e) => setSelectedradiobtn(e)}
+        </HStack>
+
+        <FormControl
+          style={{
+            marginTop: 10,
+          }}
+        >
+          <FormControl.Label>Email ID</FormControl.Label>
+          <Input
+            style={{
+              borderColor: "#8285E0",
+              height: 35,
+            }}
+            onChangeText={(email) => setUser({ ...user, email })}
+            placeholder={"Email"}
           />
-          <Button mt="2" colorScheme="indigo" onPress={handleSubmit}>
-            Sign up
-          </Button>
-          <HStack mt="6" justifyContent="center">
-            <Text
-              fontSize="sm"
-              color="coolGray.600"
-              _dark={{
-                color: "warmGray.200",
-              }}
-            >
-              already have an account
-            </Text>
-            <Button
-              onPress={() => navigation.navigate("CaretakerList")}
-              marginTop="20"
-            >
-              Continue As a Guest
-            </Button>
-            <Link
-              _text={{
-                color: "indigo.500",
-                fontWeight: "medium",
-                fontSize: "sm",
-              }}
-              onPress={() => navigation.navigate("CareTakerSignin")}
-            >
-              Sign in
-            </Link>
-          </HStack>
-        </VStack>
+        </FormControl>
+
+        <Button mt="5" colorScheme="indigo" onPress={handleSubmit}>
+          Sign up
+        </Button>
+
+        <HStack mt="6" justifyContent="center">
+          <Text
+            fontSize="sm"
+            color="coolGray.600"
+            _dark={{
+              color: "warmGray.200",
+            }}
+          >
+            Already have an account?
+          </Text>
+
+          <Link
+            _text={{
+              color: "#FA2F60",
+              fontWeight: "medium",
+              fontSize: "sm",
+            }}
+            onPress={() => navigation.navigate("CareTakerSignin")}
+          >
+            {""} Sign in
+          </Link>
+        </HStack>
+        <Button
+          backgroundColor="#FA2F60"
+          marginTop="2"
+          onPress={() => navigation.navigate("CaretakerList")}
+        >
+          Continue As a Guest
+        </Button>
       </Box>
     </Center>
   );
