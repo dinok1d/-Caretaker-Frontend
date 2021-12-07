@@ -11,13 +11,14 @@ import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
 import CareTakerDetail from "../listofcaretaker/CareTakerDetail";
 import ListOfCareTakers from "../listofcaretaker/ListOfCareTakers";
-
+import BookingCalender from "../listofcaretaker/BookingCalender";
+import BookingTime from "../listofcaretaker/BookingTime";
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator
-      initialRouteName="Home"
+      initialRouteName="CareTakerSignin"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
@@ -85,6 +86,20 @@ const Navigation = () => {
       <Screen
         name="CaretakerDetail"
         component={CareTakerDetail}
+        options={{
+          headerStyle: { backgroundColor: "#fadd97" },
+        }}
+      />
+      <Screen
+        name="BookingCalender"
+        component={BookingCalender}
+        options={{
+          headerStyle: { backgroundColor: "#fadd97" },
+        }}
+      />
+      <Screen
+        name="BookingTime"
+        component={BookingTime}
         options={{
           headerStyle: { backgroundColor: "#fadd97" },
         }}
