@@ -29,6 +29,21 @@ class CareStore {
     this.careTakerProfile = foundProfile;
     return foundProfile;
   };
+
+  editProfile = async (updatedProfile, navigation) => {
+    try {
+      const formData = new FormData();
+      for (const key in updatedProfile) {
+        formData.append(key, updatedProfile[key]);
+      }
+
+      const res = await instance.put(`/caretaker/profile/`, formData);
+      this.careTakerProfile = res.data;
+      navigation.navigate("CareTakerProfileList");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }
 
 const careStore = new CareStore();

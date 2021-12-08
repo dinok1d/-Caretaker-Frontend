@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { observer } from "mobx-react";
+
 import {
   StyleSheet,
   View,
@@ -7,25 +9,61 @@ import {
   Text,
   Image,
 } from "react-native";
+import { baseURL } from "../../../Store/instance";
+import { Button, Input } from "native-base";
+import careStore from "../../../Store/CareStore";
 import careTakerStore from "../../../Store/CareTakerStore";
-import { Button } from "native-base";
+// import { useEffect } from "react";
 
-const CareTakerProfileList = ({ navigation }) => {
-  const [text, onChangeText] = React.useState("");
-  const [caretaker, setCaretaker] = React.useState({
-    username: "Deema",
-    email: "Deema@gmail.com",
-    FirstName: "Deema",
-    LastName: "Burhama",
-    // Image: "",
-    qualification: "Engineer",
-    PastExpo: "Engineer",
-    Bio: "wife - mother - engineer",
-    // Status: "",
+const CareTakerProfileList = ({ navigation, route }) => {
+  // const { careTakerId } = route.params;
+  // console.log(careTakerId);
+  // const CareTakerProfile = careStore.fetchProfile(careTakerId);
+
+  const [profile, setProfile] = useState(null);
+  // const [updateCareTaker, setupdateCareTaker] = React.useState(caretaker);
+  const [caretaker, setCaretaker] = useState({
+    // username: "",
+    // email: "",
+    profile: {
+      firstName: "",
+      lastName: "",
+      // image: "",
+      bio: "",
+      qualification: "",
+      pastExp: "",
+    },
   });
+
+  //   if (careTakerStore.caretaker._id)
+  //   careStore.editProfile(caretaker, navigation);
+  //   console.log(caretaker);
+  // };
+
+  // const userVariable = {
+  //   careTaker: careTaker,
+  // };
+
+  // i want to update profile using the browser
+  // useEffect(async () => {
+  //   const response = await fetchProfile("/api/caretaker/profile", userVariable);
+  //   const getProfile = await response.json();
+  //   const { oneProfile } = getProfile.results;
+  //   setProfile(oneProfile);
+  // }, []);
+
   const onSubmit = () => {
-    careTakerStore.editProfile(caretaker, navigation);
+    //   const verifyUser = () => {
+    //     if (careTakerStore.caretaker) {
+    //       console.log(careTakerStore.caretaker);
+    careStore.editProfile(caretaker, navigation);
+    //     } else {
+    //       return "Guest";
+    //     }
+    //   };
+    //   console.log(verifyUser());
   };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <Image
@@ -38,53 +76,73 @@ const CareTakerProfileList = ({ navigation }) => {
         <TextInput
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({ ...caretaker, FirstName: value })
+            // setCaretaker({
+            //   ...caretaker,
+            //   firstName: value,
+            // })
+            setCaretaker({
+              ...caretaker,
+              profile: { ...caretaker.profile, firstName: value },
+            })
           }
-          value={text}
           placeholder="first name"
         />
+        {profile}
+        {/* <Text>{profile.firstName}</Text> */}
 
         <TextInput
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({ ...caretaker, LastName: value })
+            setCaretaker({
+              ...caretaker,
+              profile: { ...caretaker.profile, lastName: value },
+            })
           }
-          value={text}
           placeholder="last name"
         />
 
-        <TextInput
-          style={styles.userName}
-          onChangeText={(value) => setCaretaker({ ...caretaker, bio: value })}
-          value={text}
-          placeholder="bio"
-        />
-        <TextInput
+        <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({ ...caretaker, qualification: value })
+            setCaretaker({
+              ...caretaker,
+              profile: { ...caretaker.profile, bio: value },
+            })
           }
-          value={text}
+          placeholder="bio"
+        />
+        <Input
+          style={styles.userName}
+          onChangeText={(value) =>
+            setCaretaker({
+              ...caretaker,
+              profile: { ...caretaker.profile, qualification: value },
+            })
+          }
           placeholder="qualification"
         />
 
         <TextInput
           style={styles.input}
           onChangeText={(value) =>
-            setCaretaker({ ...caretaker, PastExpo: value })
+            setCaretaker({
+              ...caretaker,
+              profile: { ...caretaker.profile, pastExp: value },
+            })
           }
-          value={text}
           placeholder="pastExp"
         />
+        {/* <ImagePickUpdate
+          setupdateCareTaker={setupdateCareTaker}
+          updateCareTaker={updateCareTaker}
+        />
+        <Image
+          source={{
+            uri: baseURL + careStore.careTakerProfile.image,
+          }}
+          alt="image"
+        /> */}
 
-        {/* <View style={styles.userInfoWrapper}>
-            <View style={styles.userInfoItem}></View>
-
-            <Text style={styles.userInfoTitle}>My Title</Text>
-            <Text style={styles.userInfoSubTitle}>Engineer</Text>
-            <Text style={styles.userInfoTitle}>My hobbies</Text>
-            <Text style={styles.userInfoSubTitle}>Writing</Text>
-          </View> */}
         <Button
           marginTop="10"
           marginBottom="10"
@@ -92,7 +150,7 @@ const CareTakerProfileList = ({ navigation }) => {
         >
           logout
         </Button>
-        <Button onPress={onSubmit}> edit profile</Button>
+        {/* <Button onPress={onSubmit}> edit profile</Button> */}
         <Button marginTop="10" marginBottom="10" onPress={onSubmit}>
           Done
         </Button>
@@ -101,7 +159,7 @@ const CareTakerProfileList = ({ navigation }) => {
   );
 };
 
-export default CareTakerProfileList;
+export default observer(CareTakerProfileList);
 
 const styles = StyleSheet.create({
   input: {
@@ -171,20 +229,3 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
-
-// const checkDefault = () => {
-//   if (careTakerStore.caretaker) {
-//     return (
-//       <Button marginRight="2" onPress={() => userAuthStore.logout()}>
-//         Log Out
-//       </Button>
-//     );
-//   } else {
-//     return (
-//       <Button marginRight="3" onPress={() => navigation.navigate("Signin")}>
-//         Signin/up
-//       </Button>
-//     );
-//   }
-// };
-// return <View>{checkUser()}</View>;
