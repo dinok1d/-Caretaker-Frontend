@@ -8,6 +8,9 @@ import guardianStore from "../../Store/GuardianStore";
 
 const ListOfAppointments = ({ navigation }) => {
 
+
+  return <View>{filteredList}</View>;
+
   //--------------------------This is done------------------------------
   // if (careTakerStore.caretaker._id) {
   //   const filteredList = appointStore.appointment
