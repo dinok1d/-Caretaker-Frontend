@@ -6,26 +6,26 @@ import AppointmentItem from "./AppointmentItem";
 import careTakerStore from "../../Store/CareTakerStore";
 
 const ListOfAppointments = ({ navigation }) => {
-  const filteredList = appointStore.appointment
-    .filter(
-      (appointment) =>
-        careTakerStore.caretaker._id === appointment.caretaker.toString()
-    )
-    .map((appointment) => (
-      <AppointmentItem
-        appointment={appointment}
-        navigation={navigation}
-        key={appointment._id}
-      />
-    ));
+  // const filteredList = appointStore.appointment
+  //   .filter(
+  //     (appointment) =>
+  //       careTakerStore.caretaker._id === appointment.caretaker.toString()
+  //   )
+  //   .map((appointment) => (
+  //     <AppointmentItem
+  //       appointment={appointment}
+  //       navigation={navigation}
+  //       key={appointment._id}
+  //     />
+  //   ));
 
-  // const appointments = appointStore.appointment.map((appointment) => (
-  //   <AppointmentItem
-  //     appointment={appointment}
-  //     navigation={navigation}
-  //     key={appointment._id}
-  //   />
-  // ));
+  const appointments = appointStore.appointment.map((appointment) => (
+    <AppointmentItem
+      appointment={appointment}
+      navigation={navigation}
+      key={appointment._id}
+    />
+  ));
 
   return <View>{appointments}</View>;
 };

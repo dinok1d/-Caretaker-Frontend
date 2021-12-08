@@ -13,14 +13,13 @@ import CareTakerDetail from "../listofcaretaker/CareTakerDetail";
 import ListOfCareTakers from "../listofcaretaker/ListOfCareTakers";
 import BookingCalender from "../listofcaretaker/BookingCalender";
 import BookingTime from "../listofcaretaker/BookingTime";
+import { Card } from "native-base";
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator
-
       initialRouteName="CareTakerSignin"
-
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
@@ -56,16 +55,59 @@ const Navigation = () => {
         name="AppointmentList"
         component={ListOfAppointments}
         options={{
-          headerStyle: { backgroundColor: "#fadd97" },
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: "20",
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          headerBackTitleVisible: false,
+          title: "Appointments",
+          headerLeft: false,
         }}
       />
+
       <Screen
         name="AppointmentDetail"
         component={AppointmentDetail}
         options={{
-          headerStyle: { backgroundColor: "#fadd97" },
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: "20",
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          headerBackTitleVisible: false,
+          title: "Information",
         }}
       />
+
       <Screen
         name="GuardianProfileList"
         component={GuardianProfileList}
@@ -73,6 +115,7 @@ const Navigation = () => {
           headerStyle: { backgroundColor: "#fadd97" },
         }}
       />
+
       <Screen
         name="CareTakerProfileList"
         component={CareTakerProfileList}
@@ -80,32 +123,116 @@ const Navigation = () => {
           headerStyle: { backgroundColor: "#fadd97" },
         }}
       />
+
       <Screen
         name="CaretakerList"
         component={ListOfCareTakers}
         options={{
-          headerStyle: { backgroundColor: "#fadd97" },
+          headerStyle: {
+            backgroundColor: "#8285E0",
+
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: "20",
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+
+          headerLeft: false,
+          title: "Choose Your Caretaker",
         }}
       />
+
       <Screen
         name="CaretakerDetail"
         component={CareTakerDetail}
         options={{
-          headerStyle: { backgroundColor: "#fadd97" },
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: "20",
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          title: "Information",
+          headerBackTitleVisible: false,
         }}
       />
+
       <Screen
         name="BookingCalender"
         component={BookingCalender}
         options={{
-          headerStyle: { backgroundColor: "#8285E0" },
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: "20",
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          headerBackTitleVisible: false,
+          title: "Calendar",
         }}
       />
+
       <Screen
         name="BookingTime"
         component={BookingTime}
         options={{
-          headerStyle: { backgroundColor: "#8285E0" },
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: "20",
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          headerBackTitleVisible: false,
+          title: "Booking Times",
         }}
       />
     </Navigator>
