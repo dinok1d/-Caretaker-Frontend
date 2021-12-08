@@ -14,13 +14,10 @@ import appointStore from "../../Store/AppointmentStore";
 import { Card } from "react-native-elements";
 import styles from "./styles";
 import CareStore from "../../Store/CareStore";
-import { baseURL } from "../../Store/instance";
-import { useState } from "react";
 
 const AppointmentDetail = ({ navigation, route }) => {
   if (appointStore.isLoading) return <Spinner />;
   const appointment = route.params.appointment;
-  const [comfirmStatus, setStatus] = useState(appointment.status);
 
   const CareTakerProfile = CareStore.fetchProfile(appointment.caretaker);
 
@@ -117,6 +114,7 @@ const AppointmentDetail = ({ navigation, route }) => {
           Caretaker: {appointment.caretakerName}
           {"\n"}
 
+
         </Text>
 
         <Text
@@ -124,7 +122,8 @@ const AppointmentDetail = ({ navigation, route }) => {
             fontSize: 16,
           }}
         >
-          Status: {comfirmStatus}
+          Status: {appointment.status}
+
 
           {"\n"}
         </Text>
