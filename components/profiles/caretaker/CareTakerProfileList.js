@@ -71,6 +71,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
         source={{
           uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjO7Lo0Q9eCXYhlXQGfvEzL1OM7muSI3EQ_A&usqp=CAU",
         }}
+        alt="image"
       />
       <View>
         <TextInput

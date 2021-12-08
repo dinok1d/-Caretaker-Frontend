@@ -8,6 +8,14 @@
 //   const { caretaker } = route.params;
 
 //   const [updateCareTaker, setupdateCareTaker] = React.useState(caretaker);
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { VStack, Button, FormControl, Input } from "native-base";
+import ImagePickUpdate from "./ImagePickUpdate";
+import tripsStore from "../Store/tripsStore";
+import careTakerStore from "../../../Store/CareTakerStore";
+const UpdateCareProfile = ({ navigation }) => {
+  const [updateCareTaker, setupdateCareTaker] = React.useState(caretaker);
 
 //   //   const onSubmit = () => {
 //   //     careTakerStore.editProfile(updateCareTaker, navigation);

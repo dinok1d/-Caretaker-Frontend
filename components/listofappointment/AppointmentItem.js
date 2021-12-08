@@ -4,36 +4,84 @@ import { View, Text } from "react-native";
 import { Card, Button, Icon } from "react-native-elements";
 import Navigation from "../navigation/Navigation";
 import { useState } from "react";
+import { Image, HStack } from "native-base";
+import styles from "./styles";
+
 
 const AppointmentItem = ({ appointment, navigation }) => {
-  const [comfirmationStatus, setStatus] = useState("");
-  console.log(comfirmationStatus);
   return (
-    <View>
-      <Card>
-        <Card.Title>Appointment</Card.Title>
+    <View style={styles.background}>
+      <Card
+        containerStyle={{
+          borderColor: "pink",
+          borderRadius: "20%",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 4,
+          },
+          shadowOpacity: 0.3,
+          shadowRadius: 4.65,
+
+          elevation: 8,
+        }}
+        wrapperStyle={{
+          borderRadius: "50%",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+
+          elevation: 5,
+        }}
+      >
+        <Card.Title
+          style={{
+            fontSize: 18,
+          }}
+        >
+          {appointment.guardianName}
+        </Card.Title>
         <Card.Divider />
-        <Text style={{ marginBottom: 10 }}>
-          Guardian: {appointment.guardianName}
-          {"\n"}
-          Caretaker: {appointment.caretakerName}
-          {"\n"}
-          Comfirmation: {comfirmationStatus}
-        </Text>
+
+        <HStack>
+          <Image
+            width="20"
+            height="100"
+            borderRadius="30"
+            marginRight="30"
+            source={{
+              uri: "https://cdn-icons-png.flaticon.com/512/437/437501.png",
+              alt: "image",
+            }}
+          />
+          <Text
+            style={{
+              fontSize: 16,
+              marginLeft: 15,
+            }}
+          >
+            {"\n"} Confirmation: {"\n"}
+            {appointment.status} Something
+          </Text>
+        </HStack>
+
         <Button
           buttonStyle={{
-            borderRadius: 0,
+            borderRadius: "20%",
             marginLeft: 0,
             marginRight: 0,
             marginBottom: 0,
+            marginTop: 10,
+            backgroundColor: "#FA2F60",
           }}
-          title="More Details"
+          title="SEE MORE"
           onPress={() => {
             navigation.navigate("AppointmentDetail", {
               appointment: appointment,
-              setStatus: setStatus,
-              comfirmationStatus,
-              comfirmationStatus,
             });
           }}
         />
