@@ -15,32 +15,45 @@ import { Card } from "react-native-elements";
 import styles from "./styles";
 import CareStore from "../../Store/CareStore";
 import { baseURL } from "../../Store/instance";
+import { useState } from "react";
 
 const AppointmentDetail = ({ navigation, route }) => {
   if (appointStore.isLoading) return <Spinner />;
   const appointment = route.params.appointment;
-  const { setStatus, comfirmationStatus } = route.params;
-  // console.log(appointment.caretaker);
+  const [comfirmStatus, setStatus] = useState(appointment.status);
 
   const CareTakerProfile = CareStore.fetchProfile(appointment.caretaker);
 
   console.log(
     "this is caretaker profile image",
     CareTakerProfile.profile.image
-  ); // we have access to the profile image
+  );
 
   const toast = useToast();
 
   const handleAccept = () => {
-    appointStore.updateAppointment(appointment._id, navigation, toast);
-    setStatus(appointment.status);
+    appointStore.updateAppointment(
+      appointment._id,
+      "accepted",
+      navigation,
+      toast
+    );
+  };
+
+  const handleDecline = () => {
+    appointStore.updateAppointment(
+      appointment._id,
+      "declined",
+      navigation,
+      toast
+    );
   };
 
   const handleDelete = () => {
     appointStore.appointmentDelete(appointment._id);
     navigation.navigate("AppointmentList");
   };
-  // console.log(appointment.status);
+
   return (
     <View style={styles.background}>
       <Card
@@ -103,6 +116,7 @@ const AppointmentDetail = ({ navigation, route }) => {
         >
           Caretaker: {appointment.caretakerName}
           {"\n"}
+
         </Text>
 
         <Text
@@ -110,7 +124,8 @@ const AppointmentDetail = ({ navigation, route }) => {
             fontSize: 16,
           }}
         >
-          Status: {comfirmationStatus}
+          Status: {comfirmStatus}
+
           {"\n"}
         </Text>
 
@@ -145,6 +160,13 @@ const AppointmentDetail = ({ navigation, route }) => {
             onPress={handleDelete}
             variant="outline"
             colorScheme="danger"
+            title="delete"
+          />
+          <Box style={styles.buttonSpace}></Box>
+          <Button
+            onPress={handleDecline}
+            variant="outline"
+            colorScheme="blue"
             title="Decline"
           />
         </HStack>

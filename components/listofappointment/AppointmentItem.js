@@ -7,9 +7,8 @@ import { useState } from "react";
 import { Image, HStack } from "native-base";
 import styles from "./styles";
 
+
 const AppointmentItem = ({ appointment, navigation }) => {
-  const [comfirmationStatus, setStatus] = useState("");
-  console.log(comfirmationStatus);
   return (
     <View style={styles.background}>
       <Card
@@ -47,6 +46,7 @@ const AppointmentItem = ({ appointment, navigation }) => {
           {appointment.guardianName}
         </Card.Title>
         <Card.Divider />
+
         <HStack>
           <Image
             width="20"
@@ -65,9 +65,10 @@ const AppointmentItem = ({ appointment, navigation }) => {
             }}
           >
             {"\n"} Confirmation: {"\n"}
-            {appointment.comfirmationStatus} Something
+            {appointment.status} Something
           </Text>
         </HStack>
+
         <Button
           buttonStyle={{
             borderRadius: "20%",
@@ -81,9 +82,6 @@ const AppointmentItem = ({ appointment, navigation }) => {
           onPress={() => {
             navigation.navigate("AppointmentDetail", {
               appointment: appointment,
-              setStatus: setStatus,
-              comfirmationStatus,
-              comfirmationStatus,
             });
           }}
         />

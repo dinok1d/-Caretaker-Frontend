@@ -19,7 +19,9 @@ const Navigation = () => {
 
   return (
     <Navigator
+
       initialRouteName="CareTakerSignin"
+
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
