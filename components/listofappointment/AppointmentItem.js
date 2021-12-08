@@ -3,8 +3,11 @@ import { observer } from "mobx-react";
 import { View, Text } from "react-native";
 import { Card, Button, Icon } from "react-native-elements";
 import Navigation from "../navigation/Navigation";
+import { useState } from "react";
 
 const AppointmentItem = ({ appointment, navigation }) => {
+  const [comfirmationStatus, setStatus] = useState("");
+  console.log(comfirmationStatus);
   return (
     <View>
       <Card>
@@ -15,7 +18,7 @@ const AppointmentItem = ({ appointment, navigation }) => {
           {"\n"}
           Caretaker: {appointment.caretakerName}
           {"\n"}
-          Status: {appointment.status}
+          Comfirmation: {comfirmationStatus}
         </Text>
         <Button
           buttonStyle={{
@@ -24,10 +27,13 @@ const AppointmentItem = ({ appointment, navigation }) => {
             marginRight: 0,
             marginBottom: 0,
           }}
-          title="VIEW NOW"
+          title="More Details"
           onPress={() => {
             navigation.navigate("AppointmentDetail", {
               appointment: appointment,
+              setStatus: setStatus,
+              comfirmationStatus,
+              comfirmationStatus,
             });
           }}
         />

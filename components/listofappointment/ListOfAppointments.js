@@ -19,8 +19,15 @@ const ListOfAppointments = ({ navigation }) => {
       />
     ));
 
-  console.log(filteredList);
-  return <View>{filteredList}</View>;
+  // const appointments = appointStore.appointment.map((appointment) => (
+  //   <AppointmentItem
+  //     appointment={appointment}
+  //     navigation={navigation}
+  //     key={appointment._id}
+  //   />
+  // ));
+
+  return <View>{appointments}</View>;
 };
 export default observer(ListOfAppointments);
 const styles = StyleSheet.create({});
