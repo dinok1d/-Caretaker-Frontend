@@ -6,6 +6,7 @@ import AppointmentItem from "./AppointmentItem";
 import careTakerStore from "../../Store/CareTakerStore";
 
 const ListOfAppointments = ({ navigation }) => {
+
   const filteredList = appointStore.appointment
 
     .filter(
@@ -34,6 +35,7 @@ const ListOfAppointments = ({ navigation }) => {
   // ));
   // return <View>{appointments}</View>;
   return <View>{filteredList}</View>;
+
 };
 export default observer(ListOfAppointments);
 const styles = StyleSheet.create({});

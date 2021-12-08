@@ -2,33 +2,74 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Card, Button, Icon } from "react-native-elements";
 import { observer } from "mobx-react";
-import { Image } from "native-base";
+import { HStack, Image } from "native-base";
 
 const CareTakerItem = ({ caretaker, navigation }) => {
   return (
-    <View>
-      <Card>
-        <Card.Title>Caretaker</Card.Title>
+    <View style={{ backgroundColor: "#C0D6F9" }}>
+      <Card
+        containerStyle={{
+          borderColor: "pink",
+          borderRadius: "20%",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 4,
+          },
+          shadowOpacity: 0.3,
+          shadowRadius: 4.65,
+
+          elevation: 8,
+        }}
+        wrapperStyle={{
+          borderRadius: "50%",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+
+          elevation: 5,
+        }}
+      >
+        <Card.Title
+          style={{
+            fontSize: 18,
+          }}
+        >
+          {caretaker.username}
+        </Card.Title>
         <Card.Divider />
-        <Text style={{ marginBottom: 10 }}>
+        <HStack>
           <Image
             width="20"
             height="20"
+            borderRadius="30"
+            marginRight="30"
             source={{
-              uri: "https://i.pinimg.com/originals/9b/6f/a5/9b6fa5020c5f45958b3a6bd68db29bb1.jpg",
+              uri: "https://cdn-icons-png.flaticon.com/512/1876/1876934.png",
+              alt: "image",
             }}
           />
-          {"\n"}
-          Name: {caretaker.username}
-          {"\n"}
-          Type:
-        </Text>
+          <Text
+            style={{
+              fontSize: 16,
+            }}
+          >
+            {"\n"}
+            Type: {"\n"} Nanny, Maid
+          </Text>
+        </HStack>
         <Button
           buttonStyle={{
-            borderRadius: 0,
+            borderRadius: "20%",
             marginLeft: 0,
             marginRight: 0,
             marginBottom: 0,
+            marginTop: 10,
+            backgroundColor: "#FA2F60",
           }}
           title="SEE MORE"
           onPress={() => {

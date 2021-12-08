@@ -6,7 +6,7 @@ const BookingTime = ({ route }) => {
   const day = route.params.day;
   const caretaker = route.params.caretaker;
   return (
-    <View>
+    <View style={{ backgroundColor: "#C0D6F9" }}>
       <View>
         <Text style={styles.TextDetail}>
           The Appointment Date: {day.dateString}

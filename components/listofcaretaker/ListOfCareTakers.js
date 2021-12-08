@@ -5,7 +5,7 @@ import careStore from "../../Store/CareStore";
 import CareTakerItem from "./CareTakerItem";
 
 const ListOfCareTakers = ({ navigation }) => {
-  const caretakerList = careStore.caretaker.map((caretaker) => (
+  const caretakerList = careStore.caretakers.map((caretaker) => (
     <CareTakerItem
       caretaker={caretaker}
       navigation={navigation}

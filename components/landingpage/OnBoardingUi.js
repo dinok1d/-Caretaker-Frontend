@@ -49,18 +49,18 @@ const OnBoardingUi = ({ navigation }) => {
       pages={[
         {
           backgroundColor: "#fff",
-          image: <Image source={require("../../assets/imm.png")} />,
+          image: <Image source={require("../../assets/imm.png")} alt="image" />,
           title: "Please Choose Your Role",
           subtitle: "Guardian - CareTaker - Guest",
         },
         {
           backgroundColor: "#fff",
-          image: <Image source={require("../../assets/imm.png")} />,
+          image: <Image source={require("../../assets/imm.png")} alt="image" />,
           title: "Guardian: Specify either Kids or Elderly",
         },
         {
           backgroundColor: "#fff",
-          image: <Image source={require("../../assets/imm.png")} />,
+          image: <Image source={require("../../assets/imm.png")} alt="image" />,
           title: "CareTaker: Please Upload Your C.v",
         },
       ]}

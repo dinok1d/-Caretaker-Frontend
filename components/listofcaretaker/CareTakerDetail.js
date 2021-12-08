@@ -5,38 +5,110 @@ import { HStack, Spinner } from "native-base";
 import { Card, Button, Icon } from "react-native-elements";
 import careStore from "../../Store/CareStore";
 import { Image } from "native-base";
+import styles from "../listofappointment/styles";
 
 const CareTakerDetail = ({ navigation, route }) => {
   if (careStore.isLoading) return <Spinner />;
   const caretaker = route.params.caretaker;
 
   return (
-    <View>
-      <Card>
-        <Card.Title>Information</Card.Title>
+    <View style={styles.background}>
+      <Card
+        containerStyle={{
+          borderColor: "pink",
+          borderRadius: "20%",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 4,
+          },
+          shadowOpacity: 0.3,
+          shadowRadius: 4.65,
+
+          elevation: 8,
+        }}
+        wrapperStyle={{
+          borderRadius: "50%",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+
+          elevation: 5,
+        }}
+      >
+        <Card.Title
+          style={{
+            fontSize: 20,
+          }}
+        >
+          {caretaker.username}
+        </Card.Title>
         <Card.Divider />
-        <Text style={{ marginBottom: 10 }}>
-          username: {caretaker.username}
-          {"\n"}
-          Full name:{caretaker.profile.firstName} {caretaker.profile.lastName}
-          {"\n"}
-          Qualification:{caretaker.profile.qualification}
-          {"\n"}
-          Past Experience:{caretaker.profile.pastExp}
-          {"\n"}
-          Bio:{caretaker.profile.bio}
-          {"\n"}
-          <Image
-            width="300"
-            height="300"
-            source={{
-              uri: "https://i.pinimg.com/originals/9b/6f/a5/9b6fa5020c5f45958b3a6bd68db29bb1.jpg",
-            }}
-          />
+
+        <Image
+          width="400"
+          height="100"
+          borderRadius="30"
+          marginBottom="10"
+          source={{
+            uri: "https://cdn-icons-png.flaticon.com/512/1876/1876934.png",
+            alt: "image",
+          }}
+        />
+
+        <Text
+          style={{
+            fontSize: 16,
+          }}
+        >
+          Full name: {"\n"}
+          {caretaker.profile.firstName} {caretaker.profile.lastName} something
         </Text>
+        <Text
+          style={{
+            fontSize: 16,
+          }}
+        >
+          {"\n"}
+          Qualification: {"\n"}
+          {caretaker.profile.qualification} something
+        </Text>
+        <Text
+          style={{
+            fontSize: 16,
+          }}
+        >
+          {"\n"}
+          Past Experience: {"\n"}
+          {caretaker.profile.pastExp} something
+        </Text>
+        <Text
+          style={{
+            fontSize: 16,
+          }}
+        >
+          {"\n"}
+          Bio:
+          {caretaker.profile.bio} {"\n"} something
+          {"\n"}
+        </Text>
+
         <HStack>
           <Button
             title="Book"
+            buttonStyle={{
+              borderRadius: "20%",
+              marginLeft: "50%",
+              marginRight: 0,
+              marginBottom: 0,
+              marginTop: 10,
+              backgroundColor: "#FA2F60",
+              width: 150,
+            }}
             onPress={() =>
               navigation.navigate("BookingCalender", {
                 caretaker: caretaker,

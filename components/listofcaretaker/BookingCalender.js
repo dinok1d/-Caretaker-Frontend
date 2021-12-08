@@ -29,16 +29,26 @@ export default BookingCalender;
 
 const styles = StyleSheet.create({
   CalendarCSS: {
-    backgroundColor: "#8285E0",
+    shadowColor: "#000",
+
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.43,
+    shadowRadius: 9.51,
+
+    elevation: 15,
+    borderColor: "pink",
   },
   pageView: {
     height: "100%",
     width: "100%",
-    backgroundColor: "#8285E0",
+    backgroundColor: "#C0D6F9",
   },
   TextHeading: {
     padding: 10,
     fontSize: 20,
-    color: "#ffffff",
+    color: "black",
   },
 });
