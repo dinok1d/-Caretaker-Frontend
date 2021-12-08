@@ -2,7 +2,8 @@ import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
 class CareStore {
-  caretaker = [];
+  careTakerProfile = null;
+  caretakers = [];
   isLoading = true;
 
   constructor() {
@@ -12,11 +13,21 @@ class CareStore {
   fetchCaretakers = async () => {
     try {
       const res = await instance.get("/caretaker");
-      this.caretaker = res.data;
+      this.caretakers = res.data;
       this.isLoading = false;
     } catch (error) {
       next(error);
     }
+  };
+
+  fetchProfile = (caretakerId) => {
+    const foundProfile = this.caretakers.find(
+      (caretaker) => caretaker._id === caretakerId
+    );
+
+    // console.log("this is foundProfile is Store", foundProfile);
+    this.careTakerProfile = foundProfile;
+    return foundProfile;
   };
 }
 
