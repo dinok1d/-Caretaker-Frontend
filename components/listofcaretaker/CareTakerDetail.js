@@ -27,15 +27,22 @@ const CareTakerDetail = ({ navigation, route }) => {
           Bio:{caretaker.profile.bio}
           {"\n"}
           <Image
-            width="20"
-            height="20"
+            width="300"
+            height="300"
             source={{
               uri: "https://i.pinimg.com/originals/9b/6f/a5/9b6fa5020c5f45958b3a6bd68db29bb1.jpg",
             }}
           />
         </Text>
         <HStack>
-          <Button title="Book" />
+          <Button
+            title="Book"
+            onPress={() =>
+              navigation.navigate("BookingCalender", {
+                caretaker: caretaker,
+              })
+            }
+          />
         </HStack>
       </Card>
     </View>
