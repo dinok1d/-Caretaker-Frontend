@@ -4,9 +4,7 @@ import { VStack, Button, FormControl, Input } from "native-base";
 import ImagePickUpdate from "./ImagePickUpdate";
 import tripsStore from "../Store/tripsStore";
 import careTakerStore from "../../../Store/CareTakerStore";
-const UpdateCareProfile = ({ route, navigation }) => {
-  const { caretaker } = route.params;
-
+const UpdateCareProfile = ({ navigation }) => {
   const [updateCareTaker, setupdateCareTaker] = React.useState(caretaker);
 
   //   const onSubmit = () => {
