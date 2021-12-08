@@ -7,6 +7,7 @@ import careTakerStore from "../../Store/CareTakerStore";
 import guardianStore from "../../Store/GuardianStore";
 
 const ListOfAppointments = ({ navigation }) => {
+
   //--------------------------This is done------------------------------
   // if (careTakerStore.caretaker._id) {
   //   const filteredList = appointStore.appointment
@@ -47,6 +48,7 @@ const ListOfAppointments = ({ navigation }) => {
   return <View>{appointments}</View>;
   //-------------------------------------------------------------------------
   // return <View>{filteredList}</View>;
+
 };
 export default observer(ListOfAppointments);
 const styles = StyleSheet.create({});
