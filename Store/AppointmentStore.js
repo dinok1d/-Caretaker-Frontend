@@ -36,12 +36,17 @@ class AppointStore {
     }
   };
 
-  updateAppointment = async (appointmentId, navigation, toast) => {
+  updateAppointment = async (appointmentId, status, navigation, toast) => {
     try {
       const appointment = this.appointment.find(
         (appointment) => appointment._id === appointmentId
       );
-      const res = await instance.put(`/appointment/${appointmentId}`);
+      // console.log(status);
+      const res = await instance.put(`/appointment/${appointmentId}`, {
+        status: status,
+      });
+      appointment.status = status;
+
       toast.show({
         title: "appointment Comfirmed",
         status: "success",
