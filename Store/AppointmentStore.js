@@ -3,6 +3,7 @@ import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
 class AppointStore {
+  // It's a list of appointments, it should be appointments, pluralll
   appointment = [];
   isLoading = true;
 

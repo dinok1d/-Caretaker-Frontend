@@ -7,6 +7,7 @@ const Home = ({ navigation }) => {
     <View>
       <Button
         onPress={() => {
+          // REVIEW: If your function is one line only, no need for curly brackets
           navigation.navigate("GuardianProfileList");
         }}
       >

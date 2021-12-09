@@ -107,7 +107,7 @@ const Navigation = () => {
           title: "Information",
         }}
       />
-
+      {/* REVIEW: It's not a list, why is the component and screen called list? */}
       <Screen
         name="GuardianProfileList"
         component={GuardianProfileList}
@@ -115,7 +115,7 @@ const Navigation = () => {
           headerStyle: { backgroundColor: "#fadd97" },
         }}
       />
-
+      {/* REVIEW: It's not a list, why is the component and screen called list? */}
       <Screen
         name="CareTakerProfileList"
         component={CareTakerProfileList}
@@ -240,5 +240,5 @@ const Navigation = () => {
 };
 // "#5ac3dc"
 export default Navigation;
-
+// REVIEW: Remove
 const styles = StyleSheet.create({});

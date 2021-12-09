@@ -5,7 +5,11 @@ import { StyleSheet, Text, View } from "react-native";
 const BookingTime = ({ route }) => {
   const day = route.params.day;
   const caretaker = route.params.caretaker;
+  // REVIEW: A cleaner way:
+  // const {caretaker, day} = route.params;
+
   return (
+    // REVIEW: Move styling to stylesheet
     <View style={{ backgroundColor: "#C0D6F9" }}>
       <View>
         <Text style={styles.TextDetail}>

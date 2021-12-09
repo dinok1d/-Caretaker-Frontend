@@ -36,7 +36,7 @@ class CareStore {
       for (const key in updatedProfile) {
         formData.append(key, updatedProfile[key]);
       }
-
+      // REVIEW: You only use 39foora `` if there is a variable inside the string, otherwise use quotations ""
       const res = await instance.put(`/caretaker/profile/`, formData);
       this.careTakerProfile = res.data;
       navigation.navigate("CareTakerProfileList");

@@ -15,7 +15,7 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
+// REVIEW: Remove unused code
 const styles = StyleSheet.create({
   container: {
     flex: 1,

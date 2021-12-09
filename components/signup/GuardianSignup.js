@@ -27,6 +27,8 @@ const Signup = ({ navigation }) => {
     password: "",
     email: "",
   });
+  // REVIEW: Bad naming, better example: selectedRadioButton or selectedLabel
+  // REVIEW: Wait, why does it need to be an array of objects? It can directly be an array of strings
   const [selectedradiobtn, setSelectedradiobtn] = useState({
     label: "Guardian",
   });
@@ -85,6 +87,7 @@ const Signup = ({ navigation }) => {
               width: 135,
             }}
           >
+            {/* REVIEW: Username is one word */}
             <FormControl.Label>User Name</FormControl.Label>
             <Input
               style={{

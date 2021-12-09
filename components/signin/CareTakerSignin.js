@@ -27,6 +27,7 @@ const Signin = ({ navigation }) => {
     username: "",
     password: "",
   });
+  // REVIEW: Bad naming, better example: selectedRadioButton
   const [selectedradiobtn, setSelectedradiobtn] = useState({
     label: "Guardian",
   });
