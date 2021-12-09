@@ -7,13 +7,14 @@ import { useState } from "react";
 import { Image, HStack } from "native-base";
 import styles from "./styles";
 
+
 const AppointmentItem = ({ appointment, navigation }) => {
   return (
     <View style={styles.background}>
       <Card
         containerStyle={{
           borderColor: "pink",
-          borderRadius: 20,
+          borderRadius: "20%",
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -25,7 +26,7 @@ const AppointmentItem = ({ appointment, navigation }) => {
           elevation: 8,
         }}
         wrapperStyle={{
-          borderRadius: 50,
+          borderRadius: "50%",
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -50,6 +51,7 @@ const AppointmentItem = ({ appointment, navigation }) => {
           <Image
             width="20"
             height="100"
+            borderRadius="30"
             marginRight="30"
             source={{
               uri: "https://cdn-icons-png.flaticon.com/512/437/437501.png",
@@ -69,7 +71,7 @@ const AppointmentItem = ({ appointment, navigation }) => {
 
         <Button
           buttonStyle={{
-            borderRadius: 20,
+            borderRadius: "20%",
             marginLeft: 0,
             marginRight: 0,
             marginBottom: 0,
