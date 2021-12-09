@@ -7,25 +7,12 @@ import careTakerStore from "../../Store/CareTakerStore";
 import guardianStore from "../../Store/GuardianStore";
 
 const ListOfAppointments = ({ navigation }) => {
-  // if (careTakerStore.caretaker._id) {
-  //   const filteredList = appointStore.appointment
-  //     .filter(
-  //       (appointment) =>
-  //         careTakerStore.caretaker._id === appointment.caretaker.toString()
-  //     )
-  //     .map((appointment) => (
-  //       <AppointmentItem
-  //         appointment={appointment}
-  //         navigation={navigation}
-  //         key={appointment._id}
-  //       />
-  //     ));
-  // } else {
+  
   const filteredList = appointStore.appointment
-    // .filter(
-    //   (appointment) =>
-    //     guardianStore.guardian._id === appointment.Guardian.toString()
-    // )
+     .filter(
+       (appointment) =>
+       careTakerStore.caretaker._id === appointment.caretaker.toString()
+     )
     .map((appointment) => (
       <AppointmentItem
         appointment={appointment}
@@ -33,14 +20,7 @@ const ListOfAppointments = ({ navigation }) => {
         key={appointment._id}
       />
     ));
-  // }
-  const appointments = appointStore.appointment.map((appointment) => (
-    <AppointmentItem
-      appointment={appointment}
-      navigation={navigation}
-      key={appointment._id}
-    />
-  ));
+
   return <View>{filteredList}</View>;
 };
 export default observer(ListOfAppointments);
