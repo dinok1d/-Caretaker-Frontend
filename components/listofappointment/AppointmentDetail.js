@@ -13,21 +13,17 @@ import {
 import appointStore from "../../Store/AppointmentStore";
 import { Card } from "react-native-elements";
 import styles from "./styles";
-import CareStore from "../../Store/CareStore";
-import { baseURL } from "../../Store/instance";
-import { useState } from "react";
-
+import careStore from "../../Store/CareStore";
 const AppointmentDetail = ({ navigation, route }) => {
   if (appointStore.isLoading) return <Spinner />;
   const appointment = route.params.appointment;
-  const [comfirmStatus, setStatus] = useState(appointment.status);
 
-  const CareTakerProfile = CareStore.fetchProfile(appointment.caretaker);
+  const CareTakerProfile = careStore.fetchProfile(appointment.caretaker);
 
-  console.log(
-    "this is caretaker profile image",
-    CareTakerProfile.profile.image
-  );
+  // console.log(
+  //   "this is caretaker profile image",
+  //   careTakerProfile.profile.image
+  // );
 
   const toast = useToast();
 
@@ -116,7 +112,6 @@ const AppointmentDetail = ({ navigation, route }) => {
         >
           Caretaker: {appointment.caretakerName}
           {"\n"}
-
         </Text>
 
         <Text
@@ -124,8 +119,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             fontSize: 16,
           }}
         >
-          Status: {comfirmStatus}
-
+          Status: {appointment.status}
           {"\n"}
         </Text>
 

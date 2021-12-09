@@ -3,10 +3,17 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
+import appointStore from "../../Store/AppointmentStore";
+
 
 const BookingTime = ({ route }) => {
   const day = route.params.day;
   const caretaker = route.params.caretaker;
+
+  const handleBook = () => {
+    console.log({ _id: caretaker._id });
+    appointStore.bookAppointment({ _id: caretaker._id });
+  };
   return (
     <View>
       {/* careTaker.PreferedTimes below  */}
@@ -36,6 +43,7 @@ const BookingTime = ({ route }) => {
         <Text style={styles.TextDetail}>
           The CareTaker: {caretaker.username}
         </Text>
+
 
         <Text style={{ marginBottom: 10, fontSize: 25 }}>Pick a Time</Text>
         <HStack>
@@ -99,6 +107,7 @@ const BookingTime = ({ route }) => {
               height: 100,
             }}
           />
+
         </HStack>
       </Center>
     </View>
