@@ -37,9 +37,9 @@ class CareStore {
         formData.append(key, updatedProfile[key]);
       }
 
-      const res = await instance.put(`/caretaker/profile/`, formData);
+      const res = await instance.put("/caretaker/profile/", formData);
       this.careTakerProfile = res.data;
-      navigation.navigate("CareTakerProfileList");
+      navigation.navigate("Home");
     } catch (error) {
       console.error(error);
     }
