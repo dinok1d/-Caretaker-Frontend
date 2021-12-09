@@ -55,7 +55,7 @@ const AppointmentDetail = ({ navigation, route }) => {
       <Card
         containerStyle={{
           borderColor: "pink",
-          borderRadius: "20%",
+          borderRadius: 20,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -67,7 +67,7 @@ const AppointmentDetail = ({ navigation, route }) => {
           elevation: 8,
         }}
         wrapperStyle={{
-          borderRadius: "50%",
+          borderRadius: 50,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
