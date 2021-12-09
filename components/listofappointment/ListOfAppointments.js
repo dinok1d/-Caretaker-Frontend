@@ -7,11 +7,6 @@ import careTakerStore from "../../Store/CareTakerStore";
 import guardianStore from "../../Store/GuardianStore";
 
 const ListOfAppointments = ({ navigation }) => {
-
-
-  return <View>{filteredList}</View>;
-
-  //--------------------------This is done------------------------------
   // if (careTakerStore.caretaker._id) {
   //   const filteredList = appointStore.appointment
   //     .filter(
@@ -26,21 +21,19 @@ const ListOfAppointments = ({ navigation }) => {
   //       />
   //     ));
   // } else {
-  //   const filteredList = appointStore.appointment
-  //     .filter(
-  //       (appointment) =>
-  //         guardianStore.Guardian._id === appointment.Guardian.toString()
-  //     )
-  //     .map((appointment) => (
-  //       <AppointmentItem
-  //         appointment={appointment}
-  //         navigation={navigation}
-  //         key={appointment._id}
-  //       />
-  //     ));
+  const filteredList = appointStore.appointment
+    // .filter(
+    //   (appointment) =>
+    //     guardianStore.guardian._id === appointment.Guardian.toString()
+    // )
+    .map((appointment) => (
+      <AppointmentItem
+        appointment={appointment}
+        navigation={navigation}
+        key={appointment._id}
+      />
+    ));
   // }
-  //---------------------------------------------------------------------------------------------
-  //-----------------USE this line of code for testing purposes to show all appointments---
   const appointments = appointStore.appointment.map((appointment) => (
     <AppointmentItem
       appointment={appointment}
@@ -48,10 +41,7 @@ const ListOfAppointments = ({ navigation }) => {
       key={appointment._id}
     />
   ));
-  return <View>{appointments}</View>;
-  //-------------------------------------------------------------------------
-  // return <View>{filteredList}</View>;
-
+  return <View>{filteredList}</View>;
 };
 export default observer(ListOfAppointments);
 const styles = StyleSheet.create({});

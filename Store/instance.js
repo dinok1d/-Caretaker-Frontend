@@ -7,7 +7,7 @@ export const baseURL = "http://192.168.8.111:8000";
 // export const baseURL = "http://192.168.8.130:8000";
 
 // Zainab's IP
-export const baseURL = "http://192.168.1.55:8000";
+// export const baseURL = "http://192.168.1.55:8000";
 
 // Sayed's IP
 // export const baseURL = "http://192.168.1.118:8000";

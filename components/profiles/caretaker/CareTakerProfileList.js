@@ -9,11 +9,11 @@ import {
   Text,
   Image,
 } from "react-native";
-import { baseURL } from "../../../Store/instance";
+// import { baseURL } from "../../../Store/instance";
 import { Button, Input } from "native-base";
 import careStore from "../../../Store/CareStore";
 import careTakerStore from "../../../Store/CareTakerStore";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 const CareTakerProfileList = ({ navigation, route }) => {
   // const { careTakerId } = route.params;
@@ -23,8 +23,6 @@ const CareTakerProfileList = ({ navigation, route }) => {
   const [profile, setProfile] = useState(null);
   // const [updateCareTaker, setupdateCareTaker] = React.useState(caretaker);
   const [caretaker, setCaretaker] = useState({
-    // username: "",
-    // email: "",
     profile: {
       firstName: "",
       lastName: "",
@@ -35,33 +33,13 @@ const CareTakerProfileList = ({ navigation, route }) => {
     },
   });
 
-  //   if (careTakerStore.caretaker._id)
-  //   careStore.editProfile(caretaker, navigation);
-  //   console.log(caretaker);
-  // };
-
-  // const userVariable = {
-  //   careTaker: careTaker,
-  // };
-
   // i want to update profile using the browser
-  // useEffect(async () => {
-  //   const response = await fetchProfile("/api/caretaker/profile", userVariable);
-  //   const getProfile = await response.json();
-  //   const { oneProfile } = getProfile.results;
-  //   setProfile(oneProfile);
-  // }, []);
+  useEffect(async () => {
+    careStore.fetchProfile(careTakerStore.caretaker._id);
+  }, []);
 
   const onSubmit = () => {
-    //   const verifyUser = () => {
-    //     if (careTakerStore.caretaker) {
-    //       console.log(careTakerStore.caretaker);
     careStore.editProfile(caretaker, navigation);
-    //     } else {
-    //       return "Guest";
-    //     }
-    //   };
-    //   console.log(verifyUser());
   };
 
   return (
@@ -74,13 +52,9 @@ const CareTakerProfileList = ({ navigation, route }) => {
         alt="image"
       />
       <View>
-        <TextInput
+        <Input
           style={styles.userName}
           onChangeText={(value) =>
-            // setCaretaker({
-            //   ...caretaker,
-            //   firstName: value,
-            // })
             setCaretaker({
               ...caretaker,
               profile: { ...caretaker.profile, firstName: value },
@@ -88,10 +62,8 @@ const CareTakerProfileList = ({ navigation, route }) => {
           }
           placeholder="first name"
         />
-        {profile}
-        {/* <Text>{profile.firstName}</Text> */}
 
-        <TextInput
+        <Input
           style={styles.userName}
           onChangeText={(value) =>
             setCaretaker({
@@ -123,7 +95,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
           placeholder="qualification"
         />
 
-        <TextInput
+        <Input
           style={styles.input}
           onChangeText={(value) =>
             setCaretaker({
@@ -136,8 +108,8 @@ const CareTakerProfileList = ({ navigation, route }) => {
         {/* <ImagePickUpdate
           setupdateCareTaker={setupdateCareTaker}
           updateCareTaker={updateCareTaker}
-        />
-        <Image
+        /> */}
+        {/* <Image
           source={{
             uri: baseURL + careStore.careTakerProfile.image,
           }}
