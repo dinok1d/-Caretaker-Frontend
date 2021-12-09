@@ -20,9 +20,13 @@ class AppointStore {
     }
   };
 
-  bookAppointment = async () => {
+  bookAppointment = async (id) => {
     try {
-    } catch (error) {}
+      console.log(id);
+      await instance.post("/appointment", id);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   appointmentDelete = async (appointmentId) => {

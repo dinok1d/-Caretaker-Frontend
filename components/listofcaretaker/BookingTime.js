@@ -1,10 +1,16 @@
 import { Button, Center, HStack } from "native-base";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import appointStore from "../../Store/AppointmentStore";
 
 const BookingTime = ({ route }) => {
   const day = route.params.day;
   const caretaker = route.params.caretaker;
+
+  const handleBook = () => {
+    console.log({ _id: caretaker._id });
+    appointStore.bookAppointment({ _id: caretaker._id });
+  };
   return (
     <View>
       <View>
@@ -20,7 +26,9 @@ const BookingTime = ({ route }) => {
         <Text style={styles.timeSlots}>The CareTaker Available </Text>
         <HStack style={styles.timeSlots}>
           <View>
-            <Button style={styles.timeSlots}>12:00PM</Button>
+            <Button style={styles.timeSlots} onPress={handleBook}>
+              12:00PM
+            </Button>
             <Button style={styles.timeSlots}>09:00PM</Button>
             <Button style={styles.timeSlots}>07:00PM</Button>
           </View>
