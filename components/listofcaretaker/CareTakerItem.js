@@ -7,8 +7,10 @@ import Styles from "../../Styles";
 
 const CareTakerItem = ({ caretaker, navigation }) => {
   return (
+
     <View>
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
+
         <Card.Title
           style={{
             fontSize: 18,
@@ -19,7 +21,7 @@ const CareTakerItem = ({ caretaker, navigation }) => {
         <Card.Divider />
         <HStack>
           <Image
-            style={{ width: 80, height: 80, borderRadius: 30, marginRight: 30 }}
+            style={{ width: 80, height: 80, borderRadius:{Platform.OS === "ios" ? 30 : 30}, marginRight: 30 }}
             source={{
               uri: "https://cdn-icons-png.flaticon.com/512/1876/1876934.png",
               alt: "image",
@@ -36,7 +38,10 @@ const CareTakerItem = ({ caretaker, navigation }) => {
         </HStack>
         <Button
           buttonStyle={{
-            borderRadius: 20,
+            borderRadius: Platform.OS === "ios" ? 20 : 20,
+            marginLeft: 0,
+            marginRight: 0,
+            marginBottom: 0,
             marginTop: 10,
             backgroundColor: "#FA2F60",
           }}

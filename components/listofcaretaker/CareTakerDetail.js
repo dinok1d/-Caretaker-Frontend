@@ -15,6 +15,7 @@ const CareTakerDetail = ({ navigation, route }) => {
 
   return (
     <View style={styles.background}>
+
       <LinearGradient
         colors={["#C0D6F9", "#B07DF0", "#C0D6F9"]}
         style={styles.background}
@@ -82,8 +83,9 @@ const CareTakerDetail = ({ navigation, route }) => {
           <Button
             title="Book"
             buttonStyle={{
-              borderRadius: 20,
+             borderRadius: Platform.OS === "ios" ? 20 : 20,
               marginLeft: 150,
+
               marginTop: 10,
               backgroundColor: "#FA2F60",
               width: 150,

@@ -139,6 +139,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             onPress={handleDelete}
             title="Delete"
           />
+
           <Box style={styles.buttonSpace}></Box>
           <Button
             buttonStyle={{
@@ -148,7 +149,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             }}
             onPress={handleDecline}
             title="Decline"
-          />
+          >Decline</Button>
         </HStack>
       </Card>
     </View>

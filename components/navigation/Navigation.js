@@ -18,7 +18,6 @@ const Navigation = () => {
 
   return (
     <Navigator
-      backBehavior="order"
       initialRouteName="CareTakerSignin"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
@@ -58,17 +57,15 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: 30,
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
-
             shadowOffset: {
               width: 0,
               height: 7,
             },
             shadowOpacity: 0.43,
             shadowRadius: 9.51,
-
             elevation: 15,
           },
           headerTitleStyle: {
@@ -87,17 +84,15 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: 30,
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
-
             shadowOffset: {
               width: 0,
               height: 7,
             },
             shadowOpacity: 0.43,
             shadowRadius: 9.51,
-
             elevation: 15,
           },
           headerTitleStyle: {
@@ -130,9 +125,8 @@ const Navigation = () => {
         options={{
           headerStyle: {
             backgroundColor: "#8285E0",
-
             borderBottomColor: "#FA2F60",
-            borderTopWidth: 30,
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
             shadowOffset: {
@@ -141,7 +135,6 @@ const Navigation = () => {
             },
             shadowOpacity: 0.43,
             shadowRadius: 9.51,
-
             elevation: 15,
           },
           headerTitleStyle: {
@@ -159,7 +152,7 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: 30,
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
             shadowOffset: {
@@ -168,7 +161,6 @@ const Navigation = () => {
             },
             shadowOpacity: 0.43,
             shadowRadius: 9.51,
-
             elevation: 15,
           },
           headerTitleStyle: {
@@ -186,10 +178,9 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: 30,
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
-
             shadowOffset: {
               width: 0,
               height: 7,
@@ -214,10 +205,9 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: 30,
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
-
             shadowOffset: {
               width: 0,
               height: 7,
