@@ -8,14 +8,14 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     marginLeft: "auto",
     marginRight: "auto",
-    borderRadius: 5,
+    borderRadius: Platform.OS === "ios" ? 5 : 20,
   },
 
   profilePic: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 50,
+    borderRadius: Platform.OS === "ios" ? 50 : 20,
     backgroundColor: "grey",
     width: 100,
     height: 100,

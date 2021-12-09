@@ -19,7 +19,7 @@ const Navigation = () => {
 
   return (
     <Navigator
-      initialRouteName="Home"
+      initialRouteName="CareTakerSignin"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
@@ -58,7 +58,7 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 20 : 20,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
 
@@ -87,7 +87,8 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 20 : 20,
+
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
 
@@ -132,7 +133,8 @@ const Navigation = () => {
             backgroundColor: "#8285E0",
 
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 20 : 20,
+
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
             shadowOffset: {
@@ -160,7 +162,8 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 20 : 20,
+
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
             shadowOffset: {
@@ -187,7 +190,7 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 20 : 20,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
 
@@ -215,7 +218,7 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 20 : 20,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
 

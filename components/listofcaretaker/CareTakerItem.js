@@ -10,7 +10,7 @@ const CareTakerItem = ({ caretaker, navigation }) => {
       <Card
         containerStyle={{
           borderColor: "pink",
-          borderRadius: "20%",
+          borderRadius: Platform.OS === "ios" ? 20 : 20,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -22,7 +22,6 @@ const CareTakerItem = ({ caretaker, navigation }) => {
           elevation: 8,
         }}
         wrapperStyle={{
-          borderRadius: "50%",
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -46,7 +45,7 @@ const CareTakerItem = ({ caretaker, navigation }) => {
           <Image
             width="20"
             height="20"
-            borderRadius="30"
+            borderRadius={Platform.OS === "ios" ? 30 : 20}
             marginRight="30"
             source={{
               uri: "https://cdn-icons-png.flaticon.com/512/1876/1876934.png",
@@ -64,7 +63,7 @@ const CareTakerItem = ({ caretaker, navigation }) => {
         </HStack>
         <Button
           buttonStyle={{
-            borderRadius: "20%",
+            borderRadius: Platform.OS === "ios" ? 20 : 20,
             marginLeft: 0,
             marginRight: 0,
             marginBottom: 0,
