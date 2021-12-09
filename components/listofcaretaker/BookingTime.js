@@ -1,29 +1,104 @@
-import { Button, Center, HStack } from "native-base";
+import { Center, HStack } from "native-base";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { Button } from "react-native-elements";
+import { LinearGradient } from "expo-linear-gradient";
 
 const BookingTime = ({ route }) => {
   const day = route.params.day;
   const caretaker = route.params.caretaker;
   return (
-    <View style={{ backgroundColor: "#C0D6F9" }}>
-      <View>
+    <View>
+      {/* careTaker.PreferedTimes below  */}
+      <LinearGradient
+        // Background Linear Gradient
+        colors={["#C0D6F9", "#8285E0"]}
+        style={styles.background}
+      />
+
+      <Center
+        style={{
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 12,
+          },
+          shadowOpacity: 0.58,
+          shadowRadius: 16.0,
+
+          elevation: 24,
+          marginTop: "30%",
+        }}
+      >
         <Text style={styles.TextDetail}>
           The Appointment Date: {day.dateString}
         </Text>
         <Text style={styles.TextDetail}>
           The CareTaker: {caretaker.username}
         </Text>
-      </View>
-      {/* careTaker.PreferedTimes below  */}
-      <Center style={styles.ContainerTimeSlot}>
-        <Text style={styles.timeSlots}>The CareTaker Available </Text>
-        <HStack style={styles.timeSlots}>
-          <View>
-            <Button style={styles.timeSlots}>12:00PM</Button>
-            <Button style={styles.timeSlots}>09:00PM</Button>
-            <Button style={styles.timeSlots}>07:00PM</Button>
-          </View>
+
+        <Text style={{ marginBottom: 10, fontSize: 25 }}>Pick a Time</Text>
+        <HStack>
+          <Button
+            title="12:00PM"
+            buttonStyle={{
+              borderRadius: 100,
+              marginLeft: 10,
+              marginRight: 0,
+              marginBottom: 10,
+              marginTop: 10,
+
+              backgroundColor: "#FA2F60",
+              width: 100,
+              height: 100,
+            }}
+          />
+          <Button
+            title="09:00PM"
+            buttonStyle={{
+              borderRadius: 100,
+              marginLeft: 10,
+              marginRight: 0,
+              marginBottom: 10,
+              marginTop: 10,
+
+              backgroundColor: "#FA2F60",
+              width: 100,
+              height: 100,
+            }}
+          />
+        </HStack>
+
+        <HStack>
+          <Button
+            title="07:00PM"
+            buttonStyle={{
+              borderRadius: 100,
+              marginLeft: 10,
+              marginRight: 0,
+              marginBottom: 10,
+              marginTop: 10,
+
+              backgroundColor: "#FA2F60",
+              width: 100,
+              height: 100,
+            }}
+          />
+
+          <Button
+            title="09:00AM"
+            buttonStyle={{
+              borderRadius: 100,
+              marginLeft: 10,
+              marginRight: 0,
+              marginBottom: 10,
+              marginTop: 10,
+
+              backgroundColor: "#FA2F60",
+              width: 100,
+              height: 100,
+            }}
+          />
         </HStack>
       </Center>
     </View>
@@ -35,19 +110,22 @@ export default BookingTime;
 const styles = StyleSheet.create({
   timeSlots: {
     padding: 20,
-    margin: 10,
   },
   ContainerTimeSlot: {
-    backgroundColor: "#8285E0",
-    width: "60%",
-    height: "70%",
-    marginLeft: "20%",
-    marginTop: "10%",
-    borderRadius: 10,
+    backgroundColor: "#C0D6F9",
+    width: "100%",
+    height: "100%",
   },
   TextDetail: {
-    margin: 10,
     fontSize: 15,
     fontWeight: "bold",
+    marginBottom: 10,
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 700,
   },
 });
