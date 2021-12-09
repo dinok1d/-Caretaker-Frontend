@@ -9,7 +9,6 @@ import Styles from "../../Styles";
 
 const AppointmentItem = ({ appointment, navigation }) => {
   return (
-
     <View>
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
         <Card.Title
@@ -26,10 +25,9 @@ const AppointmentItem = ({ appointment, navigation }) => {
             style={{
               width: 100,
               height: 100,
-              borderRadius: {Platform.OS === "ios" ? 30 : 20}
+              borderRadius: 30,
               marginRight: 30,
             }}
-
             source={{
               uri: "https://cdn-icons-png.flaticon.com/512/437/437501.png",
               alt: "image",
