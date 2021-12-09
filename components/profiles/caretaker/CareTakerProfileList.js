@@ -9,24 +9,18 @@ import {
   Text,
   Image,
 } from "react-native";
-// import { baseURL } from "../../../Store/instance";
+import { baseURL } from "../../../Store/instance";
 import { Button, Input } from "native-base";
 import careStore from "../../../Store/CareStore";
 import careTakerStore from "../../../Store/CareTakerStore";
 import { useEffect } from "react";
 
 const CareTakerProfileList = ({ navigation, route }) => {
-  // const { careTakerId } = route.params;
-  // console.log(careTakerId);
-  // const CareTakerProfile = careStore.fetchProfile(careTakerId);
-
-  const [profile, setProfile] = useState(null);
-  // const [updateCareTaker, setupdateCareTaker] = React.useState(caretaker);
   const [caretaker, setCaretaker] = useState({
     profile: {
       firstName: "",
       lastName: "",
-      // image: "",
+      image: require("../../../assets/defaultperson.png"),
       bio: "",
       qualification: "",
       pastExp: "",
@@ -44,13 +38,13 @@ const CareTakerProfileList = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-      <Image
+      {/* <Image
         style={styles.userImg}
         source={{
           uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjO7Lo0Q9eCXYhlXQGfvEzL1OM7muSI3EQ_A&usqp=CAU",
         }}
         alt="image"
-      />
+      /> */}
       <View>
         <Input
           style={styles.userName}
@@ -109,12 +103,12 @@ const CareTakerProfileList = ({ navigation, route }) => {
           setupdateCareTaker={setupdateCareTaker}
           updateCareTaker={updateCareTaker}
         /> */}
-        {/* <Image
+        <Image
           source={{
-            uri: baseURL + careStore.careTakerProfile.image,
+            uri: baseURL + care,
           }}
-          alt="image"
-        /> */}
+          style={{ width: 100, height: 100 }}
+        />
 
         <Button
           marginTop="10"

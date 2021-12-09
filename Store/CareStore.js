@@ -25,7 +25,6 @@ class CareStore {
       (caretaker) => caretaker._id === caretakerId
     );
 
-    // console.log("this is foundProfile is Store", foundProfile);
     this.careTakerProfile = foundProfile;
     return foundProfile;
   };
