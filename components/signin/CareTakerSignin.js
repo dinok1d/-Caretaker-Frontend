@@ -15,6 +15,7 @@ import {
   useToast,
   Row,
   View,
+  Image,
 } from "native-base";
 import { useState } from "react";
 import careTakerStore from "../../Store/CareTakerStore";
@@ -49,17 +50,27 @@ const Signin = ({ navigation }) => {
   return (
     <Center flex={1} px="3">
       <View style={{}}>
-        {/* <Image
-        width="150"
-        height="150"
-        source={require("../designs/images/Icon.png")}
-      /> */}
+        <Image
+          style={{
+            width: 100,
+            height: 100,
+            borderRadius: 100,
+            marginBottom: 2,
+          }}
+          source={require("../../assets/H.jpg")}
+        />
       </View>
       <Heading size="lg" fontWeight="600" color="#FA2F60" alignContent="center">
         Haven
       </Heading>
 
-      <Heading mt="1" color="#8285E0" fontWeight="medium" size="xs">
+      <Heading
+        mt="1"
+        color="#8285E0"
+        fontWeight="medium"
+        size="xs"
+        marginBottom="4"
+      >
         Join us now as a Guardian or a Caretaker!
       </Heading>
 
@@ -77,44 +88,30 @@ const Signin = ({ navigation }) => {
           }}
         />
       </HStack>
-      <Box safeArea p="2" py="8" w="90%" maxW="290">
-        <HStack space={3} mt="5">
-          <FormControl
+      <Box safeArea p="1" py="1" w="90%" maxW="290">
+        <FormControl>
+          <FormControl.Label>Username</FormControl.Label>
+          <Input
             style={{
-              width: 135,
+              borderColor: "#8285E0",
+              height: 32,
             }}
-          >
-            <FormControl.Label>User Name</FormControl.Label>
-            <Input
-              style={{
-                borderColor: "#8285E0",
-                height: 32,
-              }}
-              onChangeText={(username) => setUser({ ...user, username })}
-              placeholder={"Username"}
-            />
-          </FormControl>
-          <FormControl
+            onChangeText={(username) => setUser({ ...user, username })}
+            placeholder={"Username"}
+          />
+        </FormControl>
+        <FormControl>
+          <FormControl.Label>Password</FormControl.Label>
+          <Input
             style={{
-              width: 130,
+              borderColor: "#8285E0",
+              height: 33,
             }}
-          >
-            <FormControl.Label>Password</FormControl.Label>
-            <Input
-              style={{
-                borderColor: "#8285E0",
-                height: 33,
-              }}
-              type="password"
-              onChangeText={(password) => setUser({ ...user, password })}
-              placeholder={"Password"}
-            />
-          </FormControl>
-        </HStack>
-
-        <Button mt="5" colorScheme="indigo" onPress={handleSubmit}>
-          Sign in
-        </Button>
+            type="password"
+            onChangeText={(password) => setUser({ ...user, password })}
+            placeholder={"Password"}
+          />
+        </FormControl>
 
         <HStack mt="6" justifyContent="center">
           <Text
@@ -138,6 +135,10 @@ const Signin = ({ navigation }) => {
             {""} Sign up
           </Link>
         </HStack>
+        <Button mt="5" colorScheme="indigo" onPress={handleSubmit}>
+          Sign in
+        </Button>
+
         <Button
           backgroundColor="#FA2F60"
           marginTop="2"

@@ -6,6 +6,8 @@ import { Card, Button, Icon } from "react-native-elements";
 import careStore from "../../Store/CareStore";
 import { Image } from "native-base";
 import styles from "../listofappointment/styles";
+import { LinearGradient } from "expo-linear-gradient";
+import Styles from "../../Styles";
 
 const CareTakerDetail = ({ navigation, route }) => {
   if (careStore.isLoading) return <Spinner />;
@@ -13,32 +15,12 @@ const CareTakerDetail = ({ navigation, route }) => {
 
   return (
     <View style={styles.background}>
-      <Card
-        containerStyle={{
-          borderColor: "pink",
-          borderRadius: Platform.OS === "ios" ? 20 : 20,
-          shadowColor: "#000",
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowOpacity: 0.3,
-          shadowRadius: 4.65,
 
-          elevation: 8,
-        }}
-        wrapperStyle={{
-          shadowColor: "#000",
-          shadowOffset: {
-            width: 0,
-            height: 2,
-          },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.84,
-
-          elevation: 5,
-        }}
-      >
+      <LinearGradient
+        colors={["#C0D6F9", "#B07DF0", "#C0D6F9"]}
+        style={styles.background}
+      />
+      <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
         <Card.Title
           style={{
             fontSize: 20,
@@ -49,10 +31,11 @@ const CareTakerDetail = ({ navigation, route }) => {
         <Card.Divider />
 
         <Image
-          width="400"
-          height="100"
-          borderRadius={Platform.OS === "ios" ? 30 : 20}
-          marginBottom="10"
+          style={{
+            height: 140,
+            marginBottom: 10,
+            borderRadius: 70,
+          }}
           source={{
             uri: "https://cdn-icons-png.flaticon.com/512/1876/1876934.png",
             alt: "image",
@@ -65,7 +48,7 @@ const CareTakerDetail = ({ navigation, route }) => {
           }}
         >
           Full name: {"\n"}
-          {caretaker.profile.firstName} {caretaker.profile.lastName} something
+          {caretaker.profile.firstName} {caretaker.profile.lastName}
         </Text>
         <Text
           style={{
@@ -74,7 +57,7 @@ const CareTakerDetail = ({ navigation, route }) => {
         >
           {"\n"}
           Qualification: {"\n"}
-          {caretaker.profile.qualification} something
+          {caretaker.profile.qualification}
         </Text>
         <Text
           style={{
@@ -83,7 +66,7 @@ const CareTakerDetail = ({ navigation, route }) => {
         >
           {"\n"}
           Past Experience: {"\n"}
-          {caretaker.profile.pastExp} something
+          {caretaker.profile.pastExp}
         </Text>
         <Text
           style={{
@@ -92,7 +75,7 @@ const CareTakerDetail = ({ navigation, route }) => {
         >
           {"\n"}
           Bio:
-          {caretaker.profile.bio} {"\n"} something
+          {caretaker.profile.bio} {"\n"}
           {"\n"}
         </Text>
 
@@ -100,10 +83,9 @@ const CareTakerDetail = ({ navigation, route }) => {
           <Button
             title="Book"
             buttonStyle={{
-              borderRadius: Platform.OS === "ios" ? 20 : 20,
-              marginLeft: "50%",
-              marginRight: 0,
-              marginBottom: 0,
+             borderRadius: Platform.OS === "ios" ? 20 : 20,
+              marginLeft: 150,
+
               marginTop: 10,
               backgroundColor: "#FA2F60",
               width: 150,

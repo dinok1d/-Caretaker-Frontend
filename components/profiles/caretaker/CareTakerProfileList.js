@@ -103,12 +103,12 @@ const CareTakerProfileList = ({ navigation, route }) => {
           setupdateCareTaker={setupdateCareTaker}
           updateCareTaker={updateCareTaker}
         /> */}
-        <Image
+        {/* <Image
           source={{
             uri: baseURL + care,
           }}
           style={{ width: 100, height: 100 }}
-        />
+        /> */}
 
         <Button
           marginTop="10"

@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Calendar, CalendarList, Agenda } from "react-native-calendars";
+import { LinearGradient } from "expo-linear-gradient";
+
 const BookingCalender = ({ navigation, route }) => {
   const caretaker = route.params.caretaker;
   const handlePickDate = (day) => {
@@ -9,7 +11,11 @@ const BookingCalender = ({ navigation, route }) => {
   };
   console.log(Date.now());
   return (
-    <View style={styles.pageView}>
+    <View>
+      <LinearGradient
+        colors={["#C0D6F9", "#B07DF0", "#C0D6F9"]}
+        style={styles.background}
+      />
       <Text style={styles.TextHeading}>Pick the Day for the Appointment:</Text>
       <Calendar
         style={styles.CalendarCSS}
@@ -50,5 +56,12 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 20,
     color: "black",
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 1000,
   },
 });
