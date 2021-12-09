@@ -55,7 +55,7 @@ const AppointmentDetail = ({ navigation, route }) => {
       <Card
         containerStyle={{
           borderColor: "pink",
-          borderRadius: "20%",
+          borderRadius: Platform.OS === "ios" ? 30 : 20,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -67,7 +67,7 @@ const AppointmentDetail = ({ navigation, route }) => {
           elevation: 8,
         }}
         wrapperStyle={{
-          borderRadius: "50%",
+          
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -147,7 +147,8 @@ const AppointmentDetail = ({ navigation, route }) => {
             variant="outline"
             colorScheme="green"
             title="Comfirm"
-          />
+            
+          >Accept</Button>
           {/* )} */}
           <Box style={styles.buttonSpace}></Box>
           <Button
@@ -155,14 +156,14 @@ const AppointmentDetail = ({ navigation, route }) => {
             variant="outline"
             colorScheme="danger"
             title="delete"
-          />
+          >Delete</Button>
           <Box style={styles.buttonSpace}></Box>
           <Button
             onPress={handleDecline}
             variant="outline"
             colorScheme="blue"
             title="Decline"
-          />
+          >Decline</Button>
         </HStack>
       </Card>
     </View>

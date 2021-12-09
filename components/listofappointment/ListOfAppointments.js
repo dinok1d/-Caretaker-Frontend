@@ -6,13 +6,11 @@ import AppointmentItem from "./AppointmentItem";
 import careTakerStore from "../../Store/CareTakerStore";
 
 const ListOfAppointments = ({ navigation }) => {
-
-  
   const filteredList = appointStore.appointment
-     .filter(
-       (appointment) =>
-       careTakerStore.caretaker._id === appointment.caretaker.toString()
-     )
+    .filter(
+      (appointment) =>
+        careTakerStore.caretaker._id === appointment.caretaker.toString()
+    )
     .map((appointment) => (
       <AppointmentItem
         appointment={appointment}
@@ -21,7 +19,11 @@ const ListOfAppointments = ({ navigation }) => {
       />
     ));
 
-  return <View>{filteredList}</View>;
+  return (
+    <ScrollView>
+      <View>{filteredList}</View>
+    </ScrollView>
+  );
 };
 export default observer(ListOfAppointments);
 const styles = StyleSheet.create({});

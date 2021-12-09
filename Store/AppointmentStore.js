@@ -52,7 +52,7 @@ class AppointStore {
       appointment.status = status;
 
       toast.show({
-        title: "appointment Comfirmed",
+        title: "Appointment Updated",
         status: "success",
         placement: "top",
       });

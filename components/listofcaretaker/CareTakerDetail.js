@@ -16,7 +16,7 @@ const CareTakerDetail = ({ navigation, route }) => {
       <Card
         containerStyle={{
           borderColor: "pink",
-          borderRadius: "20%",
+          borderRadius: Platform.OS === "ios" ? 20 : 20,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -28,7 +28,6 @@ const CareTakerDetail = ({ navigation, route }) => {
           elevation: 8,
         }}
         wrapperStyle={{
-          borderRadius: "50%",
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -52,7 +51,7 @@ const CareTakerDetail = ({ navigation, route }) => {
         <Image
           width="400"
           height="100"
-          borderRadius="30"
+          borderRadius={Platform.OS === "ios" ? 30 : 20}
           marginBottom="10"
           source={{
             uri: "https://cdn-icons-png.flaticon.com/512/1876/1876934.png",
@@ -101,7 +100,7 @@ const CareTakerDetail = ({ navigation, route }) => {
           <Button
             title="Book"
             buttonStyle={{
-              borderRadius: "20%",
+              borderRadius: Platform.OS === "ios" ? 20 : 20,
               marginLeft: "50%",
               marginRight: 0,
               marginBottom: 0,
