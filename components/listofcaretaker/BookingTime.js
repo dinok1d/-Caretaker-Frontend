@@ -12,7 +12,7 @@ const BookingTime = ({ route }) => {
     appointStore.bookAppointment({ _id: caretaker._id });
   };
   return (
-    <View>
+    <View style={{ backgroundColor: "#C0D6F9" }}>
       <View>
         <Text style={styles.TextDetail}>
           The Appointment Date: {day.dateString}
