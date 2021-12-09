@@ -6,20 +6,20 @@ import AppointmentDetail from "../listofappointment/AppointmentDetail";
 // import GuardianProfileList from "../profiles/guardian/GuardianProfileList";
 import CareTakerProfileList from "../profiles/caretaker/CareTakerProfileList";
 import Home from "../Home";
-
 import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
 import CareTakerDetail from "../listofcaretaker/CareTakerDetail";
 import ListOfCareTakers from "../listofcaretaker/ListOfCareTakers";
 import BookingCalender from "../listofcaretaker/BookingCalender";
 import BookingTime from "../listofcaretaker/BookingTime";
-import { Card } from "native-base";
+
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator
-      initialRouteName="Home"
+      backBehavior="order"
+      initialRouteName="CareTakerSignin"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
@@ -58,7 +58,7 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
 
@@ -87,7 +87,7 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
 
@@ -132,7 +132,7 @@ const Navigation = () => {
             backgroundColor: "#8285E0",
 
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
             shadowOffset: {
@@ -147,7 +147,6 @@ const Navigation = () => {
           headerTitleStyle: {
             fontFamily: "KohinoorTelugu-Regular",
           },
-
           headerLeft: false,
           title: "Choose Your Caretaker",
         }}
@@ -160,7 +159,7 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
             shadowOffset: {
@@ -187,7 +186,7 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
 
@@ -215,7 +214,7 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
 
