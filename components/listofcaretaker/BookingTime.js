@@ -5,6 +5,7 @@ import { Button } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
 import appointStore from "../../Store/AppointmentStore";
 
+
 const BookingTime = ({ route }) => {
   const day = route.params.day;
   const caretaker = route.params.caretaker;
@@ -18,7 +19,7 @@ const BookingTime = ({ route }) => {
       {/* careTaker.PreferedTimes below  */}
       <LinearGradient
         // Background Linear Gradient
-        colors={["#C0D6F9", "#8285E0", "black"]}
+        colors={["#C0D6F9", "#8285E0"]}
         style={styles.background}
       />
 
@@ -43,15 +44,16 @@ const BookingTime = ({ route }) => {
           The CareTaker: {caretaker.username}
         </Text>
 
+
         <Text style={{ marginBottom: 10, fontSize: 25 }}>Pick a Time</Text>
         <HStack>
           <Button
             title="12:00PM"
             buttonStyle={{
               borderRadius: 100,
-              marginLeft: 20,
-              marginRight: 20,
-              marginBottom: 50,
+              marginLeft: 10,
+              marginRight: 0,
+              marginBottom: 10,
               marginTop: 10,
 
               backgroundColor: "#FA2F60",
@@ -63,9 +65,9 @@ const BookingTime = ({ route }) => {
             title="09:00PM"
             buttonStyle={{
               borderRadius: 100,
-              marginLeft: 20,
-              marginRight: 20,
-              marginBottom: 50,
+              marginLeft: 10,
+              marginRight: 0,
+              marginBottom: 10,
               marginTop: 10,
 
               backgroundColor: "#FA2F60",
@@ -80,9 +82,9 @@ const BookingTime = ({ route }) => {
             title="07:00PM"
             buttonStyle={{
               borderRadius: 100,
-              marginLeft: 20,
-              marginRight: 20,
-              marginBottom: 50,
+              marginLeft: 10,
+              marginRight: 0,
+              marginBottom: 10,
               marginTop: 10,
 
               backgroundColor: "#FA2F60",
@@ -95,9 +97,9 @@ const BookingTime = ({ route }) => {
             title="09:00AM"
             buttonStyle={{
               borderRadius: 100,
-              marginLeft: 20,
-              marginRight: 20,
-              marginBottom: 50,
+              marginLeft: 10,
+              marginRight: 0,
+              marginBottom: 10,
               marginTop: 10,
 
               backgroundColor: "#FA2F60",
@@ -105,6 +107,7 @@ const BookingTime = ({ route }) => {
               height: 100,
             }}
           />
+
         </HStack>
       </Center>
     </View>
@@ -133,10 +136,5 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     height: 700,
-  },
-  button: {
-    padding: 15,
-    alignItems: "center",
-    borderRadius: 5,
   },
 });
