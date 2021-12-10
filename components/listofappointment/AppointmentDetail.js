@@ -15,11 +15,6 @@ const AppointmentDetail = ({ navigation, route }) => {
 
   const CareTakerProfile = careStore.fetchProfile(appointment.caretaker);
 
-  // console.log(
-  //   "this is caretaker profile image",
-  //   careTakerProfile.profile.image
-  // );
-
   const toast = useToast();
 
   const handleAccept = () => {
@@ -113,18 +108,20 @@ const AppointmentDetail = ({ navigation, route }) => {
           {"\n"}
         </Text>
         <HStack>
-          {/* {appointStore.appointment.status === "false" && ( */}
-          <Button
-            buttonStyle={{
-              borderRadius: 10,
-              marginLeft: 20,
-              marginTop: 10,
-              backgroundColor: "#FA2F60",
-            }}
-            onPress={handleAccept}
-            title="Accept"
-          />
-          {/* )} */}
+          {
+            // (appointStore.appointment.status = "accept"(
+            <Button
+              buttonStyle={{
+                borderRadius: 10,
+                marginLeft: 20,
+                marginTop: 10,
+                backgroundColor: "#FA2F60",
+              }}
+              onPress={handleAccept}
+              title="Accept"
+            />
+            // ))
+          }
           <Box style={styles.buttonSpace}></Box>
           <Button
             buttonStyle={{
@@ -149,7 +146,9 @@ const AppointmentDetail = ({ navigation, route }) => {
             }}
             onPress={handleDecline}
             title="Decline"
-          >Decline</Button>
+          >
+            Decline
+          </Button>
         </HStack>
       </Card>
     </View>
