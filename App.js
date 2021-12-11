@@ -17,6 +17,16 @@ export default function App() {
   );
 }
 
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <NativeBaseProvider>
+//         <MyDrawer />
+//       </NativeBaseProvider>
+//     </NavigationContainer>
+//   );
+// }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

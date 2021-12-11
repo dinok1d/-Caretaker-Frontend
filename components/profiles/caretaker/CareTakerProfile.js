@@ -17,14 +17,7 @@ import { useEffect } from "react";
 
 const CareTakerProfileList = ({ navigation }) => {
   const [caretaker, setCaretaker] = useState({
-    profile: {
-      firstName: "",
-      lastName: "",
-      image: require("../../../assets/defaultperson.png"),
-      bio: "",
-      qualification: "",
-      pastExp: "",
-    },
+    userProfile,
   });
 
   // i want to update profile using the browser
@@ -39,13 +32,12 @@ const CareTakerProfileList = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       {/* <Image
-        style={styles.userImg}
-        source={{
-          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjO7Lo0Q9eCXYhlXQGfvEzL1OM7muSI3EQ_A&usqp=CAU",
-        }}
-        alt="image"
+        source={caretaker.profile.image}
+        style={{ width: 100, height: 100 }}
       /> */}
+
       <View>
+        <Text>{caretaker.userProfile}</Text>
         <Input
           style={styles.userName}
           onChangeText={(value) =>
@@ -67,7 +59,6 @@ const CareTakerProfileList = ({ navigation }) => {
           }
           placeholder="last name"
         />
-
         <Input
           style={styles.userName}
           onChangeText={(value) =>
@@ -88,7 +79,6 @@ const CareTakerProfileList = ({ navigation }) => {
           }
           placeholder="qualification"
         />
-
         <Input
           style={styles.input}
           onChangeText={(value) =>
@@ -126,7 +116,7 @@ const CareTakerProfileList = ({ navigation }) => {
   );
 };
 
-export default observer(CareTakerProfileList);
+export default observer(CareTakerProfile);
 
 const styles = StyleSheet.create({
   input: {
