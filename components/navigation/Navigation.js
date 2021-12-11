@@ -21,7 +21,7 @@ const Navigation = () => {
 
   return (
     <Navigator
-      initialRouteName="AppointmentList"
+      initialRouteName="CareTakerSignin"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",

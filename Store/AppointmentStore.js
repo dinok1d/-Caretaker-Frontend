@@ -20,10 +20,10 @@ class AppointStore {
     }
   };
 
-  bookAppointment = async (id) => {
+  bookAppointment = async (bookingDetails) => {
     try {
-      console.log(id);
-      await instance.post("/appointment", id);
+      console.log(bookingDetails);
+      await instance.post("/appointment", bookingDetails);
     } catch (error) {
       console.log(error);
     }

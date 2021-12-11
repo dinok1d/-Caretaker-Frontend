@@ -18,6 +18,7 @@ const Drawer = () => {
       <View style={styles.animatedBox}>
         {careTakerStore.caretaker == null ? (
           <Text>I am a guardian</Text>
+          
         ) : (
           //navigation.navigate
           <Text>I am a caretaker</Text>
