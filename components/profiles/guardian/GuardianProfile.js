@@ -1,39 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import guardianStore from "../../../Store/GuardianStore";
+import guardStore from "../../../Store/GuardStore";
 import { observer } from "mobx-react";
-
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  SafeAreaView,
-  Text,
-  Image,
-} from "react-native";
+import { StyleSheet, View, SafeAreaView, Image } from "react-native";
 import { baseURL } from "../../../Store/instance";
 import { Button, Input } from "native-base";
-import careStore from "../../../Store/CareStore";
-import careTakerStore from "../../../Store/CareTakerStore";
-import { useEffect } from "react";
 
-const CareTakerProfileList = ({ navigation }) => {
-  const [caretaker, setCaretaker] = useState({
+const GuardianProfile = ({ navigation }) => {
+  const [guardian, setGuardian] = useState({
     profile: {
       firstName: "",
       lastName: "",
       image: require("../../../assets/defaultperson.png"),
       bio: "",
-      qualification: "",
-      pastExp: "",
+      numberOfKids: "",
     },
   });
 
   // i want to update profile using the browser
   useEffect(async () => {
-    careStore.fetchProfile(careTakerStore.caretaker._id);
+    guardStore.fetchGuardianProfile(guardianStore.guardian._id);
   }, []);
 
   const onSubmit = () => {
-    careStore.editProfile(caretaker, navigation);
+    guardStore.editGuardianProfile(guardian, navigation);
   };
 
   return (
@@ -49,9 +39,9 @@ const CareTakerProfileList = ({ navigation }) => {
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, firstName: value },
+            setGuardian({
+              ...guardian,
+              profile: { ...guardian.profile, firstName: value },
             })
           }
           placeholder="first name"
@@ -60,9 +50,9 @@ const CareTakerProfileList = ({ navigation }) => {
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, lastName: value },
+            setGuardian({
+              ...guardian,
+              profile: { ...guardian.profile, lastName: value },
             })
           }
           placeholder="last name"
@@ -71,9 +61,9 @@ const CareTakerProfileList = ({ navigation }) => {
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, bio: value },
+            setGuardian({
+              ...guardian,
+              profile: { ...guardian.profile, bio: value },
             })
           }
           placeholder="bio"
@@ -81,27 +71,17 @@ const CareTakerProfileList = ({ navigation }) => {
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, qualification: value },
+            setGuardian({
+              ...guardian,
+              profile: { ...guardian.profile, numberOfKids: value },
             })
           }
-          placeholder="qualification"
+          placeholder="how many kids do you have?"
         />
 
-        <Input
-          style={styles.input}
-          onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, pastExp: value },
-            })
-          }
-          placeholder="pastExp"
-        />
         {/* <ImagePickUpdate
-          setupdateCareTaker={setupdateCareTaker}
-          updateCareTaker={updateCareTaker}
+          setupdateGuardian={setupdateGuardian}
+          updateGuardian={updateGuardian}
         /> */}
         {/* <Image
           source={{
@@ -113,7 +93,7 @@ const CareTakerProfileList = ({ navigation }) => {
         <Button
           marginTop="10"
           marginBottom="10"
-          onPress={() => careTakerStore.logout()}
+          onPress={() => guardianStore.logout()}
         >
           logout
         </Button>
@@ -126,7 +106,7 @@ const CareTakerProfileList = ({ navigation }) => {
   );
 };
 
-export default observer(CareTakerProfileList);
+export default observer(GuardianProfile);
 
 const styles = StyleSheet.create({
   input: {
