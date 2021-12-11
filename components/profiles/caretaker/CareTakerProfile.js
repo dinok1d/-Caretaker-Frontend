@@ -9,97 +9,102 @@ import {
   Text,
   Image,
 } from "react-native";
-import { baseURL } from "../../../Store/instance";
 import { Button, Input } from "native-base";
 import careStore from "../../../Store/CareStore";
 import careTakerStore from "../../../Store/CareTakerStore";
 import { useEffect } from "react";
-
-const CareTakerProfile = ({ navigation }) => {
-  const [caretaker, setCaretaker] = useState({
-    userProfile,
-  });
-
+import TimePicker from "../../timePicker/TimePicker";
+import ImagePickerCaretaker from "../../imagePicker/ImagePickerCaretaker";
+const CareTakerProfileList = ({ navigation, route }) => {
+  const [caretakerProfile, setCaretakerProfile] = useState(
+    careStore.careTakerProfile || {
+      firstName: "",
+      lastName: "",
+      image: "",
+      numberOfKids: "",
+      bio: "",
+    }
+  );
+  console.log(caretakerProfile);
   // i want to update profile using the browser
   useEffect(async () => {
     careStore.fetchProfile(careTakerStore.caretaker._id);
   }, []);
 
-  const onSubmit = () => {
-    careStore.editProfile(caretaker, navigation);
+  const updateProfile = () => {
+    careStore.editProfile(caretakerProfile, navigation);
   };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-      {/* <Image
-        source={caretaker.profile.image}
-        style={{ width: 100, height: 100 }}
-      /> */}
+      <Image
+        style={{ width: 50, height: 50 }}
+        source={{
+          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjO7Lo0Q9eCXYhlXQGfvEzL1OM7muSI3EQ_A&usqp=CAU",
+        }}
+        alt="image"
+      />
 
       <View>
-        <Text>{caretaker.userProfile}</Text>
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, firstName: value },
+            setCaretakerProfile({
+              ...caretakerProfile,
+              firstName: value,
             })
           }
+          value={caretakerProfile.firstName}
           placeholder="first name"
         />
 
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, lastName: value },
+            setCaretakerProfile({
+              ...caretakerProfile,
+              lastName: value,
             })
           }
+          value={caretakerProfile.lastName}
           placeholder="last name"
         />
+
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, bio: value },
-            })
+            setCaretakerProfile({ ...caretakerProfile, bio: value })
           }
+          value={caretakerProfile.bio}
           placeholder="bio"
         />
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, qualification: value },
+            setCaretakerProfile({
+              ...caretakerProfile,
+              qualification: value,
             })
           }
+          value={caretakerProfile.qualification}
           placeholder="qualification"
         />
+
         <Input
           style={styles.input}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, pastExp: value },
+            setCaretakerProfile({
+              ...caretakerProfile,
+              pastExp: value,
             })
           }
+          value={caretakerProfile.pastExp}
           placeholder="pastExp"
         />
-        {/* <ImagePickUpdate
-          setupdateCareTaker={setupdateCareTaker}
-          updateCareTaker={updateCareTaker}
-        /> */}
-        {/* <Image
-          source={{
-            uri: baseURL + care,
-          }}
-          style={{ width: 100, height: 100 }}
-        /> */}
-
+        <ImagePickerCaretaker
+          setCaretakerProfile={setCaretakerProfile}
+          caretaker={caretakerProfile}
+        />
         <Button
           marginTop="10"
           marginBottom="10"
@@ -107,8 +112,8 @@ const CareTakerProfile = ({ navigation }) => {
         >
           logout
         </Button>
-        {/* <Button onPress={onSubmit}> edit profile</Button> */}
-        <Button marginTop="10" marginBottom="10" onPress={onSubmit}>
+
+        <Button marginTop="10" marginBottom="10" onPress={updateProfile}>
           Done
         </Button>
       </View>
@@ -116,7 +121,7 @@ const CareTakerProfile = ({ navigation }) => {
   );
 };
 
-export default observer(CareTakerProfile);
+export default observer(CareTakerProfileList);
 
 const styles = StyleSheet.create({
   input: {

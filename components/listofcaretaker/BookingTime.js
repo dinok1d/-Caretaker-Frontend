@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
 import appointStore from "../../Store/AppointmentStore";
+import TimePicker from "../timePicker/TimePicker";
 
 const BookingTime = ({ route }) => {
   const day = route.params.day;
@@ -12,6 +13,10 @@ const BookingTime = ({ route }) => {
   const handleBook = () => {
     console.log({ _id: caretaker._id });
     appointStore.bookAppointment({ _id: caretaker._id });
+  };
+  const clg = () => {
+    console.log({ _id: caretaker._id });
+    console.log(day.dateString);
   };
   return (
     <View>
@@ -30,6 +35,9 @@ const BookingTime = ({ route }) => {
           <Button title="12:00PM" buttonStyle={styles.button} />
           <Button title="04:00PM" buttonStyle={styles.button} />
         </HStack>
+        {/* this will confirm the booking */}
+        <TimePicker bookCaretaker={caretaker._id} bookDate={day.dateString} />
+       
         <HStack>
           <Button title="07:00PM" buttonStyle={styles.button} />
           <Button title="09:00AM" buttonStyle={styles.button} />

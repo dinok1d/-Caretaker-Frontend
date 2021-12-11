@@ -20,7 +20,9 @@ const Drawer = () => {
     return (
       <View style={styles.animatedBox}>
         {careTakerStore.caretaker == null ? (
+
           <Text>I am a Guardian</Text>
+
         ) : (
           <Text>I am a CareTaker</Text>
         )}

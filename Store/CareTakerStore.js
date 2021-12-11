@@ -15,7 +15,7 @@ class CareTakerStore {
         this.setUser(res.data.token);
       });
 
-      navigation.navigate("CareTakerProfileList");
+      navigation.navigate("CareTakerProfile");
     } catch (error) {
       console.log(error);
       toast.show({

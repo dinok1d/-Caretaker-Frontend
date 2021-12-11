@@ -86,6 +86,24 @@ const AppointmentDetail = ({ navigation, route }) => {
             fontSize: 16,
           }}
         >
+          Caretaker: {appointment.date}
+          {"\n"}
+        </Text>
+
+        <Text
+          style={{
+            fontSize: 16,
+          }}
+        >
+          Caretaker: {appointment.time}
+          {"\n"}
+        </Text>
+
+        <Text
+          style={{
+            fontSize: 16,
+          }}
+        >
           Status: {appointment.status}
           {"\n"}
         </Text>
