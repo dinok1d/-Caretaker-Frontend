@@ -5782,7 +5782,7 @@ prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5992,6 +5992,13 @@ react-native-screens@~3.8.0:
   integrity sha512-lHrnB/elAoMJKv8O12U6BLgeup4lB6ZKJHEOVuG/D72nv/OE9wUusbou6YCB5tp3YbaSpHflPnkFmHA/vCejpw==
   dependencies:
     warn-once "^0.1.0"
+
+react-native-side-drawer@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/react-native-side-drawer/-/react-native-side-drawer-1.2.9.tgz#56bc561a2cc8faee14b345d9a7fffb1bc9e3696c"
+  integrity sha512-hWB1TuOiTGhZ7Fa2r4+vuaPp112AjJxQ5Tb3LAWaKTj8hIH1bFOPvw/AzSaEWS151gBX1cMuN8uPYkK0NmsgYQ==
+  dependencies:
+    prop-types "15.7.2"
 
 react-native-size-matters@^0.3.1:
   version "0.3.1"

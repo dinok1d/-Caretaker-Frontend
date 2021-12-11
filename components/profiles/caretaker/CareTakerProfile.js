@@ -15,7 +15,7 @@ import careStore from "../../../Store/CareStore";
 import careTakerStore from "../../../Store/CareTakerStore";
 import { useEffect } from "react";
 
-const CareTakerProfileList = ({ navigation }) => {
+const CareTakerProfile = ({ navigation }) => {
   const [caretaker, setCaretaker] = useState({
     userProfile,
   });

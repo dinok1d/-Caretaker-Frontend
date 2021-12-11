@@ -3,8 +3,7 @@ import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import ListOfAppointments from "../listofappointment/ListOfAppointments";
 import AppointmentDetail from "../listofappointment/AppointmentDetail";
-import GuardianProfile from "../profiles/guardian/GuardianProfile";
-import CareTakerProfile from "../profiles/caretaker/CareTakerProfile";
+import CareTakerProfile from "../../components/profiles/caretaker/CareTakerProfile";
 import Home from "../Home";
 import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
@@ -13,14 +12,16 @@ import ListOfCareTakers from "../listofcaretaker/ListOfCareTakers";
 import BookingCalender from "../listofcaretaker/BookingCalender";
 import BookingTime from "../listofcaretaker/BookingTime";
 import GuardianProfile from "../profiles/guardian/GuardianProfile";
+import Drawer from "../../components/navigation/DrawerNavigator";
+import ProfileButton from "../profiles/caretaker/ProfileButton";
+import DrawerButton from "../profiles/caretaker/DrawerButton";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
-    // <>
     <Navigator
-      initialRouteName="CareTakerSignin"
+      initialRouteName="AppointmentList"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
@@ -81,7 +82,7 @@ const Navigation = () => {
           },
           headerBackTitleVisible: false,
           title: "Appointments",
-          headerLeft: false,
+          headerLeft: () => <Drawer />,
         }}
       />
 
@@ -126,13 +127,6 @@ const Navigation = () => {
           headerStyle: { backgroundColor: "#fadd97" },
         }}
       />
-      <Screen
-        name="GuardianProfile"
-        component={GuardianProfile}
-        options={{
-          headerStyle: { backgroundColor: "#fadd97" },
-        }}
-      />
 
       <Screen
         name="CaretakerList"
@@ -155,7 +149,7 @@ const Navigation = () => {
           headerTitleStyle: {
             fontFamily: "KohinoorTelugu-Regular",
           },
-          headerLeft: false,
+          headerLeft: () => <Drawer />,
           title: "Choose Your Caretaker",
         }}
       />
@@ -240,12 +234,6 @@ const Navigation = () => {
         }}
       />
     </Navigator>
-
-    /* <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="CareTakerProfile" component={CareTakerProfile} />
-      </Drawer.Navigator>
-    </> */
   );
 };
 export default Navigation;
