@@ -14,14 +14,13 @@ import BookingTime from "../listofcaretaker/BookingTime";
 import GuardianProfile from "../profiles/guardian/GuardianProfile";
 import Drawer from "../../components/navigation/DrawerNavigator";
 import ProfileButton from "../profiles/caretaker/ProfileButton";
-import DrawerButton from "../profiles/caretaker/DrawerButton";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator
-      initialRouteName="AppointmentList"
+      initialRouteName="CareTakerSignin"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
@@ -82,7 +81,8 @@ const Navigation = () => {
           },
           headerBackTitleVisible: false,
           title: "Appointments",
-          headerLeft: () => <Drawer />,
+          headerLeft: false,
+          headerRight: () => <Drawer />,
         }}
       />
 
@@ -116,7 +116,27 @@ const Navigation = () => {
         name="GuardianProfile"
         component={GuardianProfile}
         options={{
-          headerStyle: { backgroundColor: "#fadd97" },
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          headerBackTitleVisible: false,
+          title: "GuardianProfile",
+          headerLeft: false,
+          headerRight: () => <Drawer />,
         }}
       />
 
@@ -149,7 +169,9 @@ const Navigation = () => {
           headerTitleStyle: {
             fontFamily: "KohinoorTelugu-Regular",
           },
-          headerLeft: () => <Drawer />,
+          headerLeft: false,
+          headerRight: () => <Drawer />,
+
           title: "Choose Your Caretaker",
         }}
       />

@@ -5,6 +5,9 @@ import { useState } from "react";
 import { Button } from "native-base";
 import { useNavigation } from "@react-navigation/core";
 import careTakerStore from "../../Store/CareTakerStore";
+import guardianStore from "../../Store/GuardianStore";
+import Icon from "react-native-vector-icons/AntDesign";
+import { style } from "dom-helpers";
 
 const Drawer = () => {
   const [open, setOpen] = useState(false);
@@ -17,16 +20,27 @@ const Drawer = () => {
     return (
       <View style={styles.animatedBox}>
         {careTakerStore.caretaker == null ? (
-          <Text>I am a guardian</Text>
+          <Text>I am a Guardian</Text>
         ) : (
-          //navigation.navigate
-          <Text>I am a caretaker</Text>
+          <Text>I am a CareTaker</Text>
         )}
 
-        {/* logout */}
-
         <TouchableOpacity onPress={toggleOpen}>
+          <Text onPress={() => navigation.navigate("GuardianProfile")}>
+            Guardian Profile
+          </Text>
+
           <Text>Close</Text>
+
+          <>
+            <Icon
+              style={styles.icon}
+              size={40}
+              name="logout"
+              onPress={() => guardianStore.logout()}
+            />
+            <Text style={styles.log}>Logout</Text>
+          </>
         </TouchableOpacity>
       </View>
     );
@@ -43,7 +57,8 @@ const Drawer = () => {
         opacity={0.4}
       >
         {/* //icon */}
-        <Button onPress={toggleOpen}>Test</Button>
+        <Icon size={40} name="bars" onPress={toggleOpen} />
+        {/* <Button onPress={toggleOpen}>Test</Button> */}
       </MenuDrawer>
     </View>
   );
@@ -62,7 +77,7 @@ const styles = StyleSheet.create({
   },
   animatedBox: {
     flex: 1,
-    backgroundColor: "#38C8EC",
+    backgroundColor: "#91C8FF",
     padding: 10,
   },
   body: {
@@ -70,6 +85,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#F04812",
+  },
+  icon: {
+    marginTop: 200,
+    marginLeft: 10,
+  },
+  log: {
+    marginLeft: 10,
   },
 });
 
