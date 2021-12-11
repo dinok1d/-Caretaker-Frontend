@@ -1,46 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import guardianStore from "../../../Store/GuardianStore";
+import guardStore from "../../../Store/GuardStore";
 import { observer } from "mobx-react";
-
-import { StyleSheet, View, SafeAreaView, Text, Image } from "react-native";
+import { StyleSheet, View, SafeAreaView, Image } from "react-native";
+import { baseURL } from "../../../Store/instance";
 import { Button, Input } from "native-base";
-import careStore from "../../../Store/CareStore";
-import careTakerStore from "../../../Store/CareTakerStore";
-import { useEffect } from "react";
 
-const GuardianProfile = ({ navigation, route }) => {
-  const [caretaker, setCaretaker] = useState({
+const GuardianProfile = ({ navigation }) => {
+  const [guardian, setGuardian] = useState({
     profile: {
       firstName: "",
       lastName: "",
       image: require("../../../assets/defaultperson.png"),
-      numberOfKids: "",
       bio: "",
+      numberOfKids: "",
     },
   });
 
   // i want to update profile using the browser
   useEffect(async () => {
-    careStore.fetchProfile(careTakerStore.caretaker._id);
+    guardStore.fetchGuardianProfile(guardianStore.guardian._id);
   }, []);
 
   const onSubmit = () => {
-    careStore.editProfile(caretaker, navigation);
+    guardStore.editGuardianProfile(guardian, navigation);
   };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-      <Image
-        source={caretaker.profile.image}
-        style={{ width: 100, height: 100 }}
-      />
-
+      {/* <Image
+        style={styles.userImg}
+        source={{
+          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjO7Lo0Q9eCXYhlXQGfvEzL1OM7muSI3EQ_A&usqp=CAU",
+        }}
+        alt="image"
+      /> */}
       <View>
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, firstName: value },
+            setGuardian({
+              ...guardian,
+              profile: { ...guardian.profile, firstName: value },
             })
           }
           placeholder="first name"
@@ -49,9 +50,9 @@ const GuardianProfile = ({ navigation, route }) => {
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, lastName: value },
+            setGuardian({
+              ...guardian,
+              profile: { ...guardian.profile, lastName: value },
             })
           }
           placeholder="last name"
@@ -60,35 +61,43 @@ const GuardianProfile = ({ navigation, route }) => {
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, numberOfKids: value },
-            })
-          }
-          placeholder="numberOfKids"
-        />
-        <Input
-          style={styles.userName}
-          onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, bio: value },
+            setGuardian({
+              ...guardian,
+              profile: { ...guardian.profile, bio: value },
             })
           }
           placeholder="bio"
         />
-
         <Input
-          style={styles.input}
+          style={styles.userName}
           onChangeText={(value) =>
-            setCaretaker({
-              ...caretaker,
-              profile: { ...caretaker.profile, pastExp: value },
+            setGuardian({
+              ...guardian,
+              profile: { ...guardian.profile, numberOfKids: value },
             })
           }
-          placeholder="pastExp"
+          placeholder="how many kids do you have?"
         />
 
+        {/* <ImagePickUpdate
+          setupdateGuardian={setupdateGuardian}
+          updateGuardian={updateGuardian}
+        /> */}
+        {/* <Image
+          source={{
+            uri: baseURL + care,
+          }}
+          style={{ width: 100, height: 100 }}
+        /> */}
+
+        <Button
+          marginTop="10"
+          marginBottom="10"
+          onPress={() => guardianStore.logout()}
+        >
+          logout
+        </Button>
+        {/* <Button onPress={onSubmit}> edit profile</Button> */}
         <Button marginTop="10" marginBottom="10" onPress={onSubmit}>
           Done
         </Button>

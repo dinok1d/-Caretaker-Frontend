@@ -14,6 +14,7 @@ import {
   Center,
   useToast,
   View,
+  Image,
 } from "native-base";
 import { useState } from "react";
 import RadioButtonRN from "radio-buttons-react-native";
@@ -49,18 +50,28 @@ const Signup = ({ navigation }) => {
 
   return (
     <Center flex={1} px="3">
-      <View style={{}}>
-        {/* <Image
-        width="150"
-        height="150"
-        source={require("../designs/images/Icon.png")}
-      /> */}
+      <View>
+        <Image
+          style={{
+            width: 100,
+            height: 100,
+            borderRadius: 100,
+            marginBottom: 2,
+          }}
+          source={require("../../assets/H.jpg")}
+        />
       </View>
       <Heading size="lg" fontWeight="600" color="#FA2F60" alignContent="center">
         Haven
       </Heading>
 
-      <Heading mt="1" color="#8285E0" fontWeight="medium" size="xs">
+      <Heading
+        mt="1"
+        color="#8285E0"
+        fontWeight="medium"
+        size="xs"
+        marginBottom="4"
+      >
         Join us now as a Guardian or a Caretaker!
       </Heading>
 
@@ -78,7 +89,7 @@ const Signup = ({ navigation }) => {
           }}
         />
       </HStack>
-      <Box safeArea p="2" py="8" w="90%" maxW="290">
+      <Box safeArea p="1" py="1" w="90%" maxW="290">
         <HStack space={3} mt="5">
           <FormControl
             style={{
@@ -128,11 +139,6 @@ const Signup = ({ navigation }) => {
             placeholder={"Email"}
           />
         </FormControl>
-
-        <Button mt="5" colorScheme="indigo" onPress={handleSubmit}>
-          Sign up
-        </Button>
-
         <HStack mt="6" justifyContent="center">
           <Text
             fontSize="sm"
@@ -155,6 +161,11 @@ const Signup = ({ navigation }) => {
             {""} Sign in
           </Link>
         </HStack>
+
+        <Button mt="5" colorScheme="indigo" onPress={handleSubmit}>
+          Sign up
+        </Button>
+
         <Button
           backgroundColor="#FA2F60"
           marginTop="2"

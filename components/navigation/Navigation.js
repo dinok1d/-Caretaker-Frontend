@@ -12,10 +12,7 @@ import CareTakerDetail from "../listofcaretaker/CareTakerDetail";
 import ListOfCareTakers from "../listofcaretaker/ListOfCareTakers";
 import BookingCalender from "../listofcaretaker/BookingCalender";
 import BookingTime from "../listofcaretaker/BookingTime";
-import ProfileButton from "../profiles/caretaker/ProfileButton";
-// import { createDrawerNavigator } from "@react-navigation/drawer";
-
-// const Drawer = createDrawerNavigator();
+import GuardianProfile from "../profiles/guardian/GuardianProfile";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -23,7 +20,7 @@ const Navigation = () => {
   return (
     // <>
     <Navigator
-      initialRouteName="Home"
+      initialRouteName="CareTakerSignin"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
@@ -68,17 +65,15 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
-
             shadowOffset: {
               width: 0,
               height: 7,
             },
             shadowOpacity: 0.43,
             shadowRadius: 9.51,
-
             elevation: 15,
           },
           headerTitleStyle: {
@@ -97,17 +92,15 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
-
             shadowOffset: {
               width: 0,
               height: 7,
             },
             shadowOpacity: 0.43,
             shadowRadius: 9.51,
-
             elevation: 15,
           },
           headerTitleStyle: {
@@ -133,6 +126,13 @@ const Navigation = () => {
           headerStyle: { backgroundColor: "#fadd97" },
         }}
       />
+      <Screen
+        name="GuardianProfile"
+        component={GuardianProfile}
+        options={{
+          headerStyle: { backgroundColor: "#fadd97" },
+        }}
+      />
 
       <Screen
         name="CaretakerList"
@@ -140,9 +140,8 @@ const Navigation = () => {
         options={{
           headerStyle: {
             backgroundColor: "#8285E0",
-
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
             shadowOffset: {
@@ -151,13 +150,11 @@ const Navigation = () => {
             },
             shadowOpacity: 0.43,
             shadowRadius: 9.51,
-
             elevation: 15,
           },
           headerTitleStyle: {
             fontFamily: "KohinoorTelugu-Regular",
           },
-
           headerLeft: false,
           title: "Choose Your Caretaker",
         }}
@@ -170,7 +167,7 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
             shadowOffset: {
@@ -179,7 +176,6 @@ const Navigation = () => {
             },
             shadowOpacity: 0.43,
             shadowRadius: 9.51,
-
             elevation: 15,
           },
           headerTitleStyle: {
@@ -197,10 +193,9 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
-
             shadowOffset: {
               width: 0,
               height: 7,
@@ -225,10 +220,9 @@ const Navigation = () => {
           headerStyle: {
             backgroundColor: "#8285E0",
             borderBottomColor: "#FA2F60",
-            borderTopWidth: "20",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
             borderTopColor: "#91C8FF",
             shadowColor: "#000",
-
             shadowOffset: {
               width: 0,
               height: 7,

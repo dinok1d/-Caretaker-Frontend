@@ -15,8 +15,7 @@ import careStore from "../../../Store/CareStore";
 import careTakerStore from "../../../Store/CareTakerStore";
 import { useEffect } from "react";
 
-const CareTakerProfile = ({ navigation, route }) => {
-  let userProfile = careTakerStore.caretaker.profile;
+const CareTakerProfileList = ({ navigation }) => {
   const [caretaker, setCaretaker] = useState({
     userProfile,
   });
@@ -90,6 +89,25 @@ const CareTakerProfile = ({ navigation, route }) => {
           }
           placeholder="pastExp"
         />
+        {/* <ImagePickUpdate
+          setupdateCareTaker={setupdateCareTaker}
+          updateCareTaker={updateCareTaker}
+        /> */}
+        {/* <Image
+          source={{
+            uri: baseURL + care,
+          }}
+          style={{ width: 100, height: 100 }}
+        /> */}
+
+        <Button
+          marginTop="10"
+          marginBottom="10"
+          onPress={() => careTakerStore.logout()}
+        >
+          logout
+        </Button>
+        {/* <Button onPress={onSubmit}> edit profile</Button> */}
         <Button marginTop="10" marginBottom="10" onPress={onSubmit}>
           Done
         </Button>

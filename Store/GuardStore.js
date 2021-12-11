@@ -2,15 +2,14 @@ import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
 class GuardStore {
-  careTakerProfile = null;
+  guardianProfile = null;
   guardians = [];
   isLoading = true;
 
   constructor() {
     makeAutoObservable(this);
   }
-
-  fetchGuards = async () => {
+  fetchGuardian = async () => {
     try {
       const res = await instance.get("/guardian");
       this.guardians = res.data;
@@ -20,24 +19,23 @@ class GuardStore {
     }
   };
 
-  fetchProfile = (guardianId) => {
+  fetchGuardianProfile = (guardianId) => {
     const foundProfile = this.guardians.find(
       (guardian) => guardian._id === guardianId
     );
-
-    this.careTakerProfile = foundProfile;
+    this.guardianProfile = foundProfile;
     return foundProfile;
   };
 
-  editProfile = async (updatedProfile, navigation) => {
+  editGuardianProfile = async (updatedProfile, navigation) => {
     try {
       const formData = new FormData();
       for (const key in updatedProfile) {
         formData.append(key, updatedProfile[key]);
       }
 
-      const res = await instance.put("/caretaker/profile/", formData);
-      this.careTakerProfile = res.data;
+      const res = await instance.put("/guardian/profile/", formData);
+      this.guardianProfile = res.data;
       navigation.navigate("Home");
     } catch (error) {
       console.error(error);
@@ -45,6 +43,6 @@ class GuardStore {
   };
 }
 
-const careStore = new CareStore();
-careStore.fetchCaretakers();
-export default careStore;
+const guardStore = new GuardStore();
+guardStore.fetchGuardian();
+export default guardStore;

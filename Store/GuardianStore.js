@@ -4,6 +4,7 @@ import { instance } from "./instance";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class GuardianStore {
+  guardianProfile = null;
   guardian = null;
   constructor() {
     makeAutoObservable(this);
@@ -71,6 +72,29 @@ class GuardianStore {
         }
       }
     } catch (error) {}
+  };
+
+  fetchGuardianProfile = (guardianId) => {
+    const foundProfile = this.guardians.find(
+      (guardian) => guardian._id === guardianId
+    );
+    this.guardianProfile = foundProfile;
+    return foundProfile;
+  };
+
+  editGuardianProfile = async (updatedProfile, navigation) => {
+    try {
+      const formData = new FormData();
+      for (const key in updatedProfile) {
+        formData.append(key, updatedProfile[key]);
+      }
+
+      const res = await instance.put("/guardian/profile/", formData);
+      this.guardianProfile = res.data;
+      navigation.navigate("Home");
+    } catch (error) {
+      console.error(error);
+    }
   };
 }
 const guardianStore = new GuardianStore();
