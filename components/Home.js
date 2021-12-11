@@ -7,16 +7,17 @@ const Home = ({ navigation }) => {
     <View>
       <Button
         onPress={() => {
-          navigation.navigate("GuardianProfileList");
+          navigation.navigate("GuardianProfile");
         }}
       >
         Guardian Profile
       </Button>
 
       <Button
+        color="#FA2F60"
         marginTop="20"
         onPress={() => {
-          navigation.navigate("CareTakerProfileList");
+          navigation.navigate("CareTakerProfile");
         }}
       >
         CareTaker Profile

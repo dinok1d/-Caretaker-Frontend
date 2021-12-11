@@ -5,12 +5,10 @@ import { Card, Button, Icon } from "react-native-elements";
 import Navigation from "../navigation/Navigation";
 import { useState } from "react";
 import { Image, HStack } from "native-base";
-import styles from "./styles";
-
 
 const AppointmentItem = ({ appointment, navigation }) => {
   return (
-    <View style={styles.background}>
+    <View>
       <Card
         containerStyle={{
           borderColor: "pink",

@@ -1,29 +1,20 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
 
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  SafeAreaView,
-  Text,
-  Image,
-} from "react-native";
-import { baseURL } from "../../../Store/instance";
+import { StyleSheet, View, SafeAreaView, Text, Image } from "react-native";
 import { Button, Input } from "native-base";
 import careStore from "../../../Store/CareStore";
 import careTakerStore from "../../../Store/CareTakerStore";
 import { useEffect } from "react";
 
-const CareTakerProfileList = ({ navigation, route }) => {
+const GuardianProfile = ({ navigation, route }) => {
   const [caretaker, setCaretaker] = useState({
     profile: {
       firstName: "",
       lastName: "",
       image: require("../../../assets/defaultperson.png"),
+      numberOfKids: "",
       bio: "",
-      qualification: "",
-      pastExp: "",
     },
   });
 
@@ -38,13 +29,11 @@ const CareTakerProfileList = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-      {/* <Image
-        style={styles.userImg}
-        source={{
-          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjO7Lo0Q9eCXYhlXQGfvEzL1OM7muSI3EQ_A&usqp=CAU",
-        }}
-        alt="image"
-      /> */}
+      <Image
+        source={caretaker.profile.image}
+        style={{ width: 100, height: 100 }}
+      />
+
       <View>
         <Input
           style={styles.userName}
@@ -73,20 +62,20 @@ const CareTakerProfileList = ({ navigation, route }) => {
           onChangeText={(value) =>
             setCaretaker({
               ...caretaker,
-              profile: { ...caretaker.profile, bio: value },
+              profile: { ...caretaker.profile, numberOfKids: value },
             })
           }
-          placeholder="bio"
+          placeholder="numberOfKids"
         />
         <Input
           style={styles.userName}
           onChangeText={(value) =>
             setCaretaker({
               ...caretaker,
-              profile: { ...caretaker.profile, qualification: value },
+              profile: { ...caretaker.profile, bio: value },
             })
           }
-          placeholder="qualification"
+          placeholder="bio"
         />
 
         <Input
@@ -99,25 +88,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
           }
           placeholder="pastExp"
         />
-        {/* <ImagePickUpdate
-          setupdateCareTaker={setupdateCareTaker}
-          updateCareTaker={updateCareTaker}
-        /> */}
-        <Image
-          source={{
-            uri: baseURL + care,
-          }}
-          style={{ width: 100, height: 100 }}
-        />
 
-        <Button
-          marginTop="10"
-          marginBottom="10"
-          onPress={() => careTakerStore.logout()}
-        >
-          logout
-        </Button>
-        {/* <Button onPress={onSubmit}> edit profile</Button> */}
         <Button marginTop="10" marginBottom="10" onPress={onSubmit}>
           Done
         </Button>
@@ -126,7 +97,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
   );
 };
 
-export default observer(CareTakerProfileList);
+export default observer(GuardianProfile);
 
 const styles = StyleSheet.create({
   input: {

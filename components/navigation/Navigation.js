@@ -3,21 +3,25 @@ import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import ListOfAppointments from "../listofappointment/ListOfAppointments";
 import AppointmentDetail from "../listofappointment/AppointmentDetail";
-// import GuardianProfileList from "../profiles/guardian/GuardianProfileList";
-import CareTakerProfileList from "../profiles/caretaker/CareTakerProfileList";
+import GuardianProfile from "../profiles/guardian/GuardianProfile";
+import CareTakerProfile from "../profiles/caretaker/CareTakerProfile";
 import Home from "../Home";
-
 import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
 import CareTakerDetail from "../listofcaretaker/CareTakerDetail";
 import ListOfCareTakers from "../listofcaretaker/ListOfCareTakers";
 import BookingCalender from "../listofcaretaker/BookingCalender";
 import BookingTime from "../listofcaretaker/BookingTime";
-import { Card } from "native-base";
+import ProfileButton from "../profiles/caretaker/ProfileButton";
+// import { createDrawerNavigator } from "@react-navigation/drawer";
+
+// const Drawer = createDrawerNavigator();
+
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
+    // <>
     <Navigator
       initialRouteName="Home"
       screenOptions={{
@@ -32,6 +36,11 @@ const Navigation = () => {
         options={{
           headerStyle: { backgroundColor: "#fadd97" },
         }}
+        options={({ navigation }) => {
+          return {
+            headerRight: () => <ProfileButton navigation={navigation} />,
+          };
+        }}
       />
 
       <Screen
@@ -42,6 +51,7 @@ const Navigation = () => {
           headerShown: false,
         }}
       />
+
       <Screen
         name="GuardianSignup"
         component={GuardianSignup}
@@ -108,17 +118,17 @@ const Navigation = () => {
         }}
       />
 
-      {/* <Screen
-        name="GuardianProfileList"
-        component={GuardianProfileList}
+      <Screen
+        name="GuardianProfile"
+        component={GuardianProfile}
         options={{
           headerStyle: { backgroundColor: "#fadd97" },
         }}
-      /> */}
+      />
 
       <Screen
-        name="CareTakerProfileList"
-        component={CareTakerProfileList}
+        name="CareTakerProfile"
+        component={CareTakerProfile}
         options={{
           headerStyle: { backgroundColor: "#fadd97" },
         }}
@@ -236,9 +246,14 @@ const Navigation = () => {
         }}
       />
     </Navigator>
+
+    /* <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="CareTakerProfile" component={CareTakerProfile} />
+      </Drawer.Navigator>
+    </> */
   );
 };
-// "#5ac3dc"
 export default Navigation;
 
 const styles = StyleSheet.create({});
