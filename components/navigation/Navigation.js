@@ -12,6 +12,7 @@ import CareTakerDetail from "../listofcaretaker/CareTakerDetail";
 import ListOfCareTakers from "../listofcaretaker/ListOfCareTakers";
 import BookingCalender from "../listofcaretaker/BookingCalender";
 import BookingTime from "../listofcaretaker/BookingTime";
+import GuardianProfile from "../profiles/guardian/GuardianProfile";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -114,6 +115,13 @@ const Navigation = () => {
       <Screen
         name="CareTakerProfileList"
         component={CareTakerProfileList}
+        options={{
+          headerStyle: { backgroundColor: "#fadd97" },
+        }}
+      />
+      <Screen
+        name="GuardianProfile"
+        component={GuardianProfile}
         options={{
           headerStyle: { backgroundColor: "#fadd97" },
         }}
