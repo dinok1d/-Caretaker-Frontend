@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Button, Image, View, Platform } from "react-native";
+import React, { useEffect } from "react";
+import { Button, View, Platform } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
 const ImagePickerCaretaker = ({ caretakerProfile, setCaretakerProfile }) => {

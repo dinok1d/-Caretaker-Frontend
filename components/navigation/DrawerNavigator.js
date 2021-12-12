@@ -2,12 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import MenuDrawer from "react-native-side-drawer";
 import { useState } from "react";
-import { Button } from "native-base";
 import { useNavigation } from "@react-navigation/core";
 import careTakerStore from "../../Store/CareTakerStore";
-import guardianStore from "../../Store/GuardianStore";
 import Icon from "react-native-vector-icons/AntDesign";
-import { style } from "dom-helpers";
 import appointStore from "../../Store/AppointmentStore";
 
 const Drawer = () => {

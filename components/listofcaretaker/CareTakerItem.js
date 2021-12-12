@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { Card, Button, Icon } from "react-native-elements";
+import { Card, Button } from "react-native-elements";
 import { observer } from "mobx-react";
 import { HStack, Image } from "native-base";
 import Styles from "../../Styles";
