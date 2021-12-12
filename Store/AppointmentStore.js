@@ -61,6 +61,14 @@ class AppointStore {
       console.log(error);
     }
   };
+  get numberOfAppointments() {
+    let total = 0;
+    this.appointment.forEach(
+      (appointment) => (total = total += appointment.quantity)
+    );
+
+    return total;
+  }
 }
 
 const appointStore = new AppointStore();

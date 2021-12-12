@@ -8,6 +8,7 @@ import careTakerStore from "../../Store/CareTakerStore";
 import guardianStore from "../../Store/GuardianStore";
 import Icon from "react-native-vector-icons/AntDesign";
 import { style } from "dom-helpers";
+import appointStore from "../../Store/AppointmentStore";
 
 const Drawer = () => {
   const [open, setOpen] = useState(false);
@@ -19,30 +20,35 @@ const Drawer = () => {
   drawerContent = () => {
     return (
       <View style={styles.animatedBox}>
-        {careTakerStore.caretaker == null ? (
-
-          <Text>I am a Guardian</Text>
-
-        ) : (
-          <Text>I am a CareTaker</Text>
-        )}
+        {/* {careTakerStore.caretaker == null ? ( */}
+        {/* <Text>I am a Guardian</Text> */}
+        {/* ) : ( */}
+        {/* <Text>I am a CareTaker</Text> */}
+        {/* )} */}
+        <Text>
+          Total Number of Appointment:{appointStore.numberOfAppointments}
+        </Text>
 
         <TouchableOpacity onPress={toggleOpen}>
           <Text onPress={() => navigation.navigate("GuardianProfile")}>
             Guardian Profile
           </Text>
-
           <Text>Close</Text>
 
-          <>
-            <Icon
-              style={styles.icon}
-              size={40}
-              name="logout"
-              onPress={() => guardianStore.logout()}
-            />
-            <Text style={styles.log}>Logout</Text>
-          </>
+          <Icon
+            style={styles.icon}
+            size={40}
+            name="logout"
+            onPress={() => careTakerStore.logout()}
+          />
+          <Text style={styles.log}>Logout</Text>
+          <Icon
+            style={styles.icon}
+            size={40}
+            name="login"
+            onPress={() => navigation.navigate("CareTakerSignin")}
+          />
+          <Text style={styles.log}>Signin/up</Text>
         </TouchableOpacity>
       </View>
     );
@@ -58,8 +64,8 @@ const Drawer = () => {
         overlay={true}
         opacity={0.4}
       >
-        {/* //icon */}
         <Icon size={40} name="bars" onPress={toggleOpen} />
+
         {/* <Button onPress={toggleOpen}>Test</Button> */}
       </MenuDrawer>
     </View>
