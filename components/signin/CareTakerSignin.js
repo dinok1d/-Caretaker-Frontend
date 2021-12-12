@@ -1,11 +1,9 @@
 import React from "react";
-
 import { StyleSheet } from "react-native";
 import {
   Box,
   Text,
   Heading,
-  VStack,
   FormControl,
   Input,
   Link,
@@ -13,7 +11,6 @@ import {
   HStack,
   Center,
   useToast,
-  Row,
   View,
   Image,
 } from "native-base";

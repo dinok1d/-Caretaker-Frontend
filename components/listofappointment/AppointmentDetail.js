@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { View, Text } from "react-native";
-import { HStack, Spinner, Box, useToast, Image, Container } from "native-base";
+import { HStack, Spinner, Box, useToast, Image } from "native-base";
 import appointStore from "../../Store/AppointmentStore";
 import { Card, Button } from "react-native-elements";
 import styles from "../listofappointment/styles";

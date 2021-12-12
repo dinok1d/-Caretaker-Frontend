@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 import { View, Text } from "react-native";
 import { HStack, Spinner } from "native-base";
-import { Card, Button, Icon } from "react-native-elements";
+import { Card, Button } from "react-native-elements";
 import careStore from "../../Store/CareStore";
 import { Image } from "native-base";
 import styles from "../listofappointment/styles";

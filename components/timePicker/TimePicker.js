@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, View, Text } from "react-native";
+import { Button, View } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from "moment";
 import appointStore from "../../Store/AppointmentStore";

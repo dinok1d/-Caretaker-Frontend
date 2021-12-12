@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Calendar, CalendarList, Agenda } from "react-native-calendars";
+import { Calendar } from "react-native-calendars";
 import { LinearGradient } from "expo-linear-gradient";
 
 const BookingCalender = ({ navigation, route }) => {

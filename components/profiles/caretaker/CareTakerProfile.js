@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  SafeAreaView,
-  Text,
-  Image,
-} from "react-native";
-import { Button, Input } from "native-base";
+import { Card, Button } from "react-native-elements";
+import { LinearGradient } from "expo-linear-gradient";
+import { StyleSheet, ScrollView } from "react-native";
+import { Input } from "native-base";
+import Styles from "../../../Styles";
 import careStore from "../../../Store/CareStore";
 import careTakerStore from "../../../Store/CareTakerStore";
 import { useEffect } from "react";
-import TimePicker from "../../timePicker/TimePicker";
+
 import ImagePickerCaretaker from "../../imagePicker/ImagePickerCaretaker";
 const CareTakerProfileList = ({ navigation, route }) => {
   const [caretakerProfile, setCaretakerProfile] = useState(
@@ -36,16 +31,31 @@ const CareTakerProfileList = ({ navigation, route }) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-      <Image
-        style={{ width: 50, height: 50 }}
-        source={{
-          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjO7Lo0Q9eCXYhlXQGfvEzL1OM7muSI3EQ_A&usqp=CAU",
-        }}
-        alt="image"
+    <ScrollView>
+      <LinearGradient
+        colors={["#C0D6F9", "#B07DF0", "#C0D6F9"]}
+        style={styles.background}
       />
+      <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
+        <Card.Title
+          style={{
+            fontSize: 18,
+          }}
+        >
+          Update Profile
+        </Card.Title>
 
-      <View>
+        <Card.Divider />
+
+        <Card.Image
+          source={require("../../../assets/defaultperson.png")}
+          style={{
+            height: 200,
+            width: 300,
+            margin: 10,
+          }}
+        ></Card.Image>
+
         <Input
           style={styles.userName}
           onChangeText={(value) =>
@@ -55,7 +65,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
             })
           }
           value={caretakerProfile.firstName}
-          placeholder="first name"
+          placeholder="First Name"
         />
 
         <Input
@@ -67,17 +77,9 @@ const CareTakerProfileList = ({ navigation, route }) => {
             })
           }
           value={caretakerProfile.lastName}
-          placeholder="last name"
+          placeholder="Last Name"
         />
 
-        <Input
-          style={styles.userName}
-          onChangeText={(value) =>
-            setCaretakerProfile({ ...caretakerProfile, bio: value })
-          }
-          value={caretakerProfile.bio}
-          placeholder="bio"
-        />
         <Input
           style={styles.userName}
           onChangeText={(value) =>
@@ -87,11 +89,11 @@ const CareTakerProfileList = ({ navigation, route }) => {
             })
           }
           value={caretakerProfile.qualification}
-          placeholder="qualification"
+          placeholder="Qualification"
         />
 
         <Input
-          style={styles.input}
+          style={styles.userName}
           onChangeText={(value) =>
             setCaretakerProfile({
               ...caretakerProfile,
@@ -99,25 +101,31 @@ const CareTakerProfileList = ({ navigation, route }) => {
             })
           }
           value={caretakerProfile.pastExp}
-          placeholder="pastExp"
+          placeholder="Experience"
+        />
+
+        <Input
+          style={styles.userName}
+          onChangeText={(value) =>
+            setCaretakerProfile({ ...caretakerProfile, bio: value })
+          }
+          value={caretakerProfile.bio}
+          placeholder="Biography"
         />
         <ImagePickerCaretaker
           setCaretakerProfile={setCaretakerProfile}
           caretaker={caretakerProfile}
         />
         <Button
-          marginTop="10"
-          marginBottom="10"
-          onPress={() => careTakerStore.logout()}
-        >
-          logout
-        </Button>
-
-        <Button marginTop="10" marginBottom="10" onPress={updateProfile}>
-          Done
-        </Button>
-      </View>
-    </SafeAreaView>
+          buttonStyle={{
+            borderRadius: Platform.OS === "ios" ? 20 : 20,
+            marginTop: 10,
+            backgroundColor: "#FA2F60",
+          }}
+          title="Update"
+        />
+      </Card>
+    </ScrollView>
   );
 };
 
@@ -141,8 +149,7 @@ const styles = StyleSheet.create({
     borderRadius: 75,
   },
   userName: {
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 16,
     marginTop: 10,
     marginBottom: 10,
   },
@@ -189,5 +196,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#666",
     textAlign: "center",
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: "100%",
   },
 });
