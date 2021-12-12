@@ -1,9 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { View, Text } from "react-native";
-import { Card, Button, Icon } from "react-native-elements";
-import Navigation from "../navigation/Navigation";
-import { useState } from "react";
+import { Card, Button } from "react-native-elements";
 import { Image, HStack } from "native-base";
 import Styles from "../../Styles";
 

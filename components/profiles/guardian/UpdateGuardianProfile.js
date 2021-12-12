@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, Image, Platform } from "react-native";
+import { StyleSheet, View, Button, Platform } from "react-native";
 import { VStack, Button, FormControl, Input } from "native-base";
 import careStore from "../../../Store/CareStore";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
 import guardStore from "../../../Store/GuardStore";
 

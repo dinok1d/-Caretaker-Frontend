@@ -6,6 +6,11 @@ import { StyleSheet, View, SafeAreaView, Image, Text } from "react-native";
 import { baseURL } from "../../../Store/instance";
 import { Button, Input } from "native-base";
 import appointStore from "../../../Store/AppointmentStore";
+import { Input } from "native-base";
+import { Card, Button } from "react-native-elements";
+import { LinearGradient } from "expo-linear-gradient";
+import { StyleSheet, ScrollView } from "react-native";
+import Styles from "../../../Styles";
 
 const GuardianProfile = ({ navigation }) => {
   const [guardian, setGuardian] = useState({
@@ -28,15 +33,31 @@ const GuardianProfile = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-      {/* <Image
-        style={styles.userImg}
-        source={{
-          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjO7Lo0Q9eCXYhlXQGfvEzL1OM7muSI3EQ_A&usqp=CAU",
-        }}
-        alt="image"
-      /> */}
-      <View>
+    <ScrollView>
+      <LinearGradient
+        colors={["#C0D6F9", "#B07DF0", "#C0D6F9"]}
+        style={styles.background}
+      />
+      <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
+        <Card.Title
+          style={{
+            fontSize: 18,
+          }}
+        >
+          Update Profile
+        </Card.Title>
+
+        <Card.Divider />
+
+        <Card.Image
+          source={require("../../../assets/defaultperson.png")}
+          style={{
+            height: 200,
+            width: 300,
+            margin: 10,
+          }}
+        ></Card.Image>
+
         <Input
           style={styles.userName}
           onChangeText={(value) =>
@@ -45,7 +66,7 @@ const GuardianProfile = ({ navigation }) => {
               profile: { ...guardian.profile, firstName: value },
             })
           }
-          placeholder="first name"
+          placeholder="First Name"
         />
 
         <Input
@@ -56,7 +77,7 @@ const GuardianProfile = ({ navigation }) => {
               profile: { ...guardian.profile, lastName: value },
             })
           }
-          placeholder="last name"
+          placeholder="Last Name"
         />
 
         <Input
@@ -67,7 +88,7 @@ const GuardianProfile = ({ navigation }) => {
               profile: { ...guardian.profile, bio: value },
             })
           }
-          placeholder="bio"
+          placeholder="Biography"
         />
         <Input
           style={styles.userName}
@@ -77,33 +98,22 @@ const GuardianProfile = ({ navigation }) => {
               profile: { ...guardian.profile, numberOfKids: value },
             })
           }
-          placeholder="how many kids do you have?"
+          placeholder="How Many Kids Do You Have?"
         />
-
-        {/* <ImagePickUpdate
-          setupdateGuardian={setupdateGuardian}
-          updateGuardian={updateGuardian}
+        {/* <ImagePickerCaretaker
+          setCaretakerProfile={setCaretakerProfile}
+          caretaker={caretakerProfile}
         /> */}
-        {/* <Image
-          source={{
-            uri: baseURL + care,
-          }}
-          style={{ width: 100, height: 100 }}
-        /> */}
-
         <Button
-          marginTop="10"
-          marginBottom="10"
-          onPress={() => guardianStore.logout()}
-        >
-          logout
-        </Button>
-        {/* <Button onPress={onSubmit}> edit profile</Button> */}
-        <Button marginTop="10" marginBottom="10" onPress={onSubmit}>
-          Done
-        </Button>
-      </View>
-    </SafeAreaView>
+          buttonStyle={{
+            borderRadius: Platform.OS === "ios" ? 20 : 20,
+            marginTop: 10,
+            backgroundColor: "#FA2F60",
+          }}
+          title="Update"
+        />
+      </Card>
+    </ScrollView>
   );
 };
 
@@ -127,8 +137,8 @@ const styles = StyleSheet.create({
     borderRadius: 75,
   },
   userName: {
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 16,
+
     marginTop: 10,
     marginBottom: 10,
   },
@@ -175,5 +185,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#666",
     textAlign: "center",
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: "100%",
   },
 });
