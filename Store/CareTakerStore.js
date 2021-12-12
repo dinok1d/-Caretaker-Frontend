@@ -47,13 +47,14 @@ class CareTakerStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     } catch (error) {}
   };
-  logout = async () => {
+  logout = async (navigation) => {
     try {
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("myToken");
       runInAction(() => {
         this.caretaker = null;
       });
+      navigation.navigate("CaretakerList");
     } catch (error) {
       console.log(error);
     }

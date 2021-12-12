@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import guardianStore from "../../../Store/GuardianStore";
 import guardStore from "../../../Store/GuardStore";
 import { observer } from "mobx-react";
-import { StyleSheet, View, SafeAreaView, Image } from "react-native";
+import { StyleSheet, View, SafeAreaView, Image, Text } from "react-native";
 import { baseURL } from "../../../Store/instance";
 import { Button, Input } from "native-base";
+import appointStore from "../../../Store/AppointmentStore";
 
 const GuardianProfile = ({ navigation }) => {
   const [guardian, setGuardian] = useState({
