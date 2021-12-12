@@ -18,6 +18,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
       image: "",
       numberOfKids: "",
       bio: "",
+      specialty: "",
     }
   );
   console.log(caretakerProfile);
@@ -89,7 +90,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
             })
           }
           value={caretakerProfile.qualification}
-          placeholder="Qualification"
+          placeholder="Qualification:"
         />
 
         <Input
@@ -101,7 +102,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
             })
           }
           value={caretakerProfile.pastExp}
-          placeholder="Experience"
+          placeholder="Experience:"
         />
 
         <Input
@@ -112,6 +113,15 @@ const CareTakerProfileList = ({ navigation, route }) => {
           value={caretakerProfile.bio}
           placeholder="Biography"
         />
+        <Input
+          style={styles.userName}
+          onChangeText={(value) =>
+            setCaretakerProfile({ ...caretakerProfile, specialty: value })
+          }
+          value={caretakerProfile.specialty}
+          placeholder="Specialty: e.g. nany, maid, etc"
+        />
+
         <ImagePickerCaretaker
           setCaretakerProfile={setCaretakerProfile}
           caretaker={caretakerProfile}
