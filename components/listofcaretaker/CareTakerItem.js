@@ -14,7 +14,7 @@ const CareTakerItem = ({ caretaker, navigation }) => {
             fontSize: 18,
           }}
         >
-          {caretaker.username}
+          {caretaker.profile.firstName} {caretaker.profile.lastName}
         </Card.Title>
         <Card.Divider />
         <HStack>
@@ -31,7 +31,8 @@ const CareTakerItem = ({ caretaker, navigation }) => {
             }}
           >
             {"\n"}
-            Type: {"\n"} Nanny, Maid
+            Specialty: {"\n"}
+            {caretaker.profile.specialty}
           </Text>
         </HStack>
         <Button
