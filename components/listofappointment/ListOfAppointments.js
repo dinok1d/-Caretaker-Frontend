@@ -8,10 +8,8 @@ import guardianStore from "../../Store/GuardianStore";
 
 import { LinearGradient } from "expo-linear-gradient";
 import styles from "../listofappointment/styles";
-// import { Spinner } from "native-base";
 
 const ListOfAppointments = ({ navigation }) => {
-  // if (!careTakerStore.caretaker) return <Spinner />;
   const filteredList = appointStore.appointment
     .filter(
       (appointment) =>

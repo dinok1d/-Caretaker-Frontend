@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import careTakerStore from "./CareTakerStore";
 import instance from "./instance";
 
 class CareStore {
@@ -18,15 +19,6 @@ class CareStore {
     } catch (error) {
       next(error);
     }
-  };
-
-  fetchProfile = (caretakerId) => {
-    const foundProfile = this.caretakers.find(
-      (caretaker) => caretaker._id === caretakerId
-    );
-
-    this.careTakerProfile = foundProfile;
-    return foundProfile;
   };
 
   editProfile = async (updatedProfile, navigation) => {
