@@ -4,7 +4,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from "moment";
 import appointStore from "../../Store/AppointmentStore";
 const TimePicker = ({ bookDate, bookCaretaker }) => {
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(true);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);

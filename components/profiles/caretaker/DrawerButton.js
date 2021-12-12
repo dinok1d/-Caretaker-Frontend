@@ -10,9 +10,7 @@
 //         <Button
 //           backgroundColor="#FA2F60"
 //           marginRight="2"
-{
-  /* <Button onPress={() => guardianStore.logout()}>Logout</Button> */
-}
+/* <Button onPress={() => guardianStore.logout()}>Logout</Button> */
 //         >
 //           logout
 //         </Button>
