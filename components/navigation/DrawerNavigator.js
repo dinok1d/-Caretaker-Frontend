@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import careTakerStore from "../../Store/CareTakerStore";
 import Icon from "react-native-vector-icons/AntDesign";
+import guardianStore from "../../Store/GuardianStore";
+import { style } from "dom-helpers";
 import appointStore from "../../Store/AppointmentStore";
 
 const Drawer = () => {
@@ -32,13 +34,13 @@ const Drawer = () => {
           </Text>
           <Text>Close</Text>
 
-          <Icon
+          {/* <Icon
             style={styles.icon}
             size={40}
             name="logout"
-            onPress={() => careTakerStore.logout()}
+            onPress={() => guardianStore.logout()}
           />
-          <Text style={styles.log}>Logout</Text>
+          <Text style={styles.log}>Logout</Text> */}
           <Icon
             style={styles.icon}
             size={40}

@@ -1,4 +1,5 @@
 // import { StatusBar } from "expo-status-bar";
+// import "react-native-gesture-handler";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { NativeBaseProvider } from "native-base";
@@ -16,16 +17,6 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-// export default function App() {
-//   return (
-//     <NavigationContainer>
-//       <NativeBaseProvider>
-//         <MyDrawer />
-//       </NativeBaseProvider>
-//     </NavigationContainer>
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
