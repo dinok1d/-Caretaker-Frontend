@@ -14,13 +14,24 @@ import BookingTime from "../listofcaretaker/BookingTime";
 import GuardianProfile from "../profiles/guardian/GuardianProfile";
 import Drawer from "../../components/navigation/DrawerNavigator";
 import ProfileButton from "../profiles/caretaker/ProfileButton";
+// import { Icon } from "native-base";
+import Icon from "react-native-vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/core";
+import MenuDrawer from "react-native-side-drawer";
+import { useState } from "react";
 
 const Navigation = () => {
+  const [open, setOpen] = useState(false);
+  const navigation = useNavigation();
+  const toggleOpen = () => {
+    setOpen(!open);
+  };
+
   const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator
-      initialRouteName="CareTakerSignin"
+      initialRouteName="Home"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
@@ -82,7 +93,16 @@ const Navigation = () => {
           headerBackTitleVisible: false,
           title: "Appointments",
 
-          headerLeft: () => <Drawer />,
+          // headerRight: () => (
+          //   <Icon.Button
+          //     name="ios-menu"
+          //     size={25}
+          //     backgroundColor="#8285E0"
+          //     options={() => {
+          //       navigation.openDrawer();
+          //     }}
+          //   ></Icon.Button>
+          // ),
         }}
       />
 
@@ -135,7 +155,7 @@ const Navigation = () => {
           },
           headerBackTitleVisible: false,
           title: "GuardianProfile",
-          headerLeft: () => <Drawer />,
+          // headerLeft: () => <Drawer />,
         }}
       />
 
@@ -168,9 +188,17 @@ const Navigation = () => {
           headerTitleStyle: {
             fontFamily: "KohinoorTelugu-Regular",
           },
-          headerLeft: () => <Drawer />,
+          // headerLeft: () => <Drawer />,
 
           title: "Choose Your Caretaker",
+          headerRight: () => (
+            <Icon.Button
+              name="ios-menu"
+              size={25}
+              backgroundColor="#8285E0"
+              onPress={() => navigation.openDrawer()}
+            ></Icon.Button>
+          ),
         }}
       />
 
