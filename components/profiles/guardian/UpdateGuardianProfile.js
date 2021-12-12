@@ -4,6 +4,7 @@ import { VStack, Button, FormControl, Input } from "native-base";
 import careStore from "../../../Store/CareStore";
 import { useState, useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
+import guardStore from "../../../Store/GuardStore";
 
 const UpdateCareProfile = ({ route, navigation }) => {
   const [updateCareTaker, setupdateCareTaker] = React.useState(trip);
@@ -43,7 +44,7 @@ const UpdateCareProfile = ({ route, navigation }) => {
   };
 
   const onSubmit = () => {
-    careStore.editProfile(updateCareTaker, navigation);
+    guardStore.editProfile(updateCareTaker, navigation);
   };
   return (
     <VStack width="90%" mx="3">
