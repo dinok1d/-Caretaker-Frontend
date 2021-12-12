@@ -81,8 +81,8 @@ const Navigation = () => {
           },
           headerBackTitleVisible: false,
           title: "Appointments",
-          headerLeft: false,
-          headerRight: () => <Drawer />,
+
+          headerLeft: () => <Drawer />,
         }}
       />
 
@@ -135,8 +135,7 @@ const Navigation = () => {
           },
           headerBackTitleVisible: false,
           title: "GuardianProfile",
-          headerLeft: false,
-          headerRight: () => <Drawer />,
+          headerLeft: () => <Drawer />,
         }}
       />
 
@@ -169,8 +168,7 @@ const Navigation = () => {
           headerTitleStyle: {
             fontFamily: "KohinoorTelugu-Regular",
           },
-          headerLeft: false,
-          headerRight: () => <Drawer />,
+          headerLeft: () => <Drawer />,
 
           title: "Choose Your Caretaker",
         }}
