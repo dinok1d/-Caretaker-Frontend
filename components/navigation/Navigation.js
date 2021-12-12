@@ -154,7 +154,7 @@ const Navigation = () => {
             fontFamily: "KohinoorTelugu-Regular",
           },
           headerBackTitleVisible: false,
-          title: "GuardianProfile",
+          title: "Guardian Profile",
           // headerLeft: () => <Drawer />,
         }}
       />
@@ -163,7 +163,25 @@ const Navigation = () => {
         name="CareTakerProfile"
         component={CareTakerProfile}
         options={{
-          headerStyle: { backgroundColor: "#fadd97" },
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          headerBackTitleVisible: false,
+          title: "Caretaker Profile",
         }}
       />
 
