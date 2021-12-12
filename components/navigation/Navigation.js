@@ -15,17 +15,17 @@ import GuardianProfile from "../profiles/guardian/GuardianProfile";
 import Drawer from "../../components/navigation/DrawerNavigator";
 import ProfileButton from "../profiles/caretaker/ProfileButton";
 // import { Icon } from "native-base";
-import Icon from "react-native-vector-icons/Ionicons";
-import { useNavigation } from "@react-navigation/core";
+// import Icon from "react-native-vector-icons/Ionicons";
+// import { useNavigation } from "@react-navigation/core";
 import MenuDrawer from "react-native-side-drawer";
-import { useState } from "react";
+// import { useState } from "react";
 
 const Navigation = () => {
-  const [open, setOpen] = useState(false);
-  const navigation = useNavigation();
-  const toggleOpen = () => {
-    setOpen(!open);
-  };
+  //   const [open, setOpen] = useState(false);
+  //   const navigation = useNavigation();
+  //   const toggleOpen = () => {
+  //     setOpen(!open);
+  //   };
 
   const { Navigator, Screen } = createStackNavigator();
 
@@ -92,6 +92,7 @@ const Navigation = () => {
           },
           headerBackTitleVisible: false,
           title: "Appointments",
+          headerLeft: () => <Drawer />,
 
           // headerRight: () => (
           //   <Icon.Button
@@ -209,14 +210,14 @@ const Navigation = () => {
           // headerLeft: () => <Drawer />,
 
           title: "Choose Your Caretaker",
-          headerRight: () => (
-            <Icon.Button
-              name="ios-menu"
-              size={25}
-              backgroundColor="#8285E0"
-              onPress={() => navigation.openDrawer()}
-            ></Icon.Button>
-          ),
+          headerLeft: () => <Drawer />,
+          // <Icon.Button
+          //   name="ios-menu"
+          //   size={25}
+          //   backgroundColor="#8285E0"
+          //   onPress={() => navigation.openDrawer()}
+          // ></Icon.Button>
+          // ),
         }}
       />
 
