@@ -2,16 +2,13 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import MenuDrawer from "react-native-side-drawer";
 import { useState } from "react";
+import { Button } from "native-base";
 import { useNavigation } from "@react-navigation/core";
 import careTakerStore from "../../Store/CareTakerStore";
-import Icon from "react-native-vector-icons/AntDesign";
 import guardianStore from "../../Store/GuardianStore";
-
 import Icon from "react-native-vector-icons/AntDesign";
 import IconBar from "react-native-vector-icons/Ionicons";
 import { observer } from "mobx-react";
-
-
 
 const Drawer = () => {
   const [open, setOpen] = useState(false);
@@ -24,31 +21,46 @@ const Drawer = () => {
     return (
       <View style={styles.animatedBox}>
         {!guardianStore.guardian && !careTakerStore.caretaker ? (
-          <Icon
-            style={styles.icon}
-            size={40}
-            name="login"
-            onPress={() => {
-              toggleOpen();
-              navigation.navigate("CareTakerSignin");
-            }}
-          />
+          <View>
+            <Icon
+              style={styles.icon}
+              size={40}
+              name="login"
+              onPress={() => {
+                toggleOpen();
+                navigation.navigate("CareTakerSignin");
+              }}
+            />
+
+            <Text>signin/up</Text>
+          </View>
         ) : careTakerStore.caretaker ? (
           <TouchableOpacity>
-            <Text onPress={() => navigation.navigate("CareTakerProfile")}>
+            <Text
+              onPress={() => {
+                toggleOpen(), navigation.navigate("CareTakerProfile");
+              }}
+            >
               CareTaker Profile
             </Text>
             <Icon
               style={styles.icon}
               size={40}
               name="logout"
-              onPress={() => careTakerStore.logout(navigation)}
+              onPress={() => {
+                toggleOpen(), careTakerStore.logout(navigation);
+              }}
             />
+            <Text>logout</Text>
           </TouchableOpacity>
         ) : (
           guardianStore.guardian && (
             <TouchableOpacity>
-              <Text onPress={() => navigation.navigate("GuardianProfile")}>
+              <Text
+                onPress={() => {
+                  toggleOpen(), navigation.navigate("GuardianProfile");
+                }}
+              >
                 Guardian Profile
               </Text>
 
@@ -58,6 +70,7 @@ const Drawer = () => {
                 name="logout"
                 onPress={() => guardianStore.logout(navigation)}
               />
+              <Text>logout</Text>
             </TouchableOpacity>
           )
         )}
@@ -106,7 +119,7 @@ const styles = StyleSheet.create({
   },
   animatedBox: {
     flex: 1,
-    backgroundColor: "#91C8FF",
+    backgroundColor: "white",
     padding: 10,
   },
   body: {

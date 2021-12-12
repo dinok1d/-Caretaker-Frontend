@@ -2,8 +2,12 @@ import { runInAction, makeAutoObservable } from "mobx";
 import decode from "jwt-decode";
 import { instance } from "./instance";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import careStore from "./CareStore";
+import { baseURL } from "../Store/instance";
+
 class CareTakerStore {
   caretaker = null;
+  careTakerProfile = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -32,6 +36,12 @@ class CareTakerStore {
         await this.setUser(res.data.token);
       });
       console.log(this.caretaker);
+      const foundProfile = careStore.caretakers.find(
+        (caretaker) => caretaker._id === careTakerStore.caretaker._id
+      );
+      console.log(foundProfile);
+      foundProfile.profile.image = baseURL + foundProfile.profile.image;
+      this.careTakerProfile = foundProfile;
       navigation.navigate("AppointmentList");
     } catch (error) {
       console.log(error);

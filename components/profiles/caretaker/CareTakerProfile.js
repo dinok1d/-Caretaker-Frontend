@@ -8,11 +8,10 @@ import Styles from "../../../Styles";
 import careStore from "../../../Store/CareStore";
 import careTakerStore from "../../../Store/CareTakerStore";
 import { useEffect } from "react";
-
 import ImagePickerCaretaker from "../../imagePicker/ImagePickerCaretaker";
 const CareTakerProfileList = ({ navigation, route }) => {
   const [caretakerProfile, setCaretakerProfile] = useState(
-    careStore.careTakerProfile || {
+    careTakerStore.careTakerProfile.profile || {
       firstName: "",
       lastName: "",
       image: "",
@@ -21,11 +20,9 @@ const CareTakerProfileList = ({ navigation, route }) => {
       specialty: "",
     }
   );
+
   console.log(caretakerProfile);
-  // i want to update profile using the browser
-  useEffect(async () => {
-    careStore.fetchProfile(careTakerStore.caretaker._id);
-  }, []);
+  console.log(careStore.careTakerProfile);
 
   const updateProfile = () => {
     careStore.editProfile(caretakerProfile, navigation);
@@ -49,7 +46,13 @@ const CareTakerProfileList = ({ navigation, route }) => {
         <Card.Divider />
 
         <Card.Image
-          source={require("../../../assets/defaultperson.png")}
+          source={
+            caretakerProfile.image == ""
+              ? require("../../../assets/defaultperson.png")
+              : `${caretakerProfile.image}`.startsWith("http")
+              ? { uri: caretakerProfile.image }
+              : caretakerProfile.image
+          }
           style={{
             height: 200,
             width: 300,
@@ -124,7 +127,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
 
         <ImagePickerCaretaker
           setCaretakerProfile={setCaretakerProfile}
-          caretaker={caretakerProfile}
+          caretakerProfile={caretakerProfile}
         />
         <Button
           buttonStyle={{
@@ -133,6 +136,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
             backgroundColor: "#FA2F60",
           }}
           title="Update"
+          onPress={updateProfile}
         />
       </Card>
     </ScrollView>

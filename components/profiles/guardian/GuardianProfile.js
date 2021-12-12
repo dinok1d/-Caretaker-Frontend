@@ -4,12 +4,11 @@ import guardStore from "../../../Store/GuardStore";
 import { observer } from "mobx-react";
 import { StyleSheet, View, SafeAreaView, Image, Text } from "react-native";
 import { baseURL } from "../../../Store/instance";
-import { Button, Input } from "native-base";
 import appointStore from "../../../Store/AppointmentStore";
 import { Input } from "native-base";
 import { Card, Button } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import Styles from "../../../Styles";
 
 const GuardianProfile = ({ navigation }) => {
