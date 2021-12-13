@@ -13,8 +13,8 @@ const ListOfAppointments = ({ navigation }) => {
   const filteredList = appointStore.appointment
     .filter(
       (appointment) =>
-        careTakerStore.caretaker._id === appointment.caretaker.toString() ||
-        guardianStore.guardian._id === appointment.guardian.toString()
+        careTakerStore.caretaker?._id === appointment.caretaker.toString() ||
+        guardianStore.guardian?._id === appointment.guardian.toString()
     )
     .map((appointment) => (
       <AppointmentItem

@@ -14,6 +14,7 @@ import BookingTime from "../listofcaretaker/BookingTime";
 import GuardianProfile from "../profiles/guardian/GuardianProfile";
 import Drawer from "../../components/navigation/DrawerNavigator";
 import ProfileButton from "../profiles/caretaker/ProfileButton";
+import GuardianDetail from "../profiles/guardian/GuardianDetail";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -177,6 +178,32 @@ const Navigation = () => {
       <Screen
         name="CaretakerDetail"
         component={CareTakerDetail}
+        options={{
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          title: "Information",
+          headerBackTitleVisible: false,
+        }}
+      />
+
+      <Screen
+        name="GuardianDetail"
+        component={GuardianDetail}
         options={{
           headerStyle: {
             backgroundColor: "#8285E0",
