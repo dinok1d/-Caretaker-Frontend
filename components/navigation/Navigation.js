@@ -15,19 +15,45 @@ import GuardianProfile from "../profiles/guardian/GuardianProfile";
 import Drawer from "../../components/navigation/DrawerNavigator";
 import ProfileButton from "../profiles/caretaker/ProfileButton";
 import GuardianDetail from "../profiles/guardian/GuardianDetail";
+// import Settingss from "../../Settingss";
 
 const Navigation = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator
-      initialRouteName="AppointmentList"
+      initialRouteName="CareTakerSignin"
       screenOptions={{
         headerStyle: { backgroundColor: "#fadd97" },
         headerTintColor: "white",
         headerTitleStyle: { fontStyle: "italic", fontWeight: "bold" },
       }}
     >
+      {/* <Screen
+        name="Settingss"
+        component={Settingss}
+        options={{
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          headerBackTitleVisible: false,
+          title: "Appointments",
+        }} */}
+      {/* /> */}
       <Screen
         name="Home"
         component={Home}
@@ -40,7 +66,6 @@ const Navigation = () => {
           };
         }}
       />
-
       <Screen
         name="CareTakerSignin"
         component={CareTakerSignin}
@@ -49,7 +74,6 @@ const Navigation = () => {
           headerShown: false,
         }}
       />
-
       <Screen
         name="GuardianSignup"
         component={GuardianSignup}
@@ -58,7 +82,6 @@ const Navigation = () => {
           headerShown: false,
         }}
       />
-
       <Screen
         name="AppointmentList"
         component={ListOfAppointments}
@@ -85,7 +108,6 @@ const Navigation = () => {
           headerLeft: () => <Drawer />,
         }}
       />
-
       <Screen
         name="AppointmentDetail"
         component={AppointmentDetail}
@@ -111,7 +133,6 @@ const Navigation = () => {
           title: "Information",
         }}
       />
-
       <Screen
         name="GuardianProfile"
         component={GuardianProfile}
@@ -135,10 +156,8 @@ const Navigation = () => {
           },
           headerBackTitleVisible: false,
           title: "Guardian Profile",
-          headerLeft: () => <Drawer />,
         }}
       />
-
       <Screen
         name="CareTakerProfile"
         component={CareTakerProfile}
@@ -164,7 +183,6 @@ const Navigation = () => {
           title: "Caretaker Profile",
         }}
       />
-
       <Screen
         name="CaretakerList"
         component={ListOfCareTakers}
@@ -191,7 +209,6 @@ const Navigation = () => {
           headerLeft: () => <Drawer />,
         }}
       />
-
       <Screen
         name="CaretakerDetail"
         component={CareTakerDetail}
@@ -217,7 +234,6 @@ const Navigation = () => {
           headerBackTitleVisible: false,
         }}
       />
-
       <Screen
         name="GuardianDetail"
         component={GuardianDetail}
@@ -243,7 +259,6 @@ const Navigation = () => {
           headerBackTitleVisible: false,
         }}
       />
-
       <Screen
         name="BookingCalender"
         component={BookingCalender}
@@ -270,7 +285,6 @@ const Navigation = () => {
           title: "Calendar",
         }}
       />
-
       <Screen
         name="BookingTime"
         component={BookingTime}
