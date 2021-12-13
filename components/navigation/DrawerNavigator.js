@@ -9,6 +9,7 @@ import guardianStore from "../../Store/GuardianStore";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import IconBar from "react-native-vector-icons/Ionicons";
 import IconHome from "react-native-vector-icons/AntDesign";
+import IconSetting from "react-native-vector-icons/Feather";
 
 import { observer } from "mobx-react";
 import {
@@ -71,6 +72,7 @@ const Drawer = () => {
                   <Title style={styles.title}>I am a CareTaker</Title>
                   <Caption style={styles.caption}>@Ct_CareTaker</Caption>
                   <IconHome
+                    padding={10}
                     style={styles.drawerSection}
                     size={30}
                     name="home"
@@ -79,10 +81,20 @@ const Drawer = () => {
                     }}
                   />
                   <Text style={styles.drawerSection}> Home </Text>
+                  <IconSetting
+                    padding={10}
+                    style={styles.drawerSection}
+                    size={30}
+                    name="settings"
+                    onPress={() => {
+                      navigation.navigate("Home");
+                    }}
+                  />
+                  <Text style={styles.drawerSection}> Settings </Text>
 
                   <Icon
+                    padding={10}
                     //   style={styles.bottomDrawerSection}
-                    marginBottom={200}
                     //   style={styles.icon}
                     size={30}
                     name="logout"
@@ -90,6 +102,7 @@ const Drawer = () => {
                       toggleOpen(), careTakerStore.logout(navigation);
                     }}
                   />
+
                   <Text>logout</Text>
                 </TouchableOpacity>
               </View>
@@ -112,6 +125,26 @@ const Drawer = () => {
                     </Text>
                     <Title style={styles.title}>I am a Guardian</Title>
                     <Caption style={styles.caption}>@G_Guardian</Caption>
+                    <IconHome
+                      padding={10}
+                      style={styles.drawerSection}
+                      size={30}
+                      name="home"
+                      onPress={() => {
+                        navigation.navigate("Home");
+                      }}
+                    />
+                    <Text style={styles.drawerSection}> Home </Text>
+                    <IconSetting
+                      padding={10}
+                      style={styles.drawerSection}
+                      size={30}
+                      name="settings"
+                      onPress={() => {
+                        navigation.navigate("Home");
+                      }}
+                    />
+                    <Text style={styles.drawerSection}> Settings </Text>
 
                     <Icon
                       // style={styles.icon}

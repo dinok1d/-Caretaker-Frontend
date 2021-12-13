@@ -13,8 +13,6 @@ const AppointmentDetail = ({ navigation, route }) => {
   if (appointStore.isLoading) return <Spinner />;
   const appointment = route.params.appointment;
 
-  const CareTakerProfile = careStore.fetchProfile(appointment.caretaker);
-
   const toast = useToast();
 
   const handleAccept = () => {

@@ -7,21 +7,22 @@ import { Input } from "native-base";
 import Styles from "../../../Styles";
 import guardianStore from "../../../Store/GuardianStore";
 import guardStore from "../../../Store/GuardStore";
+import ImagePickerGuard from "../../imagePicker/ImagePickerGuard";
 
 const GuardianProfile = ({ navigation }) => {
-  const [guardian, setGuardian] = useState(
-    guardianStore.guardianProfile.profile || {
+  const [guardProfile, setguardProfile] = useState(
+    guardianStore.guardianProfile?.profile || {
       firstName: "",
       lastName: "",
-      image: require("../../../assets/defaultperson.png"),
+      image: "",
+      numberOfKids: "",
       bio: "",
-      numberOfKids: 0,
     }
   );
 
-  console.log(guardianStore.guardianProfile.profile);
+  // console.log(guardianStore.guardianProfile.profile);
   const updateProfile = () => {
-    guardStore.editGuardianProfile(guardian, navigation);
+    guardStore.editGuardianProfile(guardProfile, navigation);
   };
 
   return (
@@ -42,7 +43,13 @@ const GuardianProfile = ({ navigation }) => {
         <Card.Divider />
 
         <Card.Image
-          source={require("../../../assets/defaultperson.png")}
+          source={
+            guardProfile.image == ""
+              ? require("../../../assets/defaultperson.png")
+              : `${guardProfile.image}`.startsWith("http")
+              ? { uri: guardProfile.image }
+              : guardProfile.image
+          }
           style={{
             height: 200,
             width: 300,
@@ -53,55 +60,55 @@ const GuardianProfile = ({ navigation }) => {
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setGuardian({
-              ...guardian,
+            setguardProfile({
+              ...guardProfile,
               firstName: value,
             })
           }
-          value={guardian.firstName}
+          value={guardProfile.firstName}
           placeholder="First Name"
         />
 
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setGuardian({
-              ...guardian,
+            setguardProfile({
+              ...guardProfile,
               lastName: value,
             })
           }
-          value={guardian.lastName}
+          value={guardProfile.lastName}
           placeholder="Last Name"
         />
         <Input
           style={styles.userName}
           keyboardType="numeric"
           onChangeText={(text) =>
-            setGuardian({
-              ...guardian,
+            setguardProfile({
+              ...guardProfile,
               numberOfKids: text,
             })
           }
-          text={guardian.numberOfKids}
+          value={guardProfile.numberOfKids}
           placeholder="How Many Kids Do You Have?"
         />
 
         <Input
           style={styles.userName}
           onChangeText={(value) =>
-            setGuardian({
-              ...guardian,
+            setguardProfile({
+              ...guardProfile,
               bio: value,
             })
           }
-          value={guardian.bio}
+          value={guardProfile.bio}
           placeholder="Biography"
         />
 
-        {/* <ImagePickerCaretaker
-          setCaretakerProfile={setCaretakerProfile}
-          caretaker={caretakerProfile}
-        /> */}
+        <ImagePickerGuard
+          setguardProfile={setguardProfile}
+          guardProfile={guardProfile}
+        />
         <Button
           buttonStyle={{
             borderRadius: Platform.OS === "ios" ? 20 : 20,

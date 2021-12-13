@@ -12,7 +12,7 @@ import ImagePickerCaretaker from "../../imagePicker/ImagePickerCaretaker";
 
 const CareTakerProfileList = ({ navigation, route }) => {
   const [caretakerProfile, setCaretakerProfile] = useState(
-    careTakerStore.careTakerProfile.profile || {
+    careTakerStore.careTakerProfile?.profile || {
       firstName: "",
       lastName: "",
       image: "",

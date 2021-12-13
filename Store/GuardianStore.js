@@ -6,8 +6,8 @@ import guardStore from "./GuardStore";
 import { baseURL } from "../Store/instance";
 
 class GuardianStore {
-  guardianProfile = null;
   guardian = null;
+  guardianProfile = null;
   constructor() {
     makeAutoObservable(this);
   }
@@ -18,7 +18,7 @@ class GuardianStore {
         this.setUser(res.data.token);
       });
 
-      navigation.navigate("GuardianDetail");
+      navigation.navigate("GuardianProfile");
     } catch (error) {
       console.log(error);
       toast.show({
@@ -37,12 +37,13 @@ class GuardianStore {
       const foundProfile = guardStore.guardians.find(
         (caretaker) => caretaker._id === guardianStore.guardian._id
       );
+      console.log(this.guardian);
       // console.log(foundProfile);
       // console.log(guardianStore.guardian._id);
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.guardianProfile = foundProfile;
 
-      navigation.navigate("GuardianDetail");
+      navigation.navigate("CaretakerList");
     } catch (error) {
       console.log(error);
     }
