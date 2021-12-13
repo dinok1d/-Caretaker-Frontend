@@ -18,6 +18,7 @@ import { useState } from "react";
 import careTakerStore from "../../Store/CareTakerStore";
 import guardianStore from "../../Store/GuardianStore";
 import RadioButtonRN from "radio-buttons-react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Signin = ({ navigation }) => {
   const toast = useToast();
@@ -36,6 +37,11 @@ const Signin = ({ navigation }) => {
       label: "CareTaker",
     },
   ];
+
+  const [show, setShow] = React.useState(false);
+
+  const handleClick = () => setShow(!show);
+
   const handleSubmit = async () => {
     if (selectedradiobtn.label === "Guardian") {
       await guardianStore.signin(user, navigation, toast);
@@ -45,8 +51,27 @@ const Signin = ({ navigation }) => {
   };
 
   return (
-    <Center flex={1} px="3">
-      <View style={{}}>
+    <Center
+      flex={1}
+      px="3"
+      style={{
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 4.65,
+
+        elevation: 8,
+      }}
+    >
+      <LinearGradient
+        colors={["#C0D6F9", "transparent"]}
+        locations={[0.2, 0.2]}
+        style={styles.background}
+      />
+      <View>
         <Image
           style={{
             width: 100,
@@ -60,7 +85,6 @@ const Signin = ({ navigation }) => {
       <Heading size="lg" fontWeight="600" color="#FA2F60" alignContent="center">
         Haven
       </Heading>
-
       <Heading
         mt="1"
         color="#8285E0"
@@ -70,7 +94,6 @@ const Signin = ({ navigation }) => {
       >
         Join us now as a Guardian or a Caretaker!
       </Heading>
-
       <HStack>
         <RadioButtonRN
           initial={1}
@@ -85,26 +108,40 @@ const Signin = ({ navigation }) => {
           }}
         />
       </HStack>
+
       <Box safeArea p="1" py="1" w="90%" maxW="290">
         <FormControl>
           <FormControl.Label>Username</FormControl.Label>
           <Input
-            style={{
-              borderColor: "#8285E0",
-              height: 32,
-            }}
+            style={{ borderColor: "#8285E0", height: 36 }}
             onChangeText={(username) => setUser({ ...user, username })}
             placeholder={"Username"}
           />
         </FormControl>
         <FormControl>
           <FormControl.Label>Password</FormControl.Label>
+
           <Input
+            variant="outline"
             style={{
               borderColor: "#8285E0",
-              height: 33,
+
+              height: 40,
             }}
-            type="password"
+            type={show ? "text" : "password"}
+            InputRightElement={
+              <Button
+                size="xs"
+                w="1/6"
+                h="full"
+                onPress={handleClick}
+                style={{
+                  backgroundColor: "#FA2F60",
+                }}
+              >
+                {show ? "Hide" : "Show"}
+              </Button>
+            }
             onChangeText={(password) => setUser({ ...user, password })}
             placeholder={"Password"}
           />
@@ -132,6 +169,7 @@ const Signin = ({ navigation }) => {
             {""} Sign up
           </Link>
         </HStack>
+
         <Button mt="5" colorScheme="indigo" onPress={handleSubmit}>
           Sign in
         </Button>
@@ -154,105 +192,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
   },
+  background: {
+    position: "absolute",
+
+    left: 0,
+    right: 0,
+    top: 0,
+    height: "100%",
+  },
 });
-
-// <Center flex={1} px="3">
-//   <View style={{}}>
-//     {/* <Image
-//         width="150"
-//         height="150"
-//         source={require("../designs/images/Icon.png")}
-//       /> */}
-//   </View>
-//   <Heading size="lg" fontWeight="600" color="#FA2F60" alignContent="center">
-//     Haven
-//   </Heading>
-
-//   <Heading mt="1" color="#8285E0" fontWeight="medium" size="xs">
-//     Join us now as a Guardian or a Caretaker!
-//   </Heading>
-
-//   <HStack>
-//     <RadioButtonRN
-//       initial={1}
-//       box={false}
-//       circleSize={7}
-//       animationTypes={["pulse"]}
-//       data={data}
-//       selectedBtn={(e) => setSelectedradiobtn(e)}
-//       style={{
-//         width: 100,
-//         height: 50,
-//       }}
-//     />
-//   </HStack>
-//   <Box safeArea p="2" py="8" w="90%" maxW="290">
-//     <HStack space={3} mt="5">
-//       <FormControl
-//         style={{
-//           width: 135,
-//         }}
-//       >
-//         <FormControl.Label>User Name</FormControl.Label>
-//         <Input
-//           style={{
-//             borderColor: "#8285E0",
-//             height: 32,
-//           }}
-//           onChangeText={(username) => setUser({ ...user, username })}
-//           placeholder={"Username"}
-//         />
-//       </FormControl>
-//       <FormControl
-//         style={{
-//           width: 130,
-//         }}
-//       >
-//         <FormControl.Label>Password</FormControl.Label>
-//         <Input
-//           style={{
-//             borderColor: "#8285E0",
-//             height: 33,
-//           }}
-//           type="password"
-//           onChangeText={(password) => setUser({ ...user, password })}
-//           placeholder={"Password"}
-//         />
-//       </FormControl>
-//     </HStack>
-
-//     <Button mt="5" colorScheme="indigo" onPress={handleSubmit}>
-//       Sign in
-//     </Button>
-
-//     <HStack mt="6" justifyContent="center">
-//       <Text
-//         fontSize="sm"
-//         color="coolGray.600"
-//         _dark={{
-//           color: "warmGray.200",
-//         }}
-//       >
-//         Register with us now!
-//       </Text>
-
-//       <Link
-//         _text={{
-//           color: "#FA2F60",
-//           fontWeight: "medium",
-//           fontSize: "sm",
-//         }}
-//         onPress={() => navigation.navigate("CareTakerSignin")}
-//       >
-//         {""} Sign up
-//       </Link>
-//     </HStack>
-//     <Button
-//       backgroundColor="#FA2F60"
-//       marginTop="2"
-//       onPress={() => navigation.navigate("GuardianSignup")}
-//     >
-//       Continue As a Guest
-//     </Button>
-//   </Box>
-// </Center>;

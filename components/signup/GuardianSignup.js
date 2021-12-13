@@ -18,6 +18,7 @@ import { useState } from "react";
 import RadioButtonRN from "radio-buttons-react-native";
 import guardianStore from "../../Store/GuardianStore";
 import careTakerStore from "../../Store/CareTakerStore";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Signup = ({ navigation }) => {
   const toast = useToast();
@@ -37,6 +38,9 @@ const Signup = ({ navigation }) => {
       label: "CareTaker",
     },
   ];
+  const [show, setShow] = React.useState(false);
+
+  const handleClick = () => setShow(!show);
 
   const handleSubmit = async () => {
     if (selectedradiobtn.label === "Guardian") {
@@ -47,7 +51,26 @@ const Signup = ({ navigation }) => {
   };
 
   return (
-    <Center flex={1} px="3">
+    <Center
+      flex={1}
+      px="3"
+      style={{
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 4.65,
+
+        elevation: 8,
+      }}
+    >
+      <LinearGradient
+        colors={["#C0D6F9", "transparent"]}
+        locations={[0.2, 0.2]}
+        style={styles.background}
+      />
       <View>
         <Image
           style={{
@@ -94,8 +117,9 @@ const Signup = ({ navigation }) => {
               width: 135,
             }}
           >
-            <FormControl.Label>User Name</FormControl.Label>
+            <FormControl.Label>Username</FormControl.Label>
             <Input
+              variant="outline"
               style={{
                 borderColor: "#8285E0",
                 height: 32,
@@ -111,11 +135,25 @@ const Signup = ({ navigation }) => {
           >
             <FormControl.Label>Password</FormControl.Label>
             <Input
+              variant="outline"
               style={{
                 borderColor: "#8285E0",
-                height: 33,
+
+                height: 30,
               }}
-              type="password"
+              type={show ? "text" : "password"}
+              InputRightElement={
+                <Button
+                  size="xs"
+                  h="full"
+                  onPress={handleClick}
+                  style={{
+                    backgroundColor: "#FA2F60",
+                  }}
+                >
+                  {show ? "Hide" : "Show"}
+                </Button>
+              }
               onChangeText={(password) => setUser({ ...user, password })}
               placeholder={"Password"}
             />
@@ -178,4 +216,13 @@ const Signup = ({ navigation }) => {
 
 export default Signup;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  background: {
+    position: "absolute",
+
+    left: 0,
+    right: 0,
+    top: 0,
+    height: "100%",
+  },
+});
