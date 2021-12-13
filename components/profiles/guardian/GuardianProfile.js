@@ -15,7 +15,7 @@ const GuardianProfile = ({ navigation }) => {
       lastName: "",
       image: require("../../../assets/defaultperson.png"),
       bio: "",
-      numberOfKids: "",
+      numberOfKids: 0,
     }
   );
 
@@ -73,6 +73,18 @@ const GuardianProfile = ({ navigation }) => {
           value={guardian.lastName}
           placeholder="Last Name"
         />
+        <Input
+          style={styles.userName}
+          keyboardType="numeric"
+          onChangeText={(text) =>
+            setGuardian({
+              ...guardian,
+              numberOfKids: text,
+            })
+          }
+          text={guardian.numberOfKids}
+          placeholder="How Many Kids Do You Have?"
+        />
 
         <Input
           style={styles.userName}
@@ -85,17 +97,7 @@ const GuardianProfile = ({ navigation }) => {
           value={guardian.bio}
           placeholder="Biography"
         />
-        {/* <Input
-          style={styles.userName}
-          onChangeText={(value) =>
-            setGuardian({
-              ...guardian,
-              numberOfKids: value,
-            })
-          }
-          value={guardian.numberOfKids}
-          placeholder="How Many Kids Do You Have?"
-        /> */}
+
         {/* <ImagePickerCaretaker
           setCaretakerProfile={setCaretakerProfile}
           caretaker={caretakerProfile}
