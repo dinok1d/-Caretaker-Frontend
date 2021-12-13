@@ -8,6 +8,8 @@ import careTakerStore from "../../Store/CareTakerStore";
 import guardianStore from "../../Store/GuardianStore";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import IconBar from "react-native-vector-icons/Ionicons";
+import IconHome from "react-native-vector-icons/AntDesign";
+
 import { observer } from "mobx-react";
 import {
   useTheme,
@@ -68,6 +70,16 @@ const Drawer = () => {
                   </Text>
                   <Title style={styles.title}>I am a CareTaker</Title>
                   <Caption style={styles.caption}>@Ct_CareTaker</Caption>
+                  <IconHome
+                    style={styles.drawerSection}
+                    size={30}
+                    name="home"
+                    onPress={() => {
+                      navigation.navigate("Home");
+                    }}
+                  />
+                  <Text style={styles.drawerSection}> Home </Text>
+
                   <Icon
                     //   style={styles.bottomDrawerSection}
                     marginBottom={200}
@@ -195,5 +207,8 @@ const styles = StyleSheet.create({
     // marginBottom: 200,
     borderTopColor: "#f4f4f4",
     borderTopWidth: 1,
+  },
+  drawerSection: {
+    marginTop: 15,
   },
 });
