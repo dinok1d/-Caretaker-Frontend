@@ -1,33 +1,26 @@
-import React, { useState, useEffect } from "react";
-import guardianStore from "../../../Store/GuardianStore";
-import guardStore from "../../../Store/GuardStore";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
-import { StyleSheet, View, SafeAreaView, Image, Text } from "react-native";
-import { baseURL } from "../../../Store/instance";
-import appointStore from "../../../Store/AppointmentStore";
-import { Input } from "native-base";
 import { Card, Button } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
-import { ScrollView } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
+import { Input } from "native-base";
 import Styles from "../../../Styles";
+import guardianStore from "../../../Store/GuardianStore";
+import guardStore from "../../../Store/GuardStore";
 
 const GuardianProfile = ({ navigation }) => {
-  const [guardian, setGuardian] = useState({
-    profile: {
+  const [guardian, setGuardian] = useState(
+    guardianStore.guardianProfile.profile || {
       firstName: "",
       lastName: "",
       image: require("../../../assets/defaultperson.png"),
       bio: "",
-      numberOfKids: "",
-    },
-  });
+      numberOfKids: 0,
+    }
+  );
 
-  // i want to update profile using the browser
-  useEffect(async () => {
-    guardStore.fetchGuardianProfile(guardianStore.guardian._id);
-  }, []);
-
-  const onSubmit = () => {
+  console.log(guardianStore.guardianProfile.profile);
+  const updateProfile = () => {
     guardStore.editGuardianProfile(guardian, navigation);
   };
 
@@ -62,9 +55,10 @@ const GuardianProfile = ({ navigation }) => {
           onChangeText={(value) =>
             setGuardian({
               ...guardian,
-              profile: { ...guardian.profile, firstName: value },
+              firstName: value,
             })
           }
+          value={guardian.firstName}
           placeholder="First Name"
         />
 
@@ -73,10 +67,23 @@ const GuardianProfile = ({ navigation }) => {
           onChangeText={(value) =>
             setGuardian({
               ...guardian,
-              profile: { ...guardian.profile, lastName: value },
+              lastName: value,
             })
           }
+          value={guardian.lastName}
           placeholder="Last Name"
+        />
+        <Input
+          style={styles.userName}
+          keyboardType="numeric"
+          onChangeText={(text) =>
+            setGuardian({
+              ...guardian,
+              numberOfKids: text,
+            })
+          }
+          text={guardian.numberOfKids}
+          placeholder="How Many Kids Do You Have?"
         />
 
         <Input
@@ -84,21 +91,13 @@ const GuardianProfile = ({ navigation }) => {
           onChangeText={(value) =>
             setGuardian({
               ...guardian,
-              profile: { ...guardian.profile, bio: value },
+              bio: value,
             })
           }
+          value={guardian.bio}
           placeholder="Biography"
         />
-        <Input
-          style={styles.userName}
-          onChangeText={(value) =>
-            setGuardian({
-              ...guardian,
-              profile: { ...guardian.profile, numberOfKids: value },
-            })
-          }
-          placeholder="How Many Kids Do You Have?"
-        />
+
         {/* <ImagePickerCaretaker
           setCaretakerProfile={setCaretakerProfile}
           caretaker={caretakerProfile}
@@ -110,6 +109,7 @@ const GuardianProfile = ({ navigation }) => {
             backgroundColor: "#FA2F60",
           }}
           title="Update"
+          onPress={updateProfile}
         />
       </Card>
     </ScrollView>

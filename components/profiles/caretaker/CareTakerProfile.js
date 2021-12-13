@@ -7,7 +7,7 @@ import { Input } from "native-base";
 import Styles from "../../../Styles";
 import careStore from "../../../Store/CareStore";
 import careTakerStore from "../../../Store/CareTakerStore";
-import { useEffect } from "react";
+
 import ImagePickerCaretaker from "../../imagePicker/ImagePickerCaretaker";
 const CareTakerProfileList = ({ navigation, route }) => {
   const [caretakerProfile, setCaretakerProfile] = useState(
@@ -20,9 +20,6 @@ const CareTakerProfileList = ({ navigation, route }) => {
       specialty: "",
     }
   );
-
-  console.log(caretakerProfile);
-  console.log(careStore.careTakerProfile);
 
   const updateProfile = () => {
     careStore.editProfile(caretakerProfile, navigation);
