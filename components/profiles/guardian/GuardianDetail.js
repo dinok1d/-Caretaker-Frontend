@@ -12,22 +12,6 @@ import guardianStore from "../../../Store/GuardianStore";
 import { useEffect } from "react";
 
 const GuardianDetail = ({ navigation, route }) => {
-  // console.log("this is before useffect", guardianStore.guardian.profile);
-  // useEffect(async () => {
-  //   const GuardProfile = guardStore.fetchGuardianProfile(
-  //     guardianStore.guardian._id
-  //   );
-  // }, []);
-  // console.log(guardianStore.guardian._id);
-  // console.log(GuardProfile);
-
-  const dumbData = {
-    username: "hassan",
-    firstName: "Sayed ",
-    lastName: "Hassan",
-    numberOfKids: 0,
-    bio: "boring",
-  };
   return (
     <View style={styles.background}>
       <LinearGradient
@@ -40,7 +24,7 @@ const GuardianDetail = ({ navigation, route }) => {
             fontSize: 20,
           }}
         >
-          {dumbData.username}
+          {guardianStore.guardianProfile.username}
         </Card.Title>
         <Card.Divider />
 
@@ -62,7 +46,8 @@ const GuardianDetail = ({ navigation, route }) => {
           }}
         >
           Full name: {"\n"}
-          {dumbData.firstName} {dumbData.lastName}
+          {guardianStore.guardianProfile.profile.firstName}{" "}
+          {guardianStore.guardianProfile.profile.lastName}
         </Text>
         <Text
           style={{
@@ -71,7 +56,7 @@ const GuardianDetail = ({ navigation, route }) => {
         >
           {"\n"}
           numberOfKids: {"\n"}
-          {dumbData.numberOfKids}
+          {guardianStore.guardianProfile.profile.numberOfKids}
         </Text>
         <Text
           style={{
@@ -80,7 +65,7 @@ const GuardianDetail = ({ navigation, route }) => {
         >
           {"\n"}
           Bio:
-          {dumbData.bio} {"\n"}
+          {guardianStore.guardianProfile.profile.bio} {"\n"}
           {"\n"}
         </Text>
 

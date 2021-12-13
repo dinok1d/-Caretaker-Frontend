@@ -2,6 +2,8 @@ import { runInAction, makeAutoObservable } from "mobx";
 import decode from "jwt-decode";
 import { instance } from "./instance";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import guardStore from "./GuardStore";
+import { baseURL } from "../Store/instance";
 
 class GuardianStore {
   guardianProfile = null;
@@ -32,6 +34,13 @@ class GuardianStore {
       runInAction(() => {
         this.setUser(res.data.token);
       });
+      const foundProfile = guardStore.guardians.find(
+        (caretaker) => caretaker._id === guardianStore.guardian._id
+      );
+      // console.log(foundProfile);
+      // console.log(guardianStore.guardian._id);
+      foundProfile.profile.image = baseURL + foundProfile.profile.image;
+      this.guardianProfile = foundProfile;
 
       navigation.navigate("GuardianDetail");
     } catch (error) {
@@ -72,29 +81,6 @@ class GuardianStore {
         }
       }
     } catch (error) {}
-  };
-
-  fetchGuardianProfile = (guardianId) => {
-    const foundProfile = this.guardians.find(
-      (guardian) => guardian._id === guardianId
-    );
-    this.guardianProfile = foundProfile;
-    return foundProfile;
-  };
-
-  editGuardianProfile = async (updatedProfile, navigation) => {
-    try {
-      const formData = new FormData();
-      for (const key in updatedProfile) {
-        formData.append(key, updatedProfile[key]);
-      }
-
-      const res = await instance.put("/guardian/profile/", formData);
-      this.guardianProfile = res.data;
-      navigation.navigate("Home");
-    } catch (error) {
-      console.error(error);
-    }
   };
 }
 const guardianStore = new GuardianStore();
