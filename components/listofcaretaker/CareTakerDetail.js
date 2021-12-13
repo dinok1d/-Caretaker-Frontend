@@ -83,7 +83,7 @@ const CareTakerDetail = ({ navigation, route }) => {
             title="Book"
             buttonStyle={{
               borderRadius: Platform.OS === "ios" ? 20 : 20,
-              marginLeft: 150,
+              marginLeft: 190,
               marginTop: 10,
               backgroundColor: "#FA2F60",
               width: 150,

@@ -1,19 +1,14 @@
-import React from "react";
-
-import { View, Text } from "react-native";
-import { HStack, Spinner, Image } from "native-base";
+import { Text, ScrollView } from "react-native";
+import { HStack, Image } from "native-base";
 import { Card, Button } from "react-native-elements";
-
 import styles from "../../listofappointment/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import Styles from "../../../Styles";
-import guardStore from "../../../Store/GuardStore";
 import guardianStore from "../../../Store/GuardianStore";
-import { useEffect } from "react";
 
 const GuardianDetail = ({ navigation, route }) => {
   return (
-    <View style={styles.background}>
+    <ScrollView style={styles.background}>
       <LinearGradient
         colors={["#C0D6F9", "#B07DF0", "#C0D6F9"]}
         style={styles.background}
@@ -30,7 +25,7 @@ const GuardianDetail = ({ navigation, route }) => {
 
         <Image
           style={{
-            height: 140,
+            height: 280,
             marginBottom: 10,
             borderRadius: 70,
           }}
@@ -45,7 +40,7 @@ const GuardianDetail = ({ navigation, route }) => {
             fontSize: 16,
           }}
         >
-          Full name: {"\n"}
+          Full Name: {"\n"}
           {guardianStore.guardianProfile.profile.firstName}{" "}
           {guardianStore.guardianProfile.profile.lastName}
         </Text>
@@ -55,7 +50,7 @@ const GuardianDetail = ({ navigation, route }) => {
           }}
         >
           {"\n"}
-          numberOfKids: {"\n"}
+          Number of Kids: {"\n"}
           {guardianStore.guardianProfile.profile.numberOfKids}
         </Text>
         <Text
@@ -64,8 +59,8 @@ const GuardianDetail = ({ navigation, route }) => {
           }}
         >
           {"\n"}
-          Bio:
-          {guardianStore.guardianProfile.profile.bio} {"\n"}
+          Biography: {"\n"}
+          {guardianStore.guardianProfile.profile.bio}
           {"\n"}
         </Text>
 
@@ -74,10 +69,9 @@ const GuardianDetail = ({ navigation, route }) => {
             title="Edit Profile"
             buttonStyle={{
               borderRadius: Platform.OS === "ios" ? 20 : 20,
-              marginLeft: 30,
+              marginLeft: 20,
               marginTop: 10,
               backgroundColor: "#FA2F60",
-              // width: 40%,
             }}
             onPress={() => navigation.navigate("GuardianProfile")}
           />
@@ -88,13 +82,12 @@ const GuardianDetail = ({ navigation, route }) => {
               marginLeft: 25,
               marginTop: 10,
               backgroundColor: "#FA2F60",
-              // width: 40%,
             }}
             onPress={() => navigation.navigate("AppointmentList")}
           />
         </HStack>
       </Card>
-    </View>
+    </ScrollView>
   );
 };
 
