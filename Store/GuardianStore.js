@@ -16,7 +16,7 @@ class GuardianStore {
         this.setUser(res.data.token);
       });
 
-      navigation.navigate("CaretakerList");
+      navigation.navigate("GuardianDetail");
     } catch (error) {
       console.log(error);
       toast.show({
@@ -33,7 +33,7 @@ class GuardianStore {
         this.setUser(res.data.token);
       });
 
-      navigation.navigate("CaretakerList");
+      navigation.navigate("GuardianDetail");
     } catch (error) {
       console.log(error);
     }
