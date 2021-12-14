@@ -64,15 +64,14 @@ const AppointmentDetail = ({ navigation, route }) => {
         style={styles.background}
       />
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
-        <Card.Title
-          style={{
-            fontSize: 20,
+        <Button
+          title={appointment.guardianName}
+          onPress={HandleProfile}
+          buttonStyle={{
+            backgroundColor: "#FA2F60",
           }}
-        >
-          <Button title="View Profile" onPress={HandleProfile}>
-            <Text>{appointment.guardianName}</Text>
-          </Button>
-        </Card.Title>
+        />
+
         <Card.Divider />
         <Image
           style={{ height: 200 }}
@@ -185,11 +184,8 @@ const AppointmentDetail = ({ navigation, route }) => {
             buttonStyle={{
               borderRadius: 10,
               marginTop: 10,
-              backgroundColor: "#fff5fb",
+              backgroundColor: "#F31B01",
               width: 90,
-            }}
-            titleStyle={{
-              color: "#FA2F60",
             }}
             onPress={handleDelete}
             title="Delete"
@@ -200,7 +196,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             buttonStyle={{
               borderRadius: 10,
               marginTop: 10,
-              backgroundColor: "#FA2F60",
+              backgroundColor: "#4A5BF5",
             }}
             onPress={handleDecline}
             title="Decline"
