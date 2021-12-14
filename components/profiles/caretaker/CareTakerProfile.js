@@ -59,6 +59,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
         ></Card.Image>
 
         <Input
+          autoCapitalize="none"
           style={styles.userName}
           onChangeText={(value) =>
             setCaretakerProfile({
@@ -71,6 +72,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
         />
 
         <Input
+          autoCapitalize="none"
           style={styles.userName}
           onChangeText={(value) =>
             setCaretakerProfile({
@@ -83,6 +85,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
         />
 
         <Input
+          autoCapitalize="none"
           style={styles.userName}
           onChangeText={(value) =>
             setCaretakerProfile({
@@ -95,6 +98,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
         />
 
         <Input
+          autoCapitalize="none"
           style={styles.userName}
           onChangeText={(value) =>
             setCaretakerProfile({
@@ -107,6 +111,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
         />
 
         <Input
+          autoCapitalize="none"
           style={styles.userName}
           onChangeText={(value) =>
             setCaretakerProfile({ ...caretakerProfile, bio: value })
@@ -115,6 +120,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
           placeholder="Biography"
         />
         <Input
+          autoCapitalize="none"
           style={styles.userName}
           onChangeText={(value) =>
             setCaretakerProfile({ ...caretakerProfile, specialty: value })

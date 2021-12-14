@@ -58,13 +58,32 @@ const Navigation = () => {
         name="Home"
         component={Home}
         options={{
-          headerStyle: { backgroundColor: "#fadd97" },
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          headerBackTitleVisible: false,
+          title: "Home",
+          headerLeft: () => <Drawer />,
         }}
-        options={({ navigation }) => {
-          return {
-            headerRight: () => <ProfileButton navigation={navigation} />,
-          };
-        }}
+        // options={({ navigation }) => {
+        //   return {
+        //     headerRight: () => <ProfileButton navigation={navigation} />,
+        //   };
+        // }}
       />
       <Screen
         name="CareTakerSignin"

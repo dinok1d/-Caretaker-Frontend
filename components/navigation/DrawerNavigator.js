@@ -44,7 +44,7 @@ const Drawer = () => {
             {!guardianStore.guardian && !careTakerStore.caretaker ? (
               <View>
                 <Icon
-                  style={styles.signin}
+                  style={styles.drawerSection}
                   size={30}
                   name="login"
                   onPress={() => {
@@ -53,7 +53,7 @@ const Drawer = () => {
                   }}
                 />
 
-                <Text>signin/up</Text>
+                <Text style={styles.title}>signin/up</Text>
               </View>
             ) : careTakerStore.caretaker ? (
               <View>

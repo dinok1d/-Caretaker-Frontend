@@ -113,6 +113,7 @@ const Signin = ({ navigation }) => {
         <FormControl>
           <FormControl.Label>Username</FormControl.Label>
           <Input
+            autoCapitalize="none"
             style={{ borderColor: "#8285E0", height: 36 }}
             onChangeText={(username) => setUser({ ...user, username })}
             placeholder={"Username"}
