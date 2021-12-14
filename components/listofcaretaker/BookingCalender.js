@@ -20,13 +20,11 @@ const BookingCalender = ({ navigation, route }) => {
       <Calendar
         style={styles.CalendarCSS}
         minDate={Date.now()}
-        disableArrowLeft={true}
         markingType={"period"}
         onDayPress={handlePickDate}
         height={20}
         width={22}
       />
-      <Text></Text>
     </View>
   );
 };

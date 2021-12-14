@@ -7,6 +7,8 @@ import { Card, Button } from "react-native-elements";
 import styles from "../listofappointment/styles";
 import careStore from "../../Store/CareStore";
 import { LinearGradient } from "expo-linear-gradient";
+import moment from "moment";
+
 import Styles from "../../Styles";
 
 const AppointmentDetail = ({ navigation, route }) => {
@@ -58,6 +60,7 @@ const AppointmentDetail = ({ navigation, route }) => {
           source={{
             uri: "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png",
           }}
+          alt="Profile Img"
         />
 
         <Text
@@ -84,17 +87,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             fontSize: 16,
           }}
         >
-          Caretaker: {appointment.date}
-          {"\n"}
-        </Text>
-
-        <Text
-          style={{
-            fontSize: 16,
-          }}
-        >
-          Caretaker: {appointment.time}
-          {"\n"}
+          Time: ({appointment.date},{appointment.time}){"\n"}
         </Text>
 
         <Text
@@ -111,7 +104,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             fontSize: 16,
           }}
         >
-          Created: {appointment.createdAt}
+          Created: {moment(appointment.createdAt).format("h:mm a")}
           {"\n"}
         </Text>
 
@@ -120,7 +113,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             fontSize: 16,
           }}
         >
-          Updated: {appointment.updatedAt}
+          Updated: {moment(appointment.updatedAt).format("h:mm a")}
           {"\n"}
         </Text>
         <HStack>

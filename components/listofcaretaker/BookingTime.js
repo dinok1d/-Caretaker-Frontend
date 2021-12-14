@@ -6,18 +6,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import appointStore from "../../Store/AppointmentStore";
 import TimePicker from "../timePicker/TimePicker";
 
-const BookingTime = ({ route }) => {
+const BookingTime = ({ route, navigation }) => {
   const day = route.params.day;
   const caretaker = route.params.caretaker;
 
-  const handleBook = () => {
-    console.log({ _id: caretaker._id });
-    appointStore.bookAppointment({ _id: caretaker._id });
-  };
-  const clg = () => {
-    console.log({ _id: caretaker._id });
-    console.log(day.dateString);
-  };
   return (
     <View>
       <LinearGradient
@@ -25,23 +17,13 @@ const BookingTime = ({ route }) => {
         style={styles.background}
       />
 
-      {/* <Text style={styles.TextDetail}>
-        The Appointment Date: {day.dateString}
-      </Text>
-      <Text style={styles.TextDetail}>The CareTaker: {caretaker.username}</Text> */}
       <Center style={styles.shadow}>
-        <Text style={{ marginBottom: 20, fontSize: 25 }}>Pick a Time</Text>
-        <HStack>
-          <Button title="12:00PM" buttonStyle={styles.button} />
-          <Button title="04:00PM" buttonStyle={styles.button} />
-        </HStack>
         {/* this will confirm the booking */}
-        <TimePicker bookCaretaker={caretaker._id} bookDate={day.dateString} />
-       
-        <HStack>
-          <Button title="07:00PM" buttonStyle={styles.button} />
-          <Button title="09:00AM" buttonStyle={styles.button} />
-        </HStack>
+        <TimePicker
+          bookCaretaker={caretaker._id}
+          bookDate={day.dateString}
+          navigation={navigation}
+        />
       </Center>
     </View>
   );
