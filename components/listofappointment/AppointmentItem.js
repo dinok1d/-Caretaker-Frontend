@@ -11,7 +11,7 @@ const AppointmentItem = ({ appointment, navigation }) => {
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
         <Card.Title
           style={{
-            fontSize: 18,
+            fontSize: 19,
           }}
         >
           {appointment.guardianName}
@@ -31,15 +31,24 @@ const AppointmentItem = ({ appointment, navigation }) => {
               alt: "image",
             }}
           />
-          <Text
-            style={{
-              fontSize: 16,
-              marginLeft: 15,
-            }}
-          >
-            {"\n"} Status: {"\n"}
-            {appointment.status}
-          </Text>
+          <View>
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: "bold",
+                marginBottom: 10,
+              }}
+            >
+              Status:
+            </Text>
+            <Text
+              style={{
+                fontSize: 16,
+              }}
+            >
+              {appointment.status}
+            </Text>
+          </View>
         </HStack>
 
         <Button
