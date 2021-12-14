@@ -35,13 +35,14 @@ class CareTakerStore {
       runInAction(async () => {
         await this.setUser(res.data.token);
       });
-      console.log(this.caretaker);
+
       const foundProfile = careStore.caretakers.find(
         (caretaker) => caretaker._id === careTakerStore.caretaker._id
       );
-      console.log(foundProfile);
+
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.careTakerProfile = foundProfile;
+
       navigation.navigate("AppointmentList");
     } catch (error) {
       console.log(error);
@@ -53,6 +54,7 @@ class CareTakerStore {
       runInAction(() => {
         this.caretaker = decode(token);
       });
+      this.isLoading = false;
 
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     } catch (error) {}
@@ -88,3 +90,4 @@ class CareTakerStore {
 const careTakerStore = new CareTakerStore();
 careTakerStore.checkForToken();
 export default careTakerStore;
+// we need an loading for the null

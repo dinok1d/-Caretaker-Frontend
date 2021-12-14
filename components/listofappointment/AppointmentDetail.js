@@ -1,11 +1,12 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable, ScrollView } from "react-native";
 import { HStack, Spinner, Box, useToast, Image } from "native-base";
 import appointStore from "../../Store/AppointmentStore";
 import { Card, Button } from "react-native-elements";
 import styles from "../listofappointment/styles";
 import careStore from "../../Store/CareStore";
+import guardStore from "../../Store/GuardStore";
 import { LinearGradient } from "expo-linear-gradient";
 import moment from "moment";
 
@@ -16,7 +17,7 @@ const AppointmentDetail = ({ navigation, route }) => {
   const appointment = route.params.appointment;
 
   const toast = useToast();
-
+  const guardianProfile = guardStore.fetchGuardianProfile(appointment.guardian);
   const handleAccept = () => {
     appointStore.updateAppointment(
       appointment._id,
@@ -40,8 +41,24 @@ const AppointmentDetail = ({ navigation, route }) => {
     navigation.navigate("AppointmentList");
   };
 
+  const HandleProfile = () => {
+    navigation.navigate("GuardianDetail", { guardianProfile: guardianProfile });
+  };
+
+  // navigationByCondition = (item) => {
+  //   const { navigation } = this.props;
+
+  //   if (item.status === "Situação: Pending") {
+  //     navigation.navigate("OrderAccept");
+  //   } else {
+  //     navigation.navigate("OrderDetailDelivered");
+  //   }
+  // };
+
+  // onPress={()=>this.navigationByCondition(item)}
+
   return (
-    <View style={styles.background}>
+    <ScrollView style={styles.background}>
       <LinearGradient
         colors={["#C0D6F9", "#B07DF0", "#C0D6F9"]}
         style={styles.background}
@@ -52,7 +69,9 @@ const AppointmentDetail = ({ navigation, route }) => {
             fontSize: 20,
           }}
         >
-          {appointment.guardianName}
+          <Pressable onPress={HandleProfile}>
+            <Text>{appointment.guardianName}</Text>
+          </Pressable>
         </Card.Title>
         <Card.Divider />
         <Image
@@ -160,7 +179,7 @@ const AppointmentDetail = ({ navigation, route }) => {
           </Button>
         </HStack>
       </Card>
-    </View>
+    </ScrollView>
   );
 };
 

@@ -1,6 +1,6 @@
 // import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet } from "react-native";
+import { LogBox, StyleSheet } from "react-native";
 import { NativeBaseProvider } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
 import Navigation from "./components/navigation/Navigation";
@@ -8,6 +8,7 @@ import Navigation from "./components/navigation/Navigation";
 // import OnBoardingUi from "./components/landingpage/OnBoardingUi";
 
 export default function App() {
+  LogBox.ignoreAllLogs(); // this removes all warnings
   return (
     <NavigationContainer>
       <NativeBaseProvider>

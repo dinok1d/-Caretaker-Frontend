@@ -1,12 +1,14 @@
+import React from "react";
 import { Text, ScrollView } from "react-native";
 import { HStack, Image } from "native-base";
 import { Card, Button } from "react-native-elements";
 import styles from "../../listofappointment/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import Styles from "../../../Styles";
-import guardianStore from "../../../Store/GuardianStore";
 
 const GuardianDetail = ({ navigation, route }) => {
+  const { guardianProfile } = route.params;
+
   return (
     <ScrollView style={styles.background}>
       <LinearGradient
@@ -19,7 +21,7 @@ const GuardianDetail = ({ navigation, route }) => {
             fontSize: 20,
           }}
         >
-          {guardianStore.guardianProfile.username}
+          {guardianProfile.profile.username}
         </Card.Title>
         <Card.Divider />
 
@@ -41,8 +43,7 @@ const GuardianDetail = ({ navigation, route }) => {
           }}
         >
           Full Name: {"\n"}
-          {guardianStore.guardianProfile.profile.firstName}{" "}
-          {guardianStore.guardianProfile.profile.lastName}
+          {guardianProfile.profile.firstName} {guardianProfile.profile.lastName}
         </Text>
         <Text
           style={{
@@ -51,7 +52,7 @@ const GuardianDetail = ({ navigation, route }) => {
         >
           {"\n"}
           Number of Kids: {"\n"}
-          {guardianStore.guardianProfile.profile.numberOfKids}
+          {guardianProfile.profile.numberOfKids}
         </Text>
         <Text
           style={{
@@ -60,7 +61,7 @@ const GuardianDetail = ({ navigation, route }) => {
         >
           {"\n"}
           Biography: {"\n"}
-          {guardianStore.guardianProfile.profile.bio}
+          {guardianProfile.profile.bio}
           {"\n"}
         </Text>
 
