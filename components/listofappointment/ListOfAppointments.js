@@ -10,6 +10,9 @@ import { LinearGradient } from "expo-linear-gradient";
 import styles from "../listofappointment/styles";
 
 const ListOfAppointments = ({ navigation }) => {
+  if (careTakerStore.isLoading) {
+    return <Spinner />;
+  }
   const filteredList = appointStore.appointment
     .filter(
       (appointment) =>

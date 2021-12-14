@@ -30,7 +30,7 @@ class CareStore {
 
       const res = await instance.put("/caretaker/profile/", formData);
       this.careTakerProfile = res.data;
-      navigation.navigate("Home");
+      navigation.navigate("AppointmentList");
     } catch (error) {
       console.error(error);
     }
