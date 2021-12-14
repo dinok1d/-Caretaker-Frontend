@@ -5,20 +5,14 @@ import { View } from "react-native";
 const Home = ({ navigation }) => {
   return (
     <View>
-      <Button
-        onPress={() => {
-          navigation.navigate("GuardianProfile");
-        }}
-      >
+      <Button onPress={() => navigation.navigate("GuardianProfile")}>
         Guardian Profile
       </Button>
 
       <Button
         color="#FA2F60"
         marginTop="20"
-        onPress={() => {
-          navigation.navigate("CareTakerProfile");
-        }}
+        onPress={() => navigation.navigate("CareTakerProfile")}
       >
         CareTaker Profile
       </Button>

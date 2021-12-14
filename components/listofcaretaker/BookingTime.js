@@ -7,8 +7,7 @@ import appointStore from "../../Store/AppointmentStore";
 import TimePicker from "../timePicker/TimePicker";
 
 const BookingTime = ({ route, navigation }) => {
-  const day = route.params.day;
-  const caretaker = route.params.caretaker;
+  const { caretaker, day } = route.params;
 
   return (
     <View>
@@ -18,12 +17,21 @@ const BookingTime = ({ route, navigation }) => {
       />
 
       <Center style={styles.shadow}>
+      <Text style={{ marginBottom: 20, fontSize: 25 }}>Pick a Time</Text>
+        <HStack>
+          <Button title="2 Hours" buttonStyle={styles.button} />
+          <Button title="4 Hours" buttonStyle={styles.button} />
+        </HStack>
         {/* this will confirm the booking */}
         <TimePicker
           bookCaretaker={caretaker._id}
           bookDate={day.dateString}
           navigation={navigation}
         />
+        <HStack>
+          <Button title="4 Hours" buttonStyle={styles.button} />
+          <Button title="4 Hours" buttonStyle={styles.button} />
+        </HStack>
       </Center>
     </View>
   );

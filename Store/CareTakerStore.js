@@ -50,7 +50,7 @@ class CareTakerStore {
   };
   setUser = async (token) => {
     try {
-      await AsyncStorage.setItem("myToken", token);
+      await AsyncStorage.setItem("CaretakerToken", token);
       runInAction(() => {
         this.caretaker = decode(token);
       });
@@ -62,7 +62,7 @@ class CareTakerStore {
   logout = async (navigation) => {
     try {
       delete instance.defaults.headers.common.Authorization;
-      await AsyncStorage.removeItem("myToken");
+      await AsyncStorage.removeItem("CaretakerToken");
       runInAction(() => {
         this.caretaker = null;
       });
@@ -73,7 +73,7 @@ class CareTakerStore {
   };
   checkForToken = async () => {
     try {
-      const token = await AsyncStorage.getItem("myToken");
+      const token = await AsyncStorage.getItem("CaretakerToken");
       if (token) {
         const currentTime = Date.now();
         let tempUser = decode(token);

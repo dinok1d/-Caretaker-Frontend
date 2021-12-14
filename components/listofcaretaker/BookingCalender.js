@@ -5,6 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const BookingCalender = ({ navigation, route }) => {
   const caretaker = route.params.caretaker;
+
   const handlePickDate = (day) => {
     navigation.navigate("BookingTime", { day: day, caretaker: caretaker });
     console.log(day);

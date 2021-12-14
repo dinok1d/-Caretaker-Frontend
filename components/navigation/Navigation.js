@@ -48,7 +48,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
           headerBackTitleVisible: false,
           title: "Appointments",
@@ -73,7 +73,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
           headerBackTitleVisible: false,
           title: "Home",
@@ -120,7 +120,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
           headerBackTitleVisible: false,
           title: "Appointments",
@@ -146,7 +146,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
           headerBackTitleVisible: false,
           title: "Information",
@@ -171,7 +171,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
           headerBackTitleVisible: false,
           title: "Guardian Profile",
@@ -196,7 +196,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
           headerBackTitleVisible: false,
           title: "Caretaker Profile",
@@ -221,7 +221,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
 
           title: "Choose Your Caretaker",
@@ -247,7 +247,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
           title: "Information",
           headerBackTitleVisible: false,
@@ -272,7 +272,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
           title: "Information",
           headerBackTitleVisible: false,
@@ -298,7 +298,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
           headerBackTitleVisible: false,
           title: "Calendar",
@@ -324,7 +324,7 @@ const Navigation = () => {
             elevation: 15,
           },
           headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
+            //fontFamily: "KohinoorTelugu-Regular",
           },
           headerBackTitleVisible: false,
           title: "Booking Times",
@@ -335,4 +335,3 @@ const Navigation = () => {
 };
 export default Navigation;
 
-const styles = StyleSheet.create({});
