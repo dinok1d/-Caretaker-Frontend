@@ -5,9 +5,20 @@ import { Card, Button } from "react-native-elements";
 import styles from "../../listofappointment/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import Styles from "../../../Styles";
+import guardianStore from "../../../Store/GuardianStore";
+
+import careTakerStore from "../../../Store/CareTakerStore";
 
 const GuardianDetail = ({ navigation, route }) => {
-  const { guardianProfile } = route.params;
+  const guardianProfile =
+    guardianStore.guardian.type === "guardian"
+      ? guardianStore.guardianProfile
+      : route.params.guardianProfile;
+
+  // const { guardianProfile } = route.params;
+
+  console.log("this is guardianStore", guardianStore.guardian.type);
+  console.log("this is caretakerStore", careTakerStore.caretaker.type);
 
   return (
     <ScrollView style={styles.background}>
@@ -66,26 +77,30 @@ const GuardianDetail = ({ navigation, route }) => {
         </Text>
 
         <HStack>
-          <Button
-            title="Edit Profile"
-            buttonStyle={{
-              borderRadius: Platform.OS === "ios" ? 20 : 20,
-              marginLeft: 20,
-              marginTop: 10,
-              backgroundColor: "#FA2F60",
-            }}
-            onPress={() => navigation.navigate("GuardianProfile")}
-          />
-          <Button
-            title="My Appointments"
-            buttonStyle={{
-              borderRadius: Platform.OS === "ios" ? 20 : 20,
-              marginLeft: 25,
-              marginTop: 10,
-              backgroundColor: "#FA2F60",
-            }}
-            onPress={() => navigation.navigate("AppointmentList")}
-          />
+          {guardianStore.guardian?.type === "guardian" && (
+            <>
+              <Button
+                title="Edit Profile"
+                buttonStyle={{
+                  borderRadius: Platform.OS === "ios" ? 20 : 20,
+                  marginLeft: 20,
+                  marginTop: 10,
+                  backgroundColor: "#FA2F60",
+                }}
+                onPress={() => navigation.navigate("GuardianProfile")}
+              />
+              <Button
+                title="My Appointments"
+                buttonStyle={{
+                  borderRadius: Platform.OS === "ios" ? 20 : 20,
+                  marginLeft: 25,
+                  marginTop: 10,
+                  backgroundColor: "#FA2F60",
+                }}
+                onPress={() => navigation.navigate("AppointmentList")}
+              />
+            </>
+          )}
         </HStack>
       </Card>
     </ScrollView>
