@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import MenuDrawer from "react-native-side-drawer";
 import { useState } from "react";
 import { Button, HStack } from "native-base";
@@ -34,7 +40,7 @@ const Drawer = () => {
 
   drawerContent = () => {
     return (
-      <View style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}>
         <View style={styles.drawerContent}>
           <View style={{ flexDirection: "row", marginBottom: 50 }}>
             <View style={{ marginLeft: 15, flexDirection: "column" }}></View>
@@ -216,7 +222,7 @@ const Drawer = () => {
             )}
           </View>
         </View>
-      </View>
+      </ScrollView>
     );
   };
 

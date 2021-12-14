@@ -124,7 +124,7 @@ const Navigation = () => {
           },
           headerBackTitleVisible: false,
           title: "Appointments",
-          headerLeft: () => <Drawer />,
+          // headerLeft: () => <Drawer />,
         }}
       />
       <Screen

@@ -81,60 +81,89 @@ const AppointmentDetail = ({ navigation, route }) => {
           }}
           alt="Profile Img"
         />
-
-        <Text
-          style={{
-            fontSize: 16,
-          }}
-        >
-          {"\n"}
-          Guardian: {appointment.guardianName}
-          {"\n"}
-        </Text>
-
-        <Text
-          style={{
-            fontSize: 16,
-          }}
-        >
-          Caretaker: {appointment.caretakerName}
-          {"\n"}
-        </Text>
-
-        <Text
-          style={{
-            fontSize: 16,
-          }}
-        >
-          Time: ({appointment.date},{appointment.time}){"\n"}
-        </Text>
-
-        <Text
-          style={{
-            fontSize: 16,
-          }}
-        >
-          Status: {appointment.status}
-          {"\n"}
-        </Text>
-
-        <Text
+        <View>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "bold",
+              marginBottom: 10,
+            }}
+          >
+            {"\n"}
+            Guardian:{" "}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+            }}
+          >
+            {appointment.guardianName}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "bold",
+              marginBottom: 10,
+            }}
+          >
+            {"\n"}
+            Caretaker:
+          </Text>
+          <Text>
+            {appointment.caretakerName}
+            {"\n"}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "bold",
+              marginBottom: 10,
+            }}
+          >
+            Time:
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+            }}
+          >
+            ({appointment.date}, {appointment.time}){"\n"}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "bold",
+              marginBottom: 10,
+            }}
+          >
+            Status:
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+            }}
+          >
+            {appointment.status}
+            {"\n"}
+          </Text>
+        </View>
+        {/* <Text
           style={{
             fontSize: 16,
           }}
         >
           Created: {moment(appointment.createdAt).format("h:mm a")}
           {"\n"}
-        </Text>
+        </Text> */}
 
-        <Text
+        {/* <Text
           style={{
             fontSize: 16,
           }}
         >
           Updated: {moment(appointment.updatedAt).format("h:mm a")}
           {"\n"}
-        </Text>
+        </Text> */}
         <HStack>
           {
             // (appointStore.appointment.status = "accept"(
@@ -143,7 +172,7 @@ const AppointmentDetail = ({ navigation, route }) => {
                 borderRadius: 10,
                 marginLeft: 20,
                 marginTop: 10,
-                backgroundColor: "#FA2F60",
+                backgroundColor: "#61EB5D",
               }}
               onPress={handleAccept}
               title="Accept"

@@ -40,44 +40,76 @@ const CareTakerDetail = ({ navigation, route }) => {
           }}
           alt="Logo"
         />
-
-        <Text
-          style={{
-            fontSize: 16,
-          }}
-        >
-          Full name: {"\n"}
-          {caretaker.profile.firstName} {caretaker.profile.lastName}
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-          }}
-        >
-          {"\n"}
-          Qualification: {"\n"}
-          {caretaker.profile.qualification}
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-          }}
-        >
-          {"\n"}
-          Past Experience: {"\n"}
-          {caretaker.profile.pastExp}
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-          }}
-        >
-          {"\n"}
-          Bio:
-          {caretaker.profile.bio} {"\n"}
-          {"\n"}
-        </Text>
-
+        <View>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "bold",
+              marginBottom: 10,
+            }}
+          >
+            Full name:
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+            }}
+          >
+            {caretaker.profile.firstName} {caretaker.profile.lastName}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "bold",
+              marginBottom: 10,
+            }}
+          >
+            {"\n"}
+            Qualification:{" "}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+            }}
+          >
+            {caretaker.profile.qualification}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "bold",
+              marginBottom: 10,
+            }}
+          >
+            {"\n"}
+            Past Experience:
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+            }}
+          >
+            {caretaker.profile.pastExp}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "bold",
+              marginBottom: 10,
+            }}
+          >
+            {"\n"}
+            Bio:
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+            }}
+          >
+            {caretaker.profile.bio}
+            {"\n"}
+          </Text>
+        </View>
         <HStack>
           <Button
             title="Book"

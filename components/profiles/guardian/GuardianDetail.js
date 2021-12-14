@@ -35,7 +35,6 @@ const GuardianDetail = ({ navigation, route }) => {
           {guardianProfile.profile.username}
         </Card.Title>
         <Card.Divider />
-
         <Image
           style={{
             height: 280,
@@ -47,35 +46,57 @@ const GuardianDetail = ({ navigation, route }) => {
             alt: "image",
           }}
         />
-
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: "bold",
+            marginBottom: 10,
+          }}
+        >
+          Full Name:
+        </Text>
         <Text
           style={{
             fontSize: 16,
           }}
         >
-          Full Name: {"\n"}
           {guardianProfile.profile.firstName} {guardianProfile.profile.lastName}
         </Text>
         <Text
           style={{
             fontSize: 16,
+            fontWeight: "bold",
+            marginBottom: 10,
           }}
         >
           {"\n"}
-          Number of Kids: {"\n"}
-          {guardianProfile.profile.numberOfKids}
+          Number of Kids:
         </Text>
         <Text
           style={{
             fontSize: 16,
           }}
         >
+          {guardianProfile.profile.numberOfKids}
+        </Text>
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: "bold",
+            marginBottom: 10,
+          }}
+        >
           {"\n"}
-          Biography: {"\n"}
+          Biography:
+        </Text>
+        <Text
+          style={{
+            fontSize: 16,
+          }}
+        >
           {guardianProfile.profile.bio}
           {"\n"}
         </Text>
-
         <HStack>
           {guardianStore.guardian?.type === "guardian" && (
             <>

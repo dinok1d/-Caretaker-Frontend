@@ -11,7 +11,7 @@ const CareTakerItem = ({ caretaker, navigation }) => {
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
         <Card.Title
           style={{
-            fontSize: 18,
+            fontSize: 19,
           }}
         >
           {caretaker.profile.firstName} {caretaker.profile.lastName}
@@ -25,15 +25,25 @@ const CareTakerItem = ({ caretaker, navigation }) => {
             }}
             alt="Logo"
           />
-          <Text
-            style={{
-              fontSize: 16,
-            }}
-          >
-            {"\n"}
-            Specialty: {"\n"}
-            {caretaker.profile.specialty}
-          </Text>
+          <View>
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: "bold",
+                marginBottom: 10,
+              }}
+            >
+              Specialty:
+            </Text>
+
+            <Text
+              style={{
+                fontSize: 16,
+              }}
+            >
+              {caretaker.profile.specialty}
+            </Text>
+          </View>
         </HStack>
         <Button
           buttonStyle={{
