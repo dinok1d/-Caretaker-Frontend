@@ -58,6 +58,7 @@ const GuardianProfile = ({ navigation }) => {
         ></Card.Image>
 
         <Input
+          autoCapitalize="none"
           style={styles.userName}
           onChangeText={(value) =>
             setguardProfile({
@@ -70,6 +71,7 @@ const GuardianProfile = ({ navigation }) => {
         />
 
         <Input
+          autoCapitalize="none"
           style={styles.userName}
           onChangeText={(value) =>
             setguardProfile({
@@ -83,10 +85,10 @@ const GuardianProfile = ({ navigation }) => {
         <Input
           style={styles.userName}
           keyboardType="numeric"
-          onChangeText={(text) =>
+          onChangeText={(value) =>
             setguardProfile({
               ...guardProfile,
-              numberOfKids: text,
+              numberOfKids: value,
             })
           }
           value={guardProfile.numberOfKids}
@@ -94,6 +96,7 @@ const GuardianProfile = ({ navigation }) => {
         />
 
         <Input
+          autoCapitalize="none"
           style={styles.userName}
           onChangeText={(value) =>
             setguardProfile({

@@ -119,6 +119,7 @@ const Signup = ({ navigation }) => {
           >
             <FormControl.Label>Username</FormControl.Label>
             <Input
+              autoCapitalize="none"
               variant="outline"
               style={{
                 borderColor: "#8285E0",
@@ -167,6 +168,7 @@ const Signup = ({ navigation }) => {
         >
           <FormControl.Label>Email ID</FormControl.Label>
           <Input
+            autoCapitalize="none"
             style={{
               borderColor: "#8285E0",
               height: 35,
