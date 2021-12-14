@@ -20,10 +20,16 @@ class AppointStore {
     }
   };
 
-  bookAppointment = async (bookingDetails) => {
+  bookAppointment = async (bookingDetails, navigation,toast) => {
     try {
       console.log(bookingDetails);
       await instance.post("/appointment", bookingDetails);
+      toast.show({
+        title: "Appointment Booked",
+        status: "success",
+        placement: "top",
+      });
+      navigation.navigate("CaretakerList")
     } catch (error) {
       console.log(error);
     }

@@ -22,8 +22,8 @@ const CareTakerItem = ({ caretaker, navigation }) => {
             style={{ width: 80, height: 80, borderRadius: 30, marginRight: 30 }}
             source={{
               uri: "https://cdn-icons-png.flaticon.com/512/1876/1876934.png",
-              alt: "image",
             }}
+            alt="Logo"
           />
           <Text
             style={{
