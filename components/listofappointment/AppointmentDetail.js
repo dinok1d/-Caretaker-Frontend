@@ -69,9 +69,9 @@ const AppointmentDetail = ({ navigation, route }) => {
             fontSize: 20,
           }}
         >
-          <Pressable onPress={HandleProfile}>
+          <Button title="View Profile" onPress={HandleProfile}>
             <Text>{appointment.guardianName}</Text>
-          </Pressable>
+          </Button>
         </Card.Title>
         <Card.Divider />
         <Image
@@ -151,6 +151,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             // ))
           }
           <Box style={styles.buttonSpace}></Box>
+          {}
           <Button
             buttonStyle={{
               borderRadius: 10,

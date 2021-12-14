@@ -22,6 +22,7 @@
     "base": "^3.0.0",
     "expo": "~43.0.2",
     "expo-asset": "~8.4.3",
+    "expo-cli": "^5.0.0",
     "expo-image-picker": "~11.0.3",
     "expo-linear-gradient": "^10.0.3",
     "expo-status-bar": "~1.1.0",
