@@ -8,6 +8,7 @@ import { baseURL } from "../Store/instance";
 class GuardianStore {
   guardian = null;
   guardianProfile = null;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -35,7 +36,7 @@ class GuardianStore {
         this.setUser(res.data.token);
       });
       const foundProfile = guardStore.guardians.find(
-        (caretaker) => caretaker._id === guardianStore.guardian._id
+        (guardian) => guardian._id === guardianStore.guardian._id
       );
       console.log(this.guardian);
       // console.log(foundProfile);

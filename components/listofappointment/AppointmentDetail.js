@@ -8,9 +8,11 @@ import styles from "../listofappointment/styles";
 import careStore from "../../Store/CareStore";
 import guardStore from "../../Store/GuardStore";
 import { LinearGradient } from "expo-linear-gradient";
+import guardianStore from "../../Store/GuardianStore";
 import moment from "moment";
 
 import Styles from "../../Styles";
+import careTakerStore from "../../Store/CareTakerStore";
 
 const AppointmentDetail = ({ navigation, route }) => {
   if (appointStore.isLoading) return <Spinner />;
@@ -40,6 +42,9 @@ const AppointmentDetail = ({ navigation, route }) => {
     appointStore.appointmentDelete(appointment._id);
     navigation.navigate("AppointmentList");
   };
+
+  console.log("this is guardianStore", guardianStore.guardian.type);
+  console.log("this is caretakerStore", careTakerStore.caretaker.type);
 
   const HandleProfile = () => {
     navigation.navigate("GuardianDetail", { guardianProfile: guardianProfile });
@@ -162,46 +167,47 @@ const AppointmentDetail = ({ navigation, route }) => {
           {"\n"}
         </Text> */}
         <HStack>
-          {
-            // (appointStore.appointment.status = "accept"(
+          {careTakerStore.caretaker.type === "caretaker" && (
             <Button
               buttonStyle={{
                 borderRadius: 10,
-                marginLeft: 50,
+                marginLeft: 20,
                 marginTop: 10,
                 backgroundColor: "#61EB5D",
               }}
               onPress={handleAccept}
               title="Accept"
             />
-            // ))
-          }
+          )}
           <Box style={styles.buttonSpace}></Box>
-          {}
-          {/* <Button
-            buttonStyle={{
-              borderRadius: 10,
-              marginTop: 10,
-              backgroundColor: "#F31B01",
-              width: 90,
-            }}
-            onPress={handleDelete}
-            title="Delete"
-          /> */}
+          {guardianStore.guardian.type === "guardian" && (
+            <Button
+              buttonStyle={{
+                borderRadius: 10,
+                marginTop: 10,
+                backgroundColor: "#F31B01",
+                width: 90,
+              }}
+              onPress={handleDecline}
+              title="Decline"
+            />
+          )}
 
           <Box style={styles.buttonSpace}></Box>
-          <Button
-            buttonStyle={{
-              borderRadius: 10,
-              marginTop: 10,
-              marginLeft: 40,
-              backgroundColor: "#F31B01",
-            }}
-            onPress={handleDecline}
-            title="Decline"
-          >
-            Decline
-          </Button>
+          {careTakerStore.caretaker?.type === "caretaker" && (
+            <Button
+              buttonStyle={{
+                borderRadius: 10,
+                marginTop: 10,
+                marginRight: 90,
+                backgroundColor: "#F31B01",
+              }}
+              onPress={handleDecline}
+              title="Decline"
+            >
+              Decline
+            </Button>
+          )}
         </HStack>
       </Card>
     </ScrollView>
