@@ -8,10 +8,14 @@ import { Image } from "native-base";
 import styles from "../listofappointment/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import Styles from "../../Styles";
-
+import careTakerStore from "../../Store/CareTakerStore";
+import guardianStore from "../../Store/GuardianStore";
 const CareTakerDetail = ({ navigation, route }) => {
   if (careStore.isLoading) return <Spinner />;
   const caretaker = route.params.caretaker;
+
+  console.log(careTakerStore.caretaker);
+  console.log(guardianStore.guardian);
 
   return (
     <View style={styles.background}>

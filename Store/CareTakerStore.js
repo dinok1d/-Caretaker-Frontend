@@ -66,12 +66,14 @@ class CareTakerStore {
       runInAction(() => {
         this.caretaker = null;
       });
-      navigation.navigate("CaretakerList");
+
+      navigation.navigate("CareTakerSignin");
       toast.show({
         status: "success",
         title: "Logged out",
         description: "Successfully logged out",
       });
+
     } catch (error) {
       console.log(error);
     }

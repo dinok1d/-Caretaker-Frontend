@@ -1,12 +1,14 @@
-import React from "react";
-import { ScrollView } from "react-native";
+import React, { useEffect } from "react";
+import { ScrollView, BackHandler, Alert } from "react-native";
 import { observer } from "mobx-react";
 import careStore from "../../Store/CareStore";
 import CareTakerItem from "./CareTakerItem";
 import { LinearGradient } from "expo-linear-gradient";
 import styles from "../listofappointment/styles";
+import guardianStore from "../../Store/GuardianStore";
 
 const ListOfCareTakers = ({ navigation }) => {
+  
   const caretakerList = careStore.caretakers.map((caretaker) => (
     <CareTakerItem
       caretaker={caretaker}
@@ -14,7 +16,26 @@ const ListOfCareTakers = ({ navigation }) => {
       key={caretaker._id}
     />
   ));
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Hold on!", "Are you sure you want to go back?", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel",
+        },
+        { text: "YES", onPress: () => guardianStore.logout(navigation) },
+      ]);
+      return true;
+    };
 
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
   return (
     <ScrollView>
       <LinearGradient

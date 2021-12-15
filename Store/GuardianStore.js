@@ -59,18 +59,22 @@ class GuardianStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     } catch (error) {}
   };
-  logout = async (toast) => {
+
+  logout = async (navigation, toast) => {
+
     try {
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("myToken");
       runInAction(() => {
         this.guardian = null;
       });
+      navigation.replace("CareTakerSignin");
       toast.show({
         status: "success",
         title: "Logged out",
         description: "Successfully logged out",
       });
+
     } catch (error) {
       console.log(error);
     }
