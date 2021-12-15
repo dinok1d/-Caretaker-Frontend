@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { observer } from "mobx-react";
-import { ScrollView } from "react-native";
+import { ScrollView, BackHandler, Alert } from "react-native";
 import appointStore from "../../Store/AppointmentStore";
 import AppointmentItem from "./AppointmentItem";
 import careTakerStore from "../../Store/CareTakerStore";
@@ -26,7 +26,26 @@ const ListOfAppointments = ({ navigation }) => {
         key={appointment._id}
       />
     ));
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Hold on!", "Are you sure you want to go back?", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel",
+        },
+        { text: "YES", onPress: () => careTakerStore.logout(navigation) },
+      ]);
+      return true;
+    };
 
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
   return (
     <ScrollView>
       <LinearGradient
