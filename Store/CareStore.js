@@ -17,7 +17,7 @@ class CareStore {
       this.caretakers = res.data;
       this.isLoading = false;
     } catch (error) {
-      next(error);
+      console.log(error);
     }
   };
 

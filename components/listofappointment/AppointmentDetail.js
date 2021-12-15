@@ -180,8 +180,9 @@ const AppointmentDetail = ({ navigation, route }) => {
             <Button
               buttonStyle={{
                 borderRadius: 10,
-                marginLeft: 20,
+                marginLeft: 70,
                 marginTop: 10,
+                marginRight: 20,
                 backgroundColor: "#61EB5D",
               }}
               onPress={handleAccept}
@@ -189,6 +190,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             />
           )}
           <Box style={styles.buttonSpace}></Box>
+
           {guardianStore.guardian?._id === appointment.guardian && (
             <Button
               buttonStyle={{
@@ -201,6 +203,7 @@ const AppointmentDetail = ({ navigation, route }) => {
               title="Cancel"
             />
           )}
+
 
           <Box style={styles.buttonSpace}></Box>
           {careTakerStore.caretaker?._id === appointment.caretaker && (

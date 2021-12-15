@@ -12,7 +12,7 @@ class GuardianStore {
   constructor() {
     makeAutoObservable(this);
   }
-  signup = async (userData, navigation, toast) => {
+  signup = async (userData, navigation) => {
     try {
       const res = await instance.post("/guardian/Signup", userData);
       runInAction(() => {
@@ -22,14 +22,9 @@ class GuardianStore {
       navigation.navigate("GuardianProfile");
     } catch (error) {
       console.log(error);
-      toast.show({
-        status: "error",
-        title: "Invalid Login",
-        description: "You are not a Guardian",
-      });
     }
   };
-  signin = async (user, navigation) => {
+  signin = async (user, navigation, toast) => {
     try {
       const res = await instance.post("/guardian/Signin", user);
       runInAction(() => {
@@ -42,9 +37,16 @@ class GuardianStore {
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.guardianProfile = foundProfile;
 
-      navigation.navigate("GuardianDetail");
+
+      navigation.navigate("CaretakerList");
+
     } catch (error) {
       console.log(error);
+      toast.show({
+        status: "error",
+        title: "Invalid Login",
+        description: "Username/Password is incorrect",
+      });
     }
   };
   setUser = async (token) => {
@@ -57,13 +59,22 @@ class GuardianStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     } catch (error) {}
   };
-  logout = async () => {
+
+  logout = async (navigation, toast) => {
+
     try {
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("myToken");
       runInAction(() => {
         this.guardian = null;
       });
+      navigation.replace("CareTakerSignin");
+      toast.show({
+        status: "success",
+        title: "Logged out",
+        description: "Successfully logged out",
+      });
+
     } catch (error) {
       console.log(error);
     }

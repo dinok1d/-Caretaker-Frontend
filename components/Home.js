@@ -1,23 +1,30 @@
 import { Button } from "native-base";
 import React from "react";
 import { View } from "react-native";
+import BottomNav from "../tesingP/BottomNav";
+import { StyleSheet } from "react-native";
 
 const Home = ({ navigation }) => {
   return (
     <View>
-      <Button onPress={() => navigation.navigate("GuardianProfile")}>
-        Guardian Profile
-      </Button>
-
       <Button
-        color="#FA2F60"
-        marginTop="20"
-        onPress={() => navigation.navigate("CareTakerProfile")}
+        onPress={() => {
+          // alert("hi");
+          navigation.navigate("CareTakerSignin");
+        }}
       >
-        CareTaker Profile
+        Signin
       </Button>
+      <View style={styles.nav}>
+        <BottomNav navigation={navigation} />
+      </View>
     </View>
   );
 };
+const styles = StyleSheet.create({
+  nav: {
+    marginBottom: 100,
+  },
+});
 
 export default Home;
