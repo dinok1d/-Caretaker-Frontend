@@ -13,6 +13,9 @@ const ListOfAppointments = ({ navigation }) => {
   if (careTakerStore.isLoading) {
     return <Spinner />;
   }
+  // console.log("this is caretakeaassar", careTakerStore.caretaker._id);
+  // console.log("this is caretaker", guardianStore.guardian._id);
+
   const filteredList = appointStore.appointment
     .filter(
       (appointment) =>

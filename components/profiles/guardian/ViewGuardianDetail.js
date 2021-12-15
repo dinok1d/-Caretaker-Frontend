@@ -1,16 +1,14 @@
 import React from "react";
 import { Text, ScrollView } from "react-native";
-import { HStack, Image } from "native-base";
-import { Card, Button } from "react-native-elements";
+import { Image } from "native-base";
+import { Card } from "react-native-elements";
 import styles from "../../listofappointment/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import Styles from "../../../Styles";
-import guardianStore from "../../../Store/GuardianStore";
 import { baseURL } from "../../../Store/instance";
 
-const GuardianDetail = ({ navigation }) => {
-  const guardianProfile = guardianStore.guardianProfile;
-  console.log(guardianProfile.profile.image);
+const ViewGuardianDetail = ({ route }) => {
+  const { userProfile } = route.params;
 
   return (
     <ScrollView style={styles.background}>
@@ -24,7 +22,7 @@ const GuardianDetail = ({ navigation }) => {
             fontSize: 20,
           }}
         >
-          {guardianProfile.profile.username}
+          {userProfile.profile.username}
         </Card.Title>
         <Card.Divider />
         <Image
@@ -34,7 +32,7 @@ const GuardianDetail = ({ navigation }) => {
             borderRadius: 70,
           }}
           source={{
-            uri: guardianProfile.profile.image,
+            uri: baseURL + userProfile.profile.image,
             alt: "image",
           }}
         />
@@ -52,7 +50,7 @@ const GuardianDetail = ({ navigation }) => {
             fontSize: 16,
           }}
         >
-          {guardianProfile.profile.firstName} {guardianProfile.profile.lastName}
+          {userProfile.profile.firstName} {userProfile.profile.lastName}
         </Text>
         <Text
           style={{
@@ -69,7 +67,7 @@ const GuardianDetail = ({ navigation }) => {
             fontSize: 16,
           }}
         >
-          {guardianProfile.profile.numberOfKids}
+          {userProfile.profile.numberOfKids}
         </Text>
         <Text
           style={{
@@ -86,38 +84,12 @@ const GuardianDetail = ({ navigation }) => {
             fontSize: 16,
           }}
         >
-          {guardianProfile.profile.bio}
+          {userProfile.profile.bio}
           {"\n"}
         </Text>
-        <HStack>
-          {guardianStore.guardian?.type === "guardian" && (
-            <>
-              <Button
-                title="Edit Profile"
-                buttonStyle={{
-                  borderRadius: Platform.OS === "ios" ? 20 : 20,
-                  marginLeft: 20,
-                  marginTop: 10,
-                  backgroundColor: "#FA2F60",
-                }}
-                onPress={() => navigation.navigate("GuardianProfile")}
-              />
-              <Button
-                title="My Appointments"
-                buttonStyle={{
-                  borderRadius: Platform.OS === "ios" ? 20 : 20,
-                  marginLeft: 25,
-                  marginTop: 10,
-                  backgroundColor: "#FA2F60",
-                }}
-                onPress={() => navigation.navigate("AppointmentList")}
-              />
-            </>
-          )}
-        </HStack>
       </Card>
     </ScrollView>
   );
 };
 
-export default GuardianDetail;
+export default ViewGuardianDetail;

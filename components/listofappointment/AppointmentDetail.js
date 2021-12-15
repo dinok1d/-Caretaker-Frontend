@@ -9,17 +9,18 @@ import careStore from "../../Store/CareStore";
 import guardStore from "../../Store/GuardStore";
 import { LinearGradient } from "expo-linear-gradient";
 import guardianStore from "../../Store/GuardianStore";
-import moment from "moment";
 
 import Styles from "../../Styles";
 import careTakerStore from "../../Store/CareTakerStore";
+import { baseURL } from "../../Store/instance";
 
 const AppointmentDetail = ({ navigation, route }) => {
   if (appointStore.isLoading) return <Spinner />;
-  const appointment = route.params.appointment;
+  const { appointment, userProfile } = route.params;
+  console.log(appointment.caretaker);
 
   const toast = useToast();
-  const guardianProfile = guardStore.fetchGuardianProfile(appointment.guardian);
+
   const handleAccept = () => {
     appointStore.updateAppointment(
       appointment._id,
@@ -43,11 +44,15 @@ const AppointmentDetail = ({ navigation, route }) => {
     navigation.navigate("AppointmentList");
   };
 
-  console.log("this is guardianStore", guardianStore.guardian.type);
-  console.log("this is caretakerStore", careTakerStore.caretaker.type);
+  const caretakerName = careStore.fetchCaretakerProfile(appointment.caretaker);
+  const guardianName = guardStore.fetchGuardianProfile(appointment.guardian);
+  const fullName =
+    userProfile.profile.firstName + " " + userProfile.profile.lastName;
 
   const HandleProfile = () => {
-    navigation.navigate("GuardianDetail", { guardianProfile: guardianProfile });
+    navigation.navigate("ViewGuardianDetail", {
+      userProfile: userProfile,
+    });
   };
 
   let changeColour = "blue";
@@ -66,19 +71,23 @@ const AppointmentDetail = ({ navigation, route }) => {
         style={styles.background}
       />
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
-        <Button
-          title={appointment.guardianName}
-          onPress={HandleProfile}
-          buttonStyle={{
-            backgroundColor: "#FA2F60",
-          }}
-        />
+        {guardianStore.guardian ? (
+          <Text>{fullName}</Text>
+        ) : (
+          <Button
+            title={fullName}
+            onPress={HandleProfile}
+            buttonStyle={{
+              backgroundColor: "#FA2F60",
+            }}
+          />
+        )}
 
         <Card.Divider />
         <Image
           style={{ height: 200 }}
           source={{
-            uri: "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png",
+            uri: baseURL + userProfile.profile.image,
           }}
           alt="Profile Img"
         />
@@ -98,7 +107,7 @@ const AppointmentDetail = ({ navigation, route }) => {
               fontSize: 16,
             }}
           >
-            {appointment.guardianName}
+            {guardianName.profile.firstName} {guardianName.profile.lastName}
           </Text>
           <Text
             style={{
@@ -111,7 +120,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             Caretaker:
           </Text>
           <Text>
-            {appointment.caretakerName}
+            {caretakerName.profile.firstName} {caretakerName.profile.lastName}
             {"\n"}
           </Text>
           <Text
@@ -167,7 +176,7 @@ const AppointmentDetail = ({ navigation, route }) => {
           {"\n"}
         </Text> */}
         <HStack>
-          {careTakerStore.caretaker.type === "caretaker" && (
+          {careTakerStore.caretaker?._id === appointment.caretaker && (
             <Button
               buttonStyle={{
                 borderRadius: 10,
@@ -182,8 +191,22 @@ const AppointmentDetail = ({ navigation, route }) => {
           )}
           <Box style={styles.buttonSpace}></Box>
 
+          {guardianStore.guardian?._id === appointment.guardian && (
+            <Button
+              buttonStyle={{
+                borderRadius: 10,
+                marginTop: 10,
+                backgroundColor: "#F31B01",
+                width: 90,
+              }}
+              onPress={handleDecline}
+              title="Cancel"
+            />
+          )}
+
+
           <Box style={styles.buttonSpace}></Box>
-          {careTakerStore.caretaker?.type === "caretaker" && (
+          {careTakerStore.caretaker?._id === appointment.caretaker && (
             <Button
               buttonStyle={{
                 borderRadius: 10,

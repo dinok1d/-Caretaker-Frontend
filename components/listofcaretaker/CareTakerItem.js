@@ -4,8 +4,13 @@ import { Card, Button } from "react-native-elements";
 import { observer } from "mobx-react";
 import { HStack, Image } from "native-base";
 import Styles from "../../Styles";
+import careTakerStore from "../../Store/CareTakerStore";
+import { baseURL } from "../../Store/instance";
 
 const CareTakerItem = ({ caretaker, navigation }) => {
+  // const profileImage = careTakerStore.profile.image.uri;
+  console.log(caretaker.profile.image);
+
   return (
     <View>
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
@@ -21,7 +26,7 @@ const CareTakerItem = ({ caretaker, navigation }) => {
           <Image
             style={{ width: 80, height: 80, borderRadius: 30, marginRight: 30 }}
             source={{
-              uri: "https://cdn-icons-png.flaticon.com/512/1876/1876934.png",
+              uri: baseURL + caretaker.profile.image,
             }}
             alt="Logo"
           />

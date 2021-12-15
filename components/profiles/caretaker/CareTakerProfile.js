@@ -25,6 +25,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
   const updateProfile = () => {
     careStore.editProfile(caretakerProfile, navigation);
   };
+  // console.log(caretakerProfile.image.uri);
 
   return (
     <ScrollView>

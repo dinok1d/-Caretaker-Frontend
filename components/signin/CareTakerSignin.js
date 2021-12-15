@@ -79,7 +79,8 @@ const Signin = ({ navigation }) => {
             borderRadius: 100,
             marginBottom: 2,
           }}
-          source={require("../../assets/H.jpg")} alt="Logo"
+          source={require("../../assets/H.jpg")}
+          alt="Logo"
         />
       </View>
       <Heading size="lg" fontWeight="600" color="#FA2F60" alignContent="center">

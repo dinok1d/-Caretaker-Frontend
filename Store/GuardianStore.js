@@ -33,13 +33,13 @@ class GuardianStore {
       const foundProfile = guardStore.guardians.find(
         (guardian) => guardian._id === this.guardian._id
       );
-      // console.log(this.guardian._id);
-      console.log(foundProfile);
-      // console.log(guardianStore.guardian._id);
+
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.guardianProfile = foundProfile;
 
+
       navigation.navigate("CaretakerList");
+
     } catch (error) {
       console.log(error);
       toast.show({
