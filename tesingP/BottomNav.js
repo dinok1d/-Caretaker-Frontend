@@ -24,7 +24,7 @@ const BottomNav = ({ navigation }) => {
   const [query, setQuery] = useState("");
 
   return (
-    <Box marginTop={680}>
+    <Box>
       <Center flex={1}></Center>
       <HStack bg="#8285E0" alignItems="center" safeAreaBottom shadow={6}>
         <Pressable
@@ -56,7 +56,9 @@ const BottomNav = ({ navigation }) => {
           py="2"
           flex={1}
           onPress={() => {
-            navigation.navigate("AppointmentList");
+            careTakerStore.caretaker
+              ? "AppointmentList"
+              : guardianStore.guardian && "CaretakerList";
           }}
         >
           <Center>
@@ -75,12 +77,17 @@ const BottomNav = ({ navigation }) => {
             </Text>
           </Center>
         </Pressable>
+
         <Pressable
           opacity={selected === 3 ? 1 : 0.5}
           py="2"
           flex={1}
           onPress={() => {
-            navigation.navigate("CareTakerProfile");
+            navigation.navigate(
+              careTakerStore.caretaker
+                ? "CareTakerProfile"
+                : guardianStore.guardian && "GuardianProfile"
+            );
           }}
         >
           <Center>

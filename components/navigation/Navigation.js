@@ -32,7 +32,7 @@ const Navigation = () => {
   return (
     <>
       <Navigator
-        initialRouteName="CareTakerSignin"
+        initialRouteName="Home"
         screenOptions={{
           headerStyle: { backgroundColor: "#fadd97" },
           headerTintColor: "white",
@@ -112,7 +112,7 @@ const Navigation = () => {
             // headerLeft: () => <Drawer />,
           }}
         />
-    
+
         <Screen
           name="AppointmentDetail"
           component={AppointmentDetail}
@@ -257,41 +257,40 @@ const Navigation = () => {
               elevation: 15,
             },
 
-          
-          headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
-          },
-          title: "Information",
-          headerBackTitleVisible: false,
-        }}
-      />
-
-      <Screen
-        name="ViewGuardianDetail"
-        component={ViewGuardianDetail}
-        options={{
-          headerStyle: {
-            backgroundColor: "#8285E0",
-            borderBottomColor: "#FA2F60",
-            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
-            borderTopColor: "#91C8FF",
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 7,
+            headerTitleStyle: {
+              fontFamily: "KohinoorTelugu-Regular",
             },
-            shadowOpacity: 0.43,
-            shadowRadius: 9.51,
-            elevation: 15,
-          },
-          headerTitleStyle: {
-            fontFamily: "KohinoorTelugu-Regular",
-          },
-          title: "Information",
-          headerBackTitleVisible: false,
-        }}
-      />
-  
+            title: "Information",
+            headerBackTitleVisible: false,
+          }}
+        />
+
+        <Screen
+          name="ViewGuardianDetail"
+          component={ViewGuardianDetail}
+          options={{
+            headerStyle: {
+              backgroundColor: "#8285E0",
+              borderBottomColor: "#FA2F60",
+              borderTopWidth: Platform.OS === "ios" ? 30 : 30,
+              borderTopColor: "#91C8FF",
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 7,
+              },
+              shadowOpacity: 0.43,
+              shadowRadius: 9.51,
+              elevation: 15,
+            },
+            headerTitleStyle: {
+              fontFamily: "KohinoorTelugu-Regular",
+            },
+            title: "Information",
+            headerBackTitleVisible: false,
+          }}
+        />
+
         <Screen
           name="BookingCalender"
           component={BookingCalender}
