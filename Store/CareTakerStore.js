@@ -37,6 +37,7 @@ class CareTakerStore {
 
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.careTakerProfile = foundProfile;
+      // navigation.navigate("Drawer", { screen: "AppointmentList" });
 
       navigation.navigate("AppointmentList");
     } catch (error) {
