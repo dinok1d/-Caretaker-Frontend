@@ -14,6 +14,7 @@ class GuardStore {
       const res = await instance.get("/guardian");
       this.guardians = res.data;
       this.isLoading = false;
+      console.log(guardians);
     } catch (error) {
       next(error);
     }
