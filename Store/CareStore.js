@@ -21,6 +21,14 @@ class CareStore {
     }
   };
 
+  fetchCaretakerProfile = (caretakerId) => {
+    const foundProfile = this.caretakers.find(
+      (caretaker) => caretaker._id === caretakerId
+    );
+    this.careTakerProfile = foundProfile;
+    return foundProfile;
+  };
+
   editProfile = async (updatedProfile, navigation) => {
     try {
       const formData = new FormData();

@@ -4,6 +4,10 @@ import { View, Text } from "react-native";
 import { Card, Button } from "react-native-elements";
 import { Image, HStack } from "native-base";
 import Styles from "../../Styles";
+import careStore from "../../Store/CareStore";
+import guardStore from "../../Store/GuardStore";
+import { baseURL } from "../../Store/instance";
+import guardianStore from "../../Store/GuardianStore";
 
 const AppointmentItem = ({ appointment, navigation }) => {
   // changeColour
@@ -16,6 +20,15 @@ const AppointmentItem = ({ appointment, navigation }) => {
     changeColour = "blue";
   }
 
+  const userProfile =
+    guardianStore.guardian.type === "guardian"
+      ? careStore.fetchCaretakerProfile(appointment.caretaker)
+      : guardStore.fetchGuardianProfile(appointment.guardian);
+
+  // const caretakerName = careStore.fetchCaretakerProfile(appointment.caretaker);
+  // const userProfile = guardStore.fetchGuardianProfile(appointment.guardian);
+
+  console.log("this is user profile", userProfile);
   return (
     <View>
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
@@ -24,7 +37,7 @@ const AppointmentItem = ({ appointment, navigation }) => {
             fontSize: 19,
           }}
         >
-          {appointment.guardianName}
+          {userProfile.profile.firstName} {userProfile.profile.lastName}
         </Card.Title>
         <Card.Divider />
 
@@ -37,7 +50,7 @@ const AppointmentItem = ({ appointment, navigation }) => {
               marginRight: 30,
             }}
             source={{
-              uri: "https://cdn-icons-png.flaticon.com/512/437/437501.png",
+              uri: baseURL + userProfile.profile.image,
               alt: "image",
             }}
           />
@@ -72,6 +85,7 @@ const AppointmentItem = ({ appointment, navigation }) => {
           onPress={() => {
             navigation.navigate("AppointmentDetail", {
               appointment: appointment,
+              userProfile: userProfile,
             });
           }}
         />

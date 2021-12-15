@@ -8,6 +8,7 @@ import { Image } from "native-base";
 import styles from "../listofappointment/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import Styles from "../../Styles";
+import { baseURL } from "../../Store/instance";
 
 const CareTakerDetail = ({ navigation, route }) => {
   if (careStore.isLoading) return <Spinner />;
@@ -36,7 +37,7 @@ const CareTakerDetail = ({ navigation, route }) => {
             borderRadius: 70,
           }}
           source={{
-            uri: "https://cdn-icons-png.flaticon.com/512/1876/1876934.png",
+            uri: baseURL + caretaker.profile.image,
           }}
           alt="Logo"
         />

@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ListOfAppointments from "../listofappointment/ListOfAppointments";
 import AppointmentDetail from "../listofappointment/AppointmentDetail";
 import CareTakerProfile from "../../components/profiles/caretaker/CareTakerProfile";
+import ViewGuardianDetail from "../profiles/guardian/ViewGuardianDetail";
 import Home from "../Home";
 import CareTakerSignin from "../signin/CareTakerSignin";
 import GuardianSignup from "../signup/GuardianSignup";
@@ -256,6 +257,32 @@ const Navigation = () => {
       <Screen
         name="GuardianDetail"
         component={GuardianDetail}
+        options={{
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 7,
+            },
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          title: "Information",
+          headerBackTitleVisible: false,
+        }}
+      />
+
+      <Screen
+        name="ViewGuardianDetail"
+        component={ViewGuardianDetail}
         options={{
           headerStyle: {
             backgroundColor: "#8285E0",
