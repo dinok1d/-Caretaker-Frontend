@@ -32,7 +32,7 @@ const Navigation = () => {
   return (
     <>
       <Navigator
-        initialRouteName="Home"
+        initialRouteName="CareTakerSignin"
         screenOptions={{
           headerStyle: { backgroundColor: "#fadd97" },
           headerTintColor: "white",
@@ -112,26 +112,7 @@ const Navigation = () => {
             // headerLeft: () => <Drawer />,
           }}
         />
-        <Screen
-          name="AppointmentDetail"
-          component={AppointmentDetail}
-          options={{
-            headerStyle: {
-              backgroundColor: "#8285E0",
-              borderBottomColor: "#FA2F60",
-              borderTopWidth: Platform.OS === "ios" ? 30 : 30,
-              borderTopColor: "#91C8FF",
-              shadowColor: "#000",
-              shadowOffset: {
-                width: 0,
-                height: 7,
-              },
-              headerBackTitleVisible: false,
-              title: "Appointments",
-              // headerLeft: () => <DrawerIcon toggleOpen={toggleOpen} />,
-            },
-          }}
-        />
+    
         <Screen
           name="AppointmentDetail"
           component={AppointmentDetail}
