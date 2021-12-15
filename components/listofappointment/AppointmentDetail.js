@@ -21,7 +21,7 @@ const AppointmentDetail = ({ navigation, route }) => {
   const handleAccept = () => {
     appointStore.updateAppointment(
       appointment._id,
-      "accepted",
+      "Accepted",
       navigation,
       toast
     );
@@ -30,7 +30,7 @@ const AppointmentDetail = ({ navigation, route }) => {
   const handleDecline = () => {
     appointStore.updateAppointment(
       appointment._id,
-      "declined",
+      "Declined",
       navigation,
       toast
     );
@@ -45,17 +45,14 @@ const AppointmentDetail = ({ navigation, route }) => {
     navigation.navigate("GuardianDetail", { guardianProfile: guardianProfile });
   };
 
-  // navigationByCondition = (item) => {
-  //   const { navigation } = this.props;
-
-  //   if (item.status === "Situação: Pending") {
-  //     navigation.navigate("OrderAccept");
-  //   } else {
-  //     navigation.navigate("OrderDetailDelivered");
-  //   }
-  // };
-
-  // onPress={()=>this.navigationByCondition(item)}
+  let changeColour = "blue";
+  if (appointment.status === "Declined") {
+    changeColour = "red";
+  } else if (appointment.status === "Accepted") {
+    changeColour = "green";
+  } else {
+    changeColour = "blue";
+  }
 
   return (
     <ScrollView style={styles.background}>
@@ -140,6 +137,7 @@ const AppointmentDetail = ({ navigation, route }) => {
           <Text
             style={{
               fontSize: 16,
+              color: `${changeColour}`,
             }}
           >
             {appointment.status}
@@ -169,7 +167,7 @@ const AppointmentDetail = ({ navigation, route }) => {
             <Button
               buttonStyle={{
                 borderRadius: 10,
-                marginLeft: 20,
+                marginLeft: 50,
                 marginTop: 10,
                 backgroundColor: "#61EB5D",
               }}
@@ -180,7 +178,7 @@ const AppointmentDetail = ({ navigation, route }) => {
           }
           <Box style={styles.buttonSpace}></Box>
           {}
-          <Button
+          {/* <Button
             buttonStyle={{
               borderRadius: 10,
               marginTop: 10,
@@ -189,14 +187,15 @@ const AppointmentDetail = ({ navigation, route }) => {
             }}
             onPress={handleDelete}
             title="Delete"
-          />
+          /> */}
 
           <Box style={styles.buttonSpace}></Box>
           <Button
             buttonStyle={{
               borderRadius: 10,
               marginTop: 10,
-              backgroundColor: "#4A5BF5",
+              marginLeft: 40,
+              backgroundColor: "#F31B01",
             }}
             onPress={handleDecline}
             title="Decline"
