@@ -225,7 +225,7 @@ const Navigation = () => {
           },
 
           title: "Choose Your Caretaker",
-          headerLeft: () => <Drawer />,
+          // headerLeft: () => <Drawer />,
         }}
       />
       <Screen
