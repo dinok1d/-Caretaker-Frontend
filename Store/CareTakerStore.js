@@ -66,7 +66,7 @@ class CareTakerStore {
       runInAction(() => {
         this.caretaker = null;
       });
-      navigation.navigate("CaretakerList");
+      navigation.navigate("CareTakerSignin");
     } catch (error) {
       console.log(error);
     }

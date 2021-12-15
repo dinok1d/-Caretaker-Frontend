@@ -19,7 +19,7 @@ const TimePicker = ({ bookDate, bookCaretaker, navigation }) => {
 
   const handleConfirm = (time) => {
     console.log("A time has been picked: ", moment(time).format("h:mm a"));
-    
+
     const bookingDetails = {
       _id: bookCaretaker,
       date: bookDate,
@@ -32,6 +32,7 @@ const TimePicker = ({ bookDate, bookCaretaker, navigation }) => {
   };
   return (
     <View>
+     
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="time"

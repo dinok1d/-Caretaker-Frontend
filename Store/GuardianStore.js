@@ -44,7 +44,7 @@ class GuardianStore {
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.guardianProfile = foundProfile;
 
-      navigation.navigate("AppointmentList");
+      navigation.navigate("CaretakerList");
     } catch (error) {
       console.log(error);
     }
@@ -59,13 +59,15 @@ class GuardianStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     } catch (error) {}
   };
-  logout = async () => {
+  logout = async (navigation) => {
     try {
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("myToken");
       runInAction(() => {
         this.guardian = null;
       });
+      navigation.replace("CareTakerSignin");
+
     } catch (error) {
       console.log(error);
     }

@@ -124,6 +124,7 @@ const Navigation = () => {
           },
           headerBackTitleVisible: false,
           title: "Appointments",
+          headerLeft: false,
           // headerLeft: () => <Drawer />,
         }}
       />
@@ -225,7 +226,8 @@ const Navigation = () => {
           },
 
           title: "Choose Your Caretaker",
-          headerLeft: () => <Drawer />,
+          headerLeft: false,
+          // headerLeft: () => <Drawer />,
         }}
       />
       <Screen
