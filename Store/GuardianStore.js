@@ -36,15 +36,15 @@ class GuardianStore {
         this.setUser(res.data.token);
       });
       const foundProfile = guardStore.guardians.find(
-        (guardian) => guardian._id === guardianStore.guardian._id
+        (guardian) => guardian._id === this.guardian._id
       );
-      console.log(this.guardian);
-      // console.log(foundProfile);
+      // console.log(this.guardian._id);
+      console.log(foundProfile);
       // console.log(guardianStore.guardian._id);
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.guardianProfile = foundProfile;
 
-      navigation.navigate("CaretakerList");
+      navigation.navigate("AppointmentList");
     } catch (error) {
       console.log(error);
     }

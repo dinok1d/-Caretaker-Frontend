@@ -37,7 +37,7 @@ class CareTakerStore {
       });
 
       const foundProfile = careStore.caretakers.find(
-        (caretaker) => caretaker._id === careTakerStore.caretaker._id
+        (caretaker) => caretaker._id === this.caretaker._id
       );
 
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
