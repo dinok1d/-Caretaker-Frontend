@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 import { HStack, Spinner } from "native-base";
 import { Card, Button } from "react-native-elements";
 import careStore from "../../Store/CareStore";
@@ -17,6 +17,15 @@ const CareTakerDetail = ({ navigation, route }) => {
   console.log(careTakerStore.caretaker);
   console.log(guardianStore.guardian);
 
+  const guestUser = () =>
+    Alert.alert("Not Signed in", "You not Signedin press OK to Signin", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => navigation.replace("CareTakerSignin") },
+    ]);
   return (
     <View style={styles.background}>
       <LinearGradient
@@ -115,21 +124,35 @@ const CareTakerDetail = ({ navigation, route }) => {
           </Text>
         </View>
         <HStack>
-          <Button
-            title="Book"
-            buttonStyle={{
-              borderRadius: Platform.OS === "ios" ? 20 : 20,
-              marginLeft: 190,
-              marginTop: 10,
-              backgroundColor: "#FA2F60",
-              width: 150,
-            }}
-            onPress={() =>
-              navigation.navigate("BookingCalender", {
-                caretaker: caretaker,
-              })
-            }
-          />
+          {guardianStore.guardian ? (
+            <Button
+              title="Book"
+              buttonStyle={{
+                borderRadius: Platform.OS === "ios" ? 20 : 20,
+                marginLeft: 190,
+                marginTop: 10,
+                backgroundColor: "#FA2F60",
+                width: 150,
+              }}
+              onPress={() =>
+                navigation.navigate("BookingCalender", {
+                  caretaker: caretaker,
+                })
+              }
+            />
+          ) : (
+            <Button
+              title="Book"
+              buttonStyle={{
+                borderRadius: Platform.OS === "ios" ? 20 : 20,
+                marginLeft: 190,
+                marginTop: 10,
+                backgroundColor: "#FA2F60",
+                width: 150,
+              }}
+              onPress={guestUser}
+            />
+          )}
         </HStack>
       </Card>
     </View>
