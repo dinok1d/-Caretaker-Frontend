@@ -74,7 +74,6 @@ class CareTakerStore {
         title: "Logged out",
         description: "Successfully logged out",
       });
-
     } catch (error) {
       console.log(error);
     }
@@ -96,6 +95,6 @@ class CareTakerStore {
 }
 
 const careTakerStore = new CareTakerStore();
-careTakerStore.checkForToken();
+// careTakerStore.checkForToken();
 export default careTakerStore;
 // we need an loading for the null

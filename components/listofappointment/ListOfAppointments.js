@@ -8,6 +8,7 @@ import guardianStore from "../../Store/GuardianStore";
 
 import { LinearGradient } from "expo-linear-gradient";
 import styles from "../listofappointment/styles";
+import BottomNav from "../../tesingP/BottomNav";
 
 const ListOfAppointments = ({ navigation }) => {
   if (careTakerStore.isLoading) {
@@ -50,13 +51,16 @@ const ListOfAppointments = ({ navigation }) => {
     return () => backHandler.remove();
   }, []);
   return (
-    <ScrollView>
-      <LinearGradient
-        colors={["#C0D6F9", "#B07DF0", "#C0D6F9"]}
-        style={styles.background}
-      />
-      {filteredList}
-    </ScrollView>
+    <>
+      <ScrollView>
+        <LinearGradient
+          colors={["#C0D6F9", "#B07DF0", "#C0D6F9"]}
+          style={styles.background}
+        />
+        {filteredList}
+      </ScrollView>
+      <BottomNav navigation={navigation} />
+    </>
   );
 };
 export default observer(ListOfAppointments);

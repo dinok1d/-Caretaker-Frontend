@@ -37,9 +37,7 @@ class GuardianStore {
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.guardianProfile = foundProfile;
 
-
       navigation.navigate("CaretakerList");
-
     } catch (error) {
       console.log(error);
       toast.show({
@@ -61,7 +59,6 @@ class GuardianStore {
   };
 
   logout = async (navigation, toast) => {
-
     try {
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("myToken");
@@ -74,7 +71,6 @@ class GuardianStore {
         title: "Logged out",
         description: "Successfully logged out",
       });
-
     } catch (error) {
       console.log(error);
     }
@@ -95,5 +91,5 @@ class GuardianStore {
   };
 }
 const guardianStore = new GuardianStore();
-guardianStore.checkForToken();
+// guardianStore.checkForToken();
 export default guardianStore;
