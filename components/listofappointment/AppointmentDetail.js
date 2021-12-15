@@ -8,9 +8,11 @@ import styles from "../listofappointment/styles";
 import careStore from "../../Store/CareStore";
 import guardStore from "../../Store/GuardStore";
 import { LinearGradient } from "expo-linear-gradient";
+import guardianStore from "../../Store/GuardianStore";
 import moment from "moment";
 
 import Styles from "../../Styles";
+import careTakerStore from "../../Store/CareTakerStore";
 
 const AppointmentDetail = ({ navigation, route }) => {
   if (appointStore.isLoading) return <Spinner />;
@@ -21,7 +23,7 @@ const AppointmentDetail = ({ navigation, route }) => {
   const handleAccept = () => {
     appointStore.updateAppointment(
       appointment._id,
-      "accepted",
+      "Accepted",
       navigation,
       toast
     );
@@ -30,7 +32,7 @@ const AppointmentDetail = ({ navigation, route }) => {
   const handleDecline = () => {
     appointStore.updateAppointment(
       appointment._id,
-      "declined",
+      "Declined",
       navigation,
       toast
     );
@@ -41,21 +43,21 @@ const AppointmentDetail = ({ navigation, route }) => {
     navigation.navigate("AppointmentList");
   };
 
+  console.log("this is guardianStore", guardianStore.guardian.type);
+  console.log("this is caretakerStore", careTakerStore.caretaker.type);
+
   const HandleProfile = () => {
     navigation.navigate("GuardianDetail", { guardianProfile: guardianProfile });
   };
 
-  // navigationByCondition = (item) => {
-  //   const { navigation } = this.props;
-
-  //   if (item.status === "Situação: Pending") {
-  //     navigation.navigate("OrderAccept");
-  //   } else {
-  //     navigation.navigate("OrderDetailDelivered");
-  //   }
-  // };
-
-  // onPress={()=>this.navigationByCondition(item)}
+  let changeColour = "blue";
+  if (appointment.status === "Declined") {
+    changeColour = "red";
+  } else if (appointment.status === "Accepted") {
+    changeColour = "green";
+  } else {
+    changeColour = "blue";
+  }
 
   return (
     <ScrollView style={styles.background}>
@@ -140,6 +142,7 @@ const AppointmentDetail = ({ navigation, route }) => {
           <Text
             style={{
               fontSize: 16,
+              color: `${changeColour}`,
             }}
           >
             {appointment.status}
@@ -164,45 +167,36 @@ const AppointmentDetail = ({ navigation, route }) => {
           {"\n"}
         </Text> */}
         <HStack>
-          {
-            // (appointStore.appointment.status = "accept"(
+          {careTakerStore.caretaker.type === "caretaker" && (
             <Button
               buttonStyle={{
                 borderRadius: 10,
-                marginLeft: 20,
+                marginLeft: 70,
                 marginTop: 10,
+                marginRight: 20,
                 backgroundColor: "#61EB5D",
               }}
               onPress={handleAccept}
               title="Accept"
             />
-            // ))
-          }
+          )}
           <Box style={styles.buttonSpace}></Box>
-          {}
-          <Button
-            buttonStyle={{
-              borderRadius: 10,
-              marginTop: 10,
-              backgroundColor: "#F31B01",
-              width: 90,
-            }}
-            onPress={handleDelete}
-            title="Delete"
-          />
 
           <Box style={styles.buttonSpace}></Box>
-          <Button
-            buttonStyle={{
-              borderRadius: 10,
-              marginTop: 10,
-              backgroundColor: "#4A5BF5",
-            }}
-            onPress={handleDecline}
-            title="Decline"
-          >
-            Decline
-          </Button>
+          {careTakerStore.caretaker?.type === "caretaker" && (
+            <Button
+              buttonStyle={{
+                borderRadius: 10,
+                marginTop: 10,
+                marginRight: 90,
+                backgroundColor: "#F31B01",
+              }}
+              onPress={handleDecline}
+              title="Decline"
+            >
+              Decline
+            </Button>
+          )}
         </HStack>
       </Card>
     </ScrollView>

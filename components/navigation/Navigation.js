@@ -101,8 +101,32 @@ const Navigation = () => {
               shadowRadius: 9.51,
               elevation: 15,
             },
-            headerTitleStyle: {
-              fontFamily: "KohinoorTelugu-Regular",
+            shadowOpacity: 0.43,
+            shadowRadius: 9.51,
+            elevation: 15,
+          },
+          headerTitleStyle: {
+            fontFamily: "KohinoorTelugu-Regular",
+          },
+          headerBackTitleVisible: false,
+          title: "Appointments",
+          headerLeft: false,
+          // headerLeft: () => <Drawer />,
+        }}
+      />
+      <Screen
+        name="AppointmentDetail"
+        component={AppointmentDetail}
+        options={{
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 7,
             },
             headerBackTitleVisible: false,
             title: "Appointments",
@@ -206,26 +230,25 @@ const Navigation = () => {
               fontFamily: "KohinoorTelugu-Regular",
             },
 
-            title: "Choose Your Caretaker",
-          }}
-        />
-        <Screen
-          name="CaretakerDetail"
-          component={CareTakerDetail}
-          options={{
-            headerStyle: {
-              backgroundColor: "#8285E0",
-              borderBottomColor: "#FA2F60",
-              borderTopWidth: Platform.OS === "ios" ? 30 : 30,
-              borderTopColor: "#91C8FF",
-              shadowColor: "#000",
-              shadowOffset: {
-                width: 0,
-                height: 7,
-              },
-              shadowOpacity: 0.43,
-              shadowRadius: 9.51,
-              elevation: 15,
+          title: "Choose Your Caretaker",
+
+          headerLeft: false,
+          // headerLeft: () => <Drawer />,
+        }}
+      />
+      <Screen
+        name="CaretakerDetail"
+        component={CareTakerDetail}
+        options={{
+          headerStyle: {
+            backgroundColor: "#8285E0",
+            borderBottomColor: "#FA2F60",
+            borderTopWidth: Platform.OS === "ios" ? 30 : 30,
+            borderTopColor: "#91C8FF",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 7,
             },
             headerTitleStyle: {
               fontFamily: "KohinoorTelugu-Regular",

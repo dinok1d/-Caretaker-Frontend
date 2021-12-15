@@ -17,8 +17,8 @@ const GuardianDetail = ({ navigation, route }) => {
 
   // const { guardianProfile } = route.params;
 
-  console.log("this is guardianStore", guardianStore.guardian.type);
-  console.log("this is caretakerStore", careTakerStore.caretaker.type);
+  // console.log("this is guardianStore", guardianStore.guardian);
+  // console.log("this is caretakerStore", careTakerStore.caretaker);
 
   return (
     <ScrollView style={styles.background}>

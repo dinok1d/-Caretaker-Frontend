@@ -6,6 +6,16 @@ import { Image, HStack } from "native-base";
 import Styles from "../../Styles";
 
 const AppointmentItem = ({ appointment, navigation }) => {
+  // changeColour
+  let changeColour = "blue";
+  if (appointment.status === "Declined") {
+    changeColour = "red";
+  } else if (appointment.status === "Accepted") {
+    changeColour = "green";
+  } else {
+    changeColour = "blue";
+  }
+
   return (
     <View>
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
@@ -44,6 +54,7 @@ const AppointmentItem = ({ appointment, navigation }) => {
             <Text
               style={{
                 fontSize: 16,
+                color: `${changeColour}`,
               }}
             >
               {appointment.status}
