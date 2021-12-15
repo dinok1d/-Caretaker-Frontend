@@ -36,7 +36,7 @@ class GuardStore {
 
       const res = await instance.put("/guardian/profile/", formData);
       this.guardianProfile = res.data;
-      navigation.navigate("Home");
+      navigation.navigate("CaretakerList");
     } catch (error) {
       console.error(error);
     }
