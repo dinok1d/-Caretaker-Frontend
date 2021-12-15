@@ -94,7 +94,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
             })
           }
           value={caretakerProfile.qualification}
-          placeholder="Qualification:"
+          placeholder="Qualification"
         />
 
         <Input
@@ -107,7 +107,7 @@ const CareTakerProfileList = ({ navigation, route }) => {
             })
           }
           value={caretakerProfile.pastExp}
-          placeholder="Experience:"
+          placeholder="Experience"
         />
 
         <Input

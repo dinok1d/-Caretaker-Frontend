@@ -12,7 +12,7 @@ class CareTakerStore {
   constructor() {
     makeAutoObservable(this);
   }
-  signup = async (userData, navigation, toast) => {
+  signup = async (userData, navigation) => {
     try {
       const res = await instance.post("/caretaker/Signup", userData);
       runInAction(() => {
@@ -22,14 +22,9 @@ class CareTakerStore {
       navigation.navigate("CareTakerProfile");
     } catch (error) {
       console.log(error);
-      toast.show({
-        status: "error",
-        title: "Invalid Login",
-        description: "You are not a CareTaker",
-      });
     }
   };
-  signin = async (user, navigation) => {
+  signin = async (user, navigation, toast) => {
     try {
       const res = await instance.post("/caretaker/Signin", user);
       runInAction(async () => {
@@ -46,6 +41,11 @@ class CareTakerStore {
       navigation.navigate("AppointmentList");
     } catch (error) {
       console.log(error);
+      toast.show({
+        status: "error",
+        title: "Invalid Login",
+        description: "Username/Password is incorrect",
+      });
     }
   };
   setUser = async (token) => {
@@ -59,14 +59,21 @@ class CareTakerStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     } catch (error) {}
   };
-  logout = async (navigation) => {
+  logout = async (navigation, toast) => {
     try {
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("CaretakerToken");
       runInAction(() => {
         this.caretaker = null;
       });
+
       navigation.navigate("CareTakerSignin");
+      toast.show({
+        status: "success",
+        title: "Logged out",
+        description: "Successfully logged out",
+      });
+
     } catch (error) {
       console.log(error);
     }

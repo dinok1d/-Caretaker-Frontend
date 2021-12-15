@@ -171,8 +171,9 @@ const AppointmentDetail = ({ navigation, route }) => {
             <Button
               buttonStyle={{
                 borderRadius: 10,
-                marginLeft: 20,
+                marginLeft: 70,
                 marginTop: 10,
+                marginRight: 20,
                 backgroundColor: "#61EB5D",
               }}
               onPress={handleAccept}
@@ -180,18 +181,6 @@ const AppointmentDetail = ({ navigation, route }) => {
             />
           )}
           <Box style={styles.buttonSpace}></Box>
-          {guardianStore.guardian.type === "guardian" && (
-            <Button
-              buttonStyle={{
-                borderRadius: 10,
-                marginTop: 10,
-                backgroundColor: "#F31B01",
-                width: 90,
-              }}
-              onPress={handleDecline}
-              title="Decline"
-            />
-          )}
 
           <Box style={styles.buttonSpace}></Box>
           {careTakerStore.caretaker?.type === "caretaker" && (
