@@ -184,9 +184,8 @@ const AppointmentDetail = ({ navigation, route }) => {
           {"\n"}
         </Text> */}
         <HStack>
-          {(careTakerStore.caretaker?._id === appointment.caretaker &&
-            appointment.status === "Declined") ||
-            (appointment.status === "Pending" && (
+          {careTakerStore.caretaker?._id === appointment.caretaker &&
+            appointment.status === "Pending" && (
               <Button
                 buttonStyle={{
                   borderRadius: 10,
@@ -198,26 +197,26 @@ const AppointmentDetail = ({ navigation, route }) => {
                 onPress={handleAccept}
                 title="Accept"
               />
-            ))}
+            )}
           <Box style={styles.buttonSpace}></Box>
 
-          {guardianStore.guardian?._id === appointment.guardian && (
-            <Button
-              buttonStyle={{
-                borderRadius: 10,
-                marginTop: 10,
-                backgroundColor: "#F31B01",
-                width: 90,
-              }}
-              onPress={handleCancel}
-              title="Cancel"
-            />
-          )}
+          {guardianStore.guardian?._id === appointment.guardian &&
+            appointment.status === "Accepted" && (
+              <Button
+                buttonStyle={{
+                  borderRadius: 10,
+                  marginTop: 10,
+                  backgroundColor: "#F31B01",
+                  width: 90,
+                }}
+                onPress={handleCancel}
+                title="Cancel"
+              />
+            )}
 
           <Box style={styles.buttonSpace}></Box>
-          {(careTakerStore.caretaker?._id === appointment.caretaker &&
-            appointment.status === "Accepted") ||
-            (appointment.status === "Pending" && (
+          {careTakerStore.caretaker?._id === appointment.caretaker &&
+            appointment.status === "Pending" && (
               <Button
                 buttonStyle={{
                   borderRadius: 10,
@@ -230,7 +229,7 @@ const AppointmentDetail = ({ navigation, route }) => {
               >
                 Decline
               </Button>
-            ))}
+            )}
         </HStack>
       </Card>
     </ScrollView>
