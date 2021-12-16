@@ -67,9 +67,8 @@ class CareTakerStore {
     try {
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("CaretakerToken");
-      runInAction(() => {
-        this.caretaker = null;
-      });
+
+      this.caretaker = null;
 
       navigation.navigate("CareTakerSignin");
       toast.show({

@@ -32,7 +32,9 @@ const BottomNav = ({ navigation }) => {
           py="2"
           flex={1}
           onPress={() => {
-            careTakerStore.logout(navigation);
+            careTakerStore.caretaker
+              ? careTakerStore.logout(navigation)
+              : guardianStore.logout(navigation);
           }}
         >
           <Center>
