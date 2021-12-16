@@ -36,7 +36,7 @@ class GuardianStore {
 
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.guardianProfile = foundProfile;
-      this.isLoading = false;
+      // this.isLoading = false;
       navigation.navigate("CaretakerList");
     } catch (error) {
       console.log(error);
