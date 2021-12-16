@@ -206,12 +206,14 @@ const AppointmentDetail = ({ navigation, route }) => {
             )}
           <Box style={styles.buttonSpace}></Box>
 
+
           {guardianStore.guardian?._id === appointment.guardian &&
             appointment.status === "Accepted" && (
               <Button
                 buttonStyle={{
                   borderRadius: 10,
                   marginTop: 10,
+                  marginLeft: 115,
                   backgroundColor: "#F31B01",
                   width: 90,
                 }}
