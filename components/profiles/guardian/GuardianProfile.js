@@ -51,9 +51,10 @@ const GuardianProfile = ({ navigation }) => {
               : guardProfile.image
           }
           style={{
-            height: 200,
+            height: 160,
             width: 300,
             margin: 10,
+            borderRadius: 30,
           }}
         ></Card.Image>
 
