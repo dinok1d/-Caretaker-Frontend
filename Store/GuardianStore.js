@@ -8,7 +8,7 @@ import { baseURL } from "../Store/instance";
 class GuardianStore {
   guardian = null;
   guardianProfile = null;
-
+  isLoading = true;
   constructor() {
     makeAutoObservable(this);
   }
@@ -27,16 +27,16 @@ class GuardianStore {
   signin = async (user, navigation, toast) => {
     try {
       const res = await instance.post("/guardian/Signin", user);
-      runInAction(() => {
-        this.setUser(res.data.token);
-      });
+
+      await this.setUser(res.data.token);
+
       const foundProfile = guardStore.guardians.find(
         (guardian) => guardian._id === this.guardian._id
       );
 
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.guardianProfile = foundProfile;
-
+      this.isLoading = false;
       navigation.navigate("CaretakerList");
     } catch (error) {
       console.log(error);
@@ -50,10 +50,9 @@ class GuardianStore {
   setUser = async (token) => {
     try {
       await AsyncStorage.setItem("myToken", token);
-      runInAction(() => {
-        this.guardian = decode(token);
-      });
 
+      this.guardian = decode(token);
+      if (guardStore.isLoadingWhole) return <Spinner />;
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     } catch (error) {}
   };

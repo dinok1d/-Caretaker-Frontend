@@ -5,6 +5,7 @@ class GuardStore {
   guardianProfile = null;
   guardians = [];
   isLoading = true;
+  isLoadingWhole = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -46,4 +47,5 @@ class GuardStore {
 
 const guardStore = new GuardStore();
 guardStore.fetchGuardian();
+guardStore.isLoadingWhole = false;
 export default guardStore;

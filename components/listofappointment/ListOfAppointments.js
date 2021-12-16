@@ -5,15 +5,15 @@ import appointStore from "../../Store/AppointmentStore";
 import AppointmentItem from "./AppointmentItem";
 import careTakerStore from "../../Store/CareTakerStore";
 import guardianStore from "../../Store/GuardianStore";
+import { Spinner } from "native-base";
 
 import { LinearGradient } from "expo-linear-gradient";
 import styles from "../listofappointment/styles";
 import BottomNav from "../../tesingP/BottomNav";
 
 const ListOfAppointments = ({ navigation }) => {
-  if (careTakerStore.isLoading) {
-    return <Spinner />;
-  }
+  if (careTakerStore.isLoading) return <Spinner />;
+
   // console.log("this is caretakeaassar", careTakerStore.caretaker._id);
   // console.log("this is caretaker", guardianStore.guardian._id);
 

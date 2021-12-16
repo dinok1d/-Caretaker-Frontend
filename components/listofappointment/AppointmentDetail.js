@@ -17,7 +17,6 @@ import { baseURL } from "../../Store/instance";
 const AppointmentDetail = ({ navigation, route }) => {
   if (appointStore.isLoading) return <Spinner />;
   const { appointment, userProfile } = route.params;
-  console.log(appointment.caretaker);
 
   const toast = useToast();
 
@@ -203,7 +202,6 @@ const AppointmentDetail = ({ navigation, route }) => {
               title="Cancel"
             />
           )}
-
 
           <Box style={styles.buttonSpace}></Box>
           {careTakerStore.caretaker?._id === appointment.caretaker && (

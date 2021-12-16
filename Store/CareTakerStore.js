@@ -4,10 +4,12 @@ import { instance } from "./instance";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import careStore from "./CareStore";
 import { baseURL } from "../Store/instance";
-
+import { Spinner } from "native-base";
 class CareTakerStore {
   caretaker = null;
+
   careTakerProfile = null;
+  isLoading = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -27,17 +29,18 @@ class CareTakerStore {
   signin = async (user, navigation, toast) => {
     try {
       const res = await instance.post("/caretaker/Signin", user);
-      runInAction(async () => {
-        await this.setUser(res.data.token);
-      });
+
+      await this.setUser(res.data.token);
 
       const foundProfile = careStore.caretakers.find(
-        (caretaker) => caretaker._id === this.caretaker._id
+        (caretaker) => caretaker._id === careTakerStore.caretaker._id
       );
 
       foundProfile.profile.image = baseURL + foundProfile.profile.image;
       this.careTakerProfile = foundProfile;
       // navigation.navigate("Drawer", { screen: "AppointmentList" });
+
+      this.isLoading = false;
 
       navigation.navigate("AppointmentList");
     } catch (error) {
@@ -52,10 +55,10 @@ class CareTakerStore {
   setUser = async (token) => {
     try {
       await AsyncStorage.setItem("CaretakerToken", token);
-      runInAction(() => {
-        this.caretaker = decode(token);
-      });
-      this.isLoading = false;
+
+      this.caretaker = decode(token);
+
+      if (careStore.isloadingWhole) return <Spinner />;
 
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     } catch (error) {}
@@ -93,8 +96,8 @@ class CareTakerStore {
     } catch (error) {}
   };
 }
-
 const careTakerStore = new CareTakerStore();
+
 // careTakerStore.checkForToken();
 export default careTakerStore;
 // we need an loading for the null
