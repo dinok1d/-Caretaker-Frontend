@@ -38,10 +38,19 @@ const AppointmentDetail = ({ navigation, route }) => {
     );
   };
 
-  const handleDelete = () => {
-    appointStore.appointmentDelete(appointment._id);
-    navigation.navigate("AppointmentList");
+  const handleCancel = () => {
+    appointStore.updateAppointment(
+      appointment._id,
+      "Cancelled",
+      navigation,
+      toast
+    );
   };
+
+  // const handleDelete = () => {
+  //   appointStore.appointmentDelete(appointment._id);
+  //   navigation.navigate("AppointmentList");
+  // };
 
   const caretakerName = careStore.fetchCaretakerProfile(appointment.caretaker);
   const guardianName = guardStore.fetchGuardianProfile(appointment.guardian);
@@ -181,19 +190,21 @@ const AppointmentDetail = ({ navigation, route }) => {
           {"\n"}
         </Text> */}
         <HStack>
-          {careTakerStore.caretaker?._id === appointment.caretaker && (
-            <Button
-              buttonStyle={{
-                borderRadius: 10,
-                marginLeft: 70,
-                marginTop: 10,
-                marginRight: 20,
-                backgroundColor: "#61EB5D",
-              }}
-              onPress={handleAccept}
-              title="Accept"
-            />
-          )}
+          {(careTakerStore.caretaker?._id === appointment.caretaker &&
+            appointment.status === "Declined") ||
+            (appointment.status === "Pending" && (
+              <Button
+                buttonStyle={{
+                  borderRadius: 10,
+                  marginLeft: 70,
+                  marginTop: 10,
+                  marginRight: 20,
+                  backgroundColor: "#61EB5D",
+                }}
+                onPress={handleAccept}
+                title="Accept"
+              />
+            ))}
           <Box style={styles.buttonSpace}></Box>
 
           {guardianStore.guardian?._id === appointment.guardian && (
@@ -204,26 +215,28 @@ const AppointmentDetail = ({ navigation, route }) => {
                 backgroundColor: "#F31B01",
                 width: 90,
               }}
-              onPress={handleDecline}
+              onPress={handleCancel}
               title="Cancel"
             />
           )}
 
           <Box style={styles.buttonSpace}></Box>
-          {careTakerStore.caretaker?._id === appointment.caretaker && (
-            <Button
-              buttonStyle={{
-                borderRadius: 10,
-                marginTop: 10,
-                marginRight: 90,
-                backgroundColor: "#F31B01",
-              }}
-              onPress={handleDecline}
-              title="Decline"
-            >
-              Decline
-            </Button>
-          )}
+          {(careTakerStore.caretaker?._id === appointment.caretaker &&
+            appointment.status === "Accepted") ||
+            (appointment.status === "Pending" && (
+              <Button
+                buttonStyle={{
+                  borderRadius: 10,
+                  marginTop: 10,
+                  marginRight: 90,
+                  backgroundColor: "#F31B01",
+                }}
+                onPress={handleDecline}
+                title="Decline"
+              >
+                Decline
+              </Button>
+            ))}
         </HStack>
       </Card>
     </ScrollView>
