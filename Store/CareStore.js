@@ -6,6 +6,7 @@ class CareStore {
   careTakerProfile = null;
   caretakers = [];
   isLoading = true;
+  isloadingWhole = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -47,4 +48,5 @@ class CareStore {
 
 const careStore = new CareStore();
 careStore.fetchCaretakers();
+careStore.isloadingWhole = false;
 export default careStore;

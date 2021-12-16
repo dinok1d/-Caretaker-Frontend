@@ -21,14 +21,13 @@ const AppointmentItem = ({ appointment, navigation }) => {
   }
 
   const userProfile =
-    guardianStore.guardian.type === "guardian"
+    guardianStore.guardian?.type === "guardian"
       ? careStore.fetchCaretakerProfile(appointment.caretaker)
       : guardStore.fetchGuardianProfile(appointment.guardian);
 
   // const caretakerName = careStore.fetchCaretakerProfile(appointment.caretaker);
   // const userProfile = guardStore.fetchGuardianProfile(appointment.guardian);
 
-  console.log("this is user profile", userProfile);
   return (
     <View>
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
