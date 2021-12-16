@@ -68,11 +68,13 @@ const BottomNav = ({ navigation }) => {
           flex={1}
           onPress={() => {
             careTakerStore.isLoading = false;
-            navigation.navigate(
-              careTakerStore.caretaker
-                ? "AppointmentList"
-                : guardianStore.guardian && "AppointmentList"
-            );
+            guardianStore.guardian === null && careTakerStore.caretaker === null
+              ? guestUser
+              : navigation.navigate(
+                  careTakerStore.caretaker
+                    ? "AppointmentList"
+                    : guardianStore.guardian && "AppointmentList"
+                );
           }}
         >
           <Center>

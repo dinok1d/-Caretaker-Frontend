@@ -21,7 +21,7 @@ const CareTakerDetail = ({ navigation, route }) => {
   console.log(guardianStore.guardian);
 
   const guestUser = () =>
-    Alert.alert("Not Signed in", "You not Signedin press OK to Signin", [
+    Alert.alert("Not Signed in", "You not Signed in press OK to Signin", [
       {
         text: "Cancel",
         onPress: () => console.log("Cancel Pressed"),
