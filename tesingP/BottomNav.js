@@ -23,6 +23,15 @@ const BottomNav = ({ navigation }) => {
   const [selected, setSelected] = React.useState(1);
   const [query, setQuery] = useState("");
 
+  const guestUser = () =>
+    Alert.alert("Not Signed in", "You not Signedin press OK to Signin", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => navigation.replace("CareTakerSignin") },
+    ]);
   return (
     <Box>
       <Center flex={1}></Center>
@@ -58,9 +67,12 @@ const BottomNav = ({ navigation }) => {
           py="2"
           flex={1}
           onPress={() => {
-            careTakerStore.caretaker
-              ? "AppointmentList"
-              : guardianStore.guardian && "CaretakerList";
+            careTakerStore.isLoading = false;
+            navigation.navigate(
+              careTakerStore.caretaker
+                ? "AppointmentList"
+                : guardianStore.guardian && "AppointmentList"
+            );
           }}
         >
           <Center>
@@ -85,11 +97,13 @@ const BottomNav = ({ navigation }) => {
           py="2"
           flex={1}
           onPress={() => {
-            navigation.navigate(
-              careTakerStore.caretaker
-                ? "CareTakerProfile"
-                : guardianStore.guardian && "GuardianProfile"
-            );
+            guardianStore.guardian === null && careTakerStore.caretaker === null
+              ? guestUser
+              : navigation.navigate(
+                  careTakerStore.caretaker
+                    ? "CareTakerProfile"
+                    : guardianStore.guardian && "GuardianProfile"
+                );
           }}
         >
           <Center>
