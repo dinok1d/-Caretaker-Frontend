@@ -47,7 +47,7 @@ const CareTakerDetail = ({ navigation, route }) => {
 
         <Image
           style={{
-            height: 140,
+            height: 160,
             marginBottom: 10,
             borderRadius: 30,
           }}

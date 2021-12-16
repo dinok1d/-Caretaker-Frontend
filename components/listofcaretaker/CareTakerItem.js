@@ -24,7 +24,12 @@ const CareTakerItem = ({ caretaker, navigation }) => {
         <Card.Divider />
         <HStack>
           <Image
-            style={{ width: 80, height: 80, borderRadius: 30, marginRight: 30 }}
+            style={{
+              width: 100,
+              height: 100,
+              borderRadius: 30,
+              marginRight: 30,
+            }}
             source={{
               uri: baseURL + caretaker.profile.image,
             }}
