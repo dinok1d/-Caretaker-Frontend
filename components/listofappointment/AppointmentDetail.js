@@ -90,7 +90,7 @@ const AppointmentDetail = ({ navigation, route }) => {
 
         <Card.Divider />
         <Image
-          style={{ height: 200, borderRadius: 30 }}
+          style={{ height: 160, borderRadius: 30 }}
           source={{
             uri: baseURL + userProfile.profile.image,
           }}

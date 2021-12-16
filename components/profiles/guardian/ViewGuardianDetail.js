@@ -27,9 +27,9 @@ const ViewGuardianDetail = ({ route }) => {
         <Card.Divider />
         <Image
           style={{
-            height: 280,
+            height: 160,
             marginBottom: 10,
-            borderRadius: 70,
+            borderRadius: 30,
           }}
           source={{
             uri: baseURL + userProfile.profile.image,
