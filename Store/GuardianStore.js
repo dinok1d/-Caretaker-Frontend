@@ -61,9 +61,9 @@ class GuardianStore {
     try {
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("myToken");
-      runInAction(() => {
-        this.guardian = null;
-      });
+
+      this.guardian = null;
+
       navigation.replace("CareTakerSignin");
       toast.show({
         status: "success",
