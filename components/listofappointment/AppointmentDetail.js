@@ -201,6 +201,7 @@ const AppointmentDetail = ({ navigation, route }) => {
               buttonStyle={{
                 borderRadius: 10,
                 marginTop: 10,
+                marginLeft: 115,
                 backgroundColor: "#F31B01",
                 width: 90,
               }}
