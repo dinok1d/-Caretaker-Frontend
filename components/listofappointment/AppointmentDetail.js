@@ -71,7 +71,13 @@ const AppointmentDetail = ({ navigation, route }) => {
       />
       <Card containerStyle={Styles.container} wrapperStyle={Styles.wrapper}>
         {guardianStore.guardian ? (
-          <Text>{fullName}</Text>
+          <Card.Title
+            style={{
+              fontSize: 20,
+            }}
+          >
+            {fullName}
+          </Card.Title>
         ) : (
           <Button
             title={fullName}
@@ -84,7 +90,7 @@ const AppointmentDetail = ({ navigation, route }) => {
 
         <Card.Divider />
         <Image
-          style={{ height: 200 }}
+          style={{ height: 200, borderRadius: 30 }}
           source={{
             uri: baseURL + userProfile.profile.image,
           }}

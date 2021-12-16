@@ -41,7 +41,7 @@ const CareTakerDetail = ({ navigation, route }) => {
             fontSize: 20,
           }}
         >
-          {caretaker.username}
+          {caretaker.profile.firstName} {caretaker.profile.lastName}
         </Card.Title>
         <Card.Divider />
 
@@ -49,7 +49,7 @@ const CareTakerDetail = ({ navigation, route }) => {
           style={{
             height: 140,
             marginBottom: 10,
-            borderRadius: 70,
+            borderRadius: 30,
           }}
           source={{
             uri: baseURL + caretaker.profile.image,
