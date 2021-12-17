@@ -17,21 +17,21 @@ const BookingTime = ({ route, navigation }) => {
       />
 
       <Center style={styles.shadow}>
-      <Text style={{ marginBottom: 20, fontSize: 25 }}>Pick a Time</Text>
+        {/* <Text style={{ marginBottom: 20, fontSize: 25 }}>Pick a Time</Text>
         <HStack>
           <Button title="2 Hours" buttonStyle={styles.button} />
           <Button title="4 Hours" buttonStyle={styles.button} />
-        </HStack>
+        </HStack> */}
         {/* this will confirm the booking */}
         <TimePicker
           bookCaretaker={caretaker._id}
           bookDate={day.dateString}
           navigation={navigation}
         />
-        <HStack>
+        {/* <HStack>
           <Button title="4 Hours" buttonStyle={styles.button} />
           <Button title="4 Hours" buttonStyle={styles.button} />
-        </HStack>
+        </HStack> */}
       </Center>
     </View>
   );
